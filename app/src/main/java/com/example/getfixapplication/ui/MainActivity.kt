@@ -54,5 +54,9 @@ class MainActivity : AppCompatActivity() {
 
             })
         }
+        binding.tvDaftar.setOnClickListener {
+            val signup = Intent(this, SignupActivity::class.java)
+            startActivity(signup)
+        }
     }
 }

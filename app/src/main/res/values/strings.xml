@@ -3,4 +3,7 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
+    <string name="username">username</string>
+    <string name="daftar_akun">Belum punya akun? | daftar</string>
+    <string name="sign">SIGN UP</string>
 </resources>
