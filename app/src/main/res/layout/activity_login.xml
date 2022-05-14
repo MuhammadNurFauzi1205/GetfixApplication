@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SignupActivity">
+    tools:context=".ui.LoginActivity">
 
     <EditText
         android:id="@+id/ed1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="50dp"
         android:hint="@string/username"
         android:inputType="text"
@@ -26,19 +25,6 @@
         android:id="@+id/ed2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
-        android:inputType="text"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed1"
-        android:autofillHints="" />
-    <EditText
-        android:id="@+id/ed3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/password"
         android:inputType="textVisiblePassword"
         android:layout_marginTop="32dp"
@@ -46,21 +32,21 @@
         android:layout_marginStart="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed2"
+        app:layout_constraintTop_toBottomOf="@+id/ed1"
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/btn_sign"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
-        android:text="@string/sign"
+        android:text="@string/login"
         android:textSize="12sp"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed3" />
+        app:layout_constraintTop_toBottomOf="@+id/ed2" />
 
     <TextView
         android:id="@+id/tv_daftar"
@@ -68,9 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:textSize="16sp"
-        android:text="@string/akun_login"
+        android:text="@string/daftar_akun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sign" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
