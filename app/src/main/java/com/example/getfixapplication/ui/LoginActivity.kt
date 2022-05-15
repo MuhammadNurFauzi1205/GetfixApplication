@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.example.getfixapplication.databinding.ActivityLoginBinding
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.*
 
 class LoginActivity : AppCompatActivity() {
@@ -14,8 +15,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     var EMAIL_KEY = "emailkey"
     var email_key = ""
-    lateinit var  username : EditText
-    lateinit var passwordd: EditText
+    lateinit var  username : TextInputLayout
+    lateinit var passwordd: TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
 
 
             myreference = FirebaseDatabase.getInstance().reference
-                .child("users").child(username.text.toString())
+                .child("users").child(username.editText.toString())
 
 
             myreference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -38,12 +39,12 @@ class LoginActivity : AppCompatActivity() {
                         val passwordFromFirebase = dataSnapshot.child("password").value.toString()
 
                         //validasi password dengan firebase
-                        if (passwordd.text.toString() == passwordFromFirebase) {
+                        if (passwordd.editText.toString() == passwordFromFirebase) {
 
                             //simpan username pada local
                             val sharedPreferences = getSharedPreferences(EMAIL_KEY, MODE_PRIVATE)
                             val editor = sharedPreferences.edit()
-                            editor.putString(email_key, username.text.toString())
+                            editor.putString(email_key, username.editText.toString())
                             editor.apply()
                             //berpindah activity
                             val two = Intent(this@LoginActivity , HomeActivity::class.java)
