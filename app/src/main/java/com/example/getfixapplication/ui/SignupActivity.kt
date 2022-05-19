@@ -53,7 +53,7 @@ class SignupActivity : AppCompatActivity() {
 //            Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
         }
 
-        binding.tvDaftar.setOnClickListener {
+        binding.tvActionDaftar.setOnClickListener {
             val login = Intent(this, LoginActivity::class.java)
             startActivity(login)
         }
