@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ed3" />
 
     <TextView
-        android:id="@+id/tv_daftar"
+        android:id="@+id/tv_action_daftar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
