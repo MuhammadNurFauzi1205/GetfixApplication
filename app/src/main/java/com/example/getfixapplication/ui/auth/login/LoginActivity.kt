@@ -1,23 +1,21 @@
-package com.example.getfixapplication.ui
+package com.example.getfixapplication.ui.auth.login
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivityLoginBinding
+import com.example.getfixapplication.ui.auth.register.SignupActivity
+import com.example.getfixapplication.ui.home.HomeActivity
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -25,7 +23,9 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var myreference : DatabaseReference
@@ -157,7 +157,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null){
-            val intent = Intent(applicationContext,HomeActivity::class.java)
+            val intent = Intent(applicationContext, HomeActivity::class.java)
             intent.putExtra(EXTRA_NAME, user.displayName)
             startActivity(intent)
         }

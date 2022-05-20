@@ -1,13 +1,17 @@
-package com.example.getfixapplication.ui
+package com.example.getfixapplication.ui.auth.register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import com.example.getfixapplication.databinding.ActivitySignupBinding
+import com.example.getfixapplication.ui.auth.login.LoginActivity
+import com.example.getfixapplication.ui.home.HomeActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.*
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignupActivity : AppCompatActivity() {
     private lateinit var myreference : DatabaseReference
     private lateinit var binding: ActivitySignupBinding

@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GetfixApplication">
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.auth.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SignupActivity"
+            android:name=".ui.auth.register.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.splash.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

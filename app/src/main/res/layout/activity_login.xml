@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.auth.login.LoginActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ed1"
@@ -104,7 +104,7 @@
         android:layout_marginTop="250dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Email"
+        android:text="@string/text_label_email"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -119,7 +119,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Password"
+        android:text="@string/text_label_password"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -131,13 +131,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Lupa Password?"
+        android:text="@string/text_action_lupa_password"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/ed2"
         app:layout_constraintTop_toBottomOf="@+id/ed2" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_logo"
         android:layout_width="411dp"
         android:layout_height="90dp"
         android:layout_marginTop="80dp"
@@ -145,17 +145,18 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/app_name" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_label_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Login to your existant account of GetFix"
+        android:text="@string/text_label_login_descriptoon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="@+id/img_logo"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
