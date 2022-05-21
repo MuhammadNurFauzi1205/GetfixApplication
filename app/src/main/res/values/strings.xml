@@ -8,4 +8,22 @@
     <string name="sign">SIGN UP</string>
     <string name="akun_login">Sudah punya akun? | Login</string>
     <string name="WebClient">116303479224-qe4kiq0uj2dfitj8raejbd5bsgvqsja1.apps.googleusercontent.com</string>
+    <string name="our_services">Our Services</string>
+    <string name="menampilkan_menu">menampilkan menu</string>
+    <string name="lo_go">logo</string>
+    <string name="fitur_pencarian">fitur pencarian</string>
+    <string name="fitur_notifikasi">fitur notifikasi</string>
+    <string name="menuju_ke_home">menuju ke home</string>
+    <string name="menuju_pembelian">menuju pembelian</string>
+    <string name="menambah">menambah</string>
+    <string name="fitur_chat">fitur chat</string>
+    <string name="fitur_profil">fitur profil</string>
+    <string name="title_activity_homee">HomeeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="this_is_chat_fragment">This is chat fragment</string>
+    <string name="this_is_profile_fragment">This is profile fragment</string>
 </resources>

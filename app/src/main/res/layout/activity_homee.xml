@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeActivity">
-
+    android:paddingTop="8dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -96,7 +95,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="20dp"
 
-             />
+            />
         <com.google.android.material.imageview.ShapeableImageView
             android:src="@drawable/touchscreen"
             android:layout_gravity="center_horizontal"
@@ -139,63 +138,30 @@
             android:layout_column="3"
             android:text="Komputer"
             android:layout_marginStart="26dp"/>
-
-
-
-
-
     </GridLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/Widget.Material3.BottomNavigationView.ActiveIndicator"
-        >
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="40dp"
-            android:src="@drawable/home"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/menuju_ke_home" />
-        <ImageView
-            android:id="@+id/chart"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="110dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/chart"
-            android:contentDescription="@string/menuju_pembelian" />
-        <ImageView
-            android:id="@+id/add"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="180dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/ic_add"
-            android:contentDescription="@string/menambah" />
-        <ImageView
-            android:id="@+id/chat"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="250dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/chat"
-            android:contentDescription="@string/fitur_chat" />
-        <ImageView
-            android:id="@+id/profil"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="320dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/profil"
-            android:contentDescription="@string/fitur_profil" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_homee"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" >
+    </fragment>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
