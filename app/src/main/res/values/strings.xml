@@ -33,4 +33,17 @@
     <string name="komputer">Komputer</string>
     <string name="teknisi_a">Teknisi A</string>
     <string name="dekripsi">Lorem Ipsum dolor sit amet,</string>
+    <string name="book">BOOK</string>
+    <string name="booking">Booking</string>
+    <string name="jenis_layanan">Jenis Layanan:</string>
+    <string name="teknisi_laptop">Teknisi Laptop</string>
+    <string name="lokasi_anda">Lokasi Anda</string>
+    <string name="masukan_alamat_anda">Masukan Alamat Anda</string>
+    <string name="booking_tanggal">Booking Tanggal</string>
+    <string name="jam_hari_bulan_tahun">Jam/Hari/Bulan/Tahun</string>
+    <string name="detail_tugas">Detail Tugas</string>
+    <string name="deskripsi_tugas">Deskripsi Tugas</string>
+    <string name="sisipkan_foto">Sisipkan Foto</string>
+    <string name="pilih_foto">Pilih Foto</string>
+    <string name="selanjutnya">Selanjutnya</string>
 </resources>
