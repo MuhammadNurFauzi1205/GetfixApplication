@@ -26,4 +26,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="this_is_chat_fragment">This is chat fragment</string>
     <string name="this_is_profile_fragment">This is profile fragment</string>
+    <string name="massage">Massage</string>
+    <string name="laptop">Laptop</string>
+    <string name="handphone">Handphone</string>
+    <string name="televisi">Televisi</string>
+    <string name="komputer">Komputer</string>
+    <string name="teknisi_a">Teknisi A</string>
+    <string name="dekripsi">Lorem Ipsum dolor sit amet,</string>
 </resources>

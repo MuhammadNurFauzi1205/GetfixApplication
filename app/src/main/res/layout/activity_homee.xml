@@ -29,7 +29,7 @@
             android:layout_width="70dp"
             android:layout_height="60dp"
             android:layout_marginStart="30dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/getfix_logo"
             app:layout_constraintStart_toEndOf="@+id/menu"
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/lo_go" />
@@ -117,26 +117,26 @@
             android:id="@+id/tv_laptop"
             android:layout_row="1"
             android:layout_column="0"
-            android:text="Laptop"
+            android:text="@string/laptop"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="16dp"/>
         <TextView
             android:id="@+id/tv_hp"
             android:layout_row="1"
             android:layout_column="1"
-            android:text="Handphone"
+            android:text="@string/handphone"
             android:layout_marginStart="8dp"/>
         <TextView
             android:id="@+id/tv_televisi"
             android:layout_row="1"
             android:layout_column="2"
-            android:text="Televisi"
+            android:text="@string/televisi"
             android:layout_marginStart="22dp"/>
         <TextView
             android:id="@+id/tv_komputer"
             android:layout_row="1"
             android:layout_column="3"
-            android:text="Komputer"
+            android:text="@string/komputer"
             android:layout_marginStart="26dp"/>
     </GridLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
