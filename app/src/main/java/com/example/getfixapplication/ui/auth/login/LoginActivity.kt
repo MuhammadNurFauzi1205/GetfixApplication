@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.HomeActivity
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.SignInClient
+import com.example.getfixapplication.ui.home.HomeActivity_GeneratedInjector
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -31,9 +31,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var myreference : DatabaseReference
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var oneTapClient: SignInClient
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var signInRequest: BeginSignInRequest
     val WebClient = "116303479224-qe4kiq0uj2dfitj8raejbd5bsgvqsja1.apps.googleusercontent.com"
 
     var EMAIL_KEY = "emailkey"
@@ -41,8 +39,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var  username : TextInputLayout
     lateinit var passwordd: TextInputLayout
     lateinit var google: ImageView
-    private val REQ_ONE_TAP = 1001
-    private var showOneTapUI = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString(email_key, username.editText.toString())
                             editor.apply()
                             //berpindah activity
-                            val two = Intent(this@LoginActivity , HomeActivity::class.java)
+                            val two = Intent(this@LoginActivity , HomeActivity_GeneratedInjector::class.java)
                             startActivity(two)
                         } else {
                             Toast.makeText(applicationContext, "Password salah", Toast.LENGTH_SHORT)

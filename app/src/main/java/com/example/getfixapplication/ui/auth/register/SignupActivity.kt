@@ -3,12 +3,14 @@ package com.example.getfixapplication.ui.auth.register
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import com.example.getfixapplication.databinding.ActivitySignupBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.ui.home.HomeActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.*
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,8 +48,11 @@ class SignupActivity : AppCompatActivity() {
             myreference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     dataSnapshot.ref.child("username").setValue(usernamee.editText.toString())
+                    Log.d(dataSnapshot.child("username").toString(),"username:")
                     dataSnapshot.ref.child("email").setValue(emaill.editText.toString())
+                    Log.d(dataSnapshot.child("email").toString(),"username:")
                     dataSnapshot.ref.child("password").setValue(passwordd.editText.toString())
+                    Log.d(dataSnapshot.child("password").toString(),"username:")
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {}
