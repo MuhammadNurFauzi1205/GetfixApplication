@@ -5,7 +5,6 @@
     <string name="username">Username</string>
 
     <string name="WebClient">116303479224-qe4kiq0uj2dfitj8raejbd5bsgvqsja1.apps.googleusercontent.com</string>
-
     <string name="text_action_daftar_akun">Daftar</string>
     <string name="text_action_akun_login">Login</string>
     <string name="text_action_lupa_password">Lupa Password?</string>
@@ -16,4 +15,42 @@
     <string name="text_label_password">Password</string>
     <string name="text_label_login_description">Login to your existent account of GetFix</string>
     <string name="text_label_register_description">Get Technician Get Fix</string>
+    <string name="our_services">Our Services</string>
+    <string name="menampilkan_menu">menampilkan menu</string>
+    <string name="lo_go">logo</string>
+    <string name="fitur_pencarian">fitur pencarian</string>
+    <string name="fitur_notifikasi">fitur notifikasi</string>
+    <string name="menuju_ke_home">menuju ke home</string>
+    <string name="menuju_pembelian">menuju pembelian</string>
+    <string name="menambah">menambah</string>
+    <string name="fitur_chat">fitur chat</string>
+    <string name="fitur_profil">fitur profil</string>
+    <string name="title_activity_homee">HomeeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="this_is_chat_fragment">This is chat fragment</string>
+    <string name="this_is_profile_fragment">This is profile fragment</string>
+    <string name="massage">Massage</string>
+    <string name="laptop">Laptop</string>
+    <string name="handphone">Handphone</string>
+    <string name="televisi">Televisi</string>
+    <string name="komputer">Komputer</string>
+    <string name="teknisi_a">Teknisi A</string>
+    <string name="dekripsi">Lorem Ipsum dolor sit amet,</string>
+    <string name="book">BOOK</string>
+    <string name="booking">Booking</string>
+    <string name="jenis_layanan">Jenis Layanan:</string>
+    <string name="teknisi_laptop">Teknisi Laptop</string>
+    <string name="lokasi_anda">Lokasi Anda</string>
+    <string name="masukan_alamat_anda">Masukan Alamat Anda</string>
+    <string name="booking_tanggal">Booking Tanggal</string>
+    <string name="jam_hari_bulan_tahun">Jam/Hari/Bulan/Tahun</string>
+    <string name="detail_tugas">Detail Tugas</string>
+    <string name="deskripsi_tugas">Deskripsi Tugas</string>
+    <string name="sisipkan_foto">Sisipkan Foto</string>
+    <string name="pilih_foto">Pilih Foto</string>
+    <string name="selanjutnya">Selanjutnya</string>
 </resources>

@@ -11,6 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GetfixApplication">
         <activity
+            android:name=".ui.booking.BookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.HomeeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_homee" />
+        <activity
             android:name=".ui.auth.login.LoginActivity"
             android:exported="false" />
         <activity

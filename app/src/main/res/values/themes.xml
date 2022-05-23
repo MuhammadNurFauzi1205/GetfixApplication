@@ -12,6 +12,7 @@
 
         <!-- Font -->
         <item name="font">@font/roboto</item>
+
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/black</item>
 
@@ -26,7 +27,7 @@
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/gray_text</item>
     </style>
-    
+
     <style name="ButtonLogin" parent="ThemeOverlay.Material3.Button">
         <item name="backgroundTint">@color/purple</item>
         <item name="android:radius">10dp</item>
