@@ -1,13 +1,20 @@
 <resources>
     <string name="app_name">Getfix Application</string>
     <string name="login">Login</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
-    <string name="username">Username</string>
-    <string name="daftar_akun">Belum punya akun? | daftar</string>
     <string name="sign">SIGN UP</string>
-    <string name="akun_login">Sudah punya akun? | Login</string>
+    <string name="username">Username</string>
+
     <string name="WebClient">116303479224-qe4kiq0uj2dfitj8raejbd5bsgvqsja1.apps.googleusercontent.com</string>
+    <string name="text_action_daftar_akun">Daftar</string>
+    <string name="text_action_akun_login">Login</string>
+    <string name="text_action_lupa_password">Lupa Password?</string>
+
+    <string name="text_label_register">Belum punya akun?</string>
+    <string name="text_label_login">Sudah punya akun?</string>
+    <string name="text_label_email">Email</string>
+    <string name="text_label_password">Password</string>
+    <string name="text_label_login_description">Login to your existent account of GetFix</string>
+    <string name="text_label_register_description">Get Technician Get Fix</string>
     <string name="our_services">Our Services</string>
     <string name="menampilkan_menu">menampilkan menu</string>
     <string name="lo_go">logo</string>

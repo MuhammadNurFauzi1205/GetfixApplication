@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.auth.login.LoginActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ed1"
@@ -54,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:hint="@string/password"
+            android:hint="@string/text_label_password"
             android:inputType="textPassword"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -86,22 +91,27 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <TextView
-        android:id="@+id/tv_action_daftar"
+        android:id="@+id/tv_label_daftar"
+        style="@style/TextDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/daftar_akun"
+        android:layout_marginBottom="24dp"
+        android:text="@string/text_label_register"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/google" />
+        app:layout_constraintTop_toBottomOf="@+id/google"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tv_label_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/username"
@@ -109,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_label_description" />
 
     <TextView
         android:id="@+id/tv_label_password"
@@ -119,7 +129,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/password"
+        android:text="@string/text_label_password"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -131,32 +141,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Lupa Password?"
+        android:text="@string/text_action_lupa_password"
+        android:textColor="@color/black_second"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/ed2"
         app:layout_constraintTop_toBottomOf="@+id/ed2" />
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_marginTop="80dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:scaleX="3"
+        android:scaleY="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/getfix_logo"
+        app:srcCompat="@drawable/logo" />
         android:contentDescription="@string/app_name" />
 
     <TextView
         android:id="@+id/tv_label_description"
+        style="@style/TextDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Get Technision Get Fix"
+        android:text="@string/text_label_login_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/img_logo"
         app:layout_constraintTop_toBottomOf="@+id/img_logo" />
 
+    <TextView
+        android:id="@+id/tv_action_daftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="80dp"
+        android:text="@string/text_action_daftar_akun"
+        android:textColor="@color/purple"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_label_daftar"
+        app:layout_constraintTop_toTopOf="@+id/tv_label_daftar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

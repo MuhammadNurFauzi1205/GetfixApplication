@@ -4,30 +4,31 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.lifecycle.lifecycleScope
 import com.example.getfixapplication.databinding.ActivityMainBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
+import com.example.getfixapplication.utils.ConstVal.timeSplash
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var handler: Handler
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-            handler = Handler()
+        val intentToSignup = Intent(this@MainActivity, SignupActivity::class.java)
+        val handler = Handler(mainLooper)
+
+        lifecycleScope.launch(Dispatchers.Default) {
             handler.postDelayed({
-
-                val intent = Intent(this, SignupActivity::class.java)
-                startActivity(intent)
+                startActivity(intentToSignup)
                 finish()
-
-            }, 3000)
+            }, timeSplash.toLong())
         }
-
-
-
+    }
 }
