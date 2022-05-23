@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.GetfixApplication" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.GetfixApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -10,17 +10,25 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
 
+        <!-- Font -->
         <item name="font">@font/roboto</item>
         <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/black</item>
 
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Status bar color. target api 23-->
+        <item name="android:windowLightStatusBar" tools:targetApi="M">true</item>
+        <item name="android:statusBarColor" tools:targetApi="M">@color/white</item>
+
+    </style>
+
+    <style name="TextDesc">
+        <item name="font">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/gray_text</item>
     </style>
     
     <style name="ButtonLogin" parent="ThemeOverlay.Material3.Button">
-        <item name="backgroundTint">@color/biru_utama</item>
+        <item name="backgroundTint">@color/purple</item>
         <item name="android:radius">10dp</item>
-
     </style>
 </resources>
