@@ -53,4 +53,5 @@
     <string name="sisipkan_foto">Sisipkan Foto</string>
     <string name="pilih_foto">Pilih Foto</string>
     <string name="selanjutnya">Selanjutnya</string>
+    <string name="text_label_detail_tugas">Detail Tugas</string>
 </resources>
