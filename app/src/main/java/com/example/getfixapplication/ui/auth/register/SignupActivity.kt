@@ -1,16 +1,12 @@
 package com.example.getfixapplication.ui.auth.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-
+import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivitySignupBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.ui.home.HomeActivity
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.*
-
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,39 +16,36 @@ class SignupActivity : AppCompatActivity() {
     var EMAIL_KEY = "emailkey"
     var email_key = ""
 
-    lateinit var usernamee: TextInputLayout
-    lateinit var passwordd: TextInputLayout
-    lateinit var  emaill : TextInputLayout
+//    lateinit var usernamee: TextInputLayout
+//    lateinit var passwordd: TextInputLayout
+//    lateinit var  emaill : TextInputLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        usernamee=binding.ed1
-        emaill=binding.ed2
-        passwordd=binding.ed3
+        val usernamee=binding.ed1
+        val emaill=binding.ed2
+        val passwordd=binding.ed3
 
 
         binding.btnSign.setOnClickListener {
             //simpan username pada local
             val sharedPreferences = getSharedPreferences(EMAIL_KEY, MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.putString(email_key, usernamee.editText.toString())
+            editor.putString(email_key, usernamee.editText?.text.toString())
             editor.apply()
 
 
             //simpan username pada firebase
             myreference = FirebaseDatabase.getInstance().reference
-                .child("users").child(usernamee.editText.toString())
+                .child("users").child(usernamee.editText?.text.toString())
 
             myreference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    dataSnapshot.ref.child("username").setValue(usernamee.editText.toString())
-                    Log.d(dataSnapshot.child("username").toString(),"username:")
-                    dataSnapshot.ref.child("email").setValue(emaill.editText.toString())
-                    Log.d(dataSnapshot.child("email").toString(),"username:")
-                    dataSnapshot.ref.child("password").setValue(passwordd.editText.toString())
-                    Log.d(dataSnapshot.child("password").toString(),"username:")
+                    dataSnapshot.ref.child("username").setValue(usernamee.editText?.text.toString())
+                    dataSnapshot.ref.child("email").setValue(emaill.editText?.text.toString())
+                    dataSnapshot.ref.child("password").setValue(passwordd.editText?.text.toString())
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {}
