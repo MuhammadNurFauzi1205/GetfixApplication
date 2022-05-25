@@ -12,7 +12,6 @@
 
         <!-- Font -->
         <item name="font">@font/roboto</item>
-
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/black</item>
 
