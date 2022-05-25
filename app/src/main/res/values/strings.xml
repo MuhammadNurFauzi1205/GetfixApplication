@@ -54,4 +54,12 @@
     <string name="pilih_foto">Pilih Foto</string>
     <string name="selanjutnya">Selanjutnya</string>
     <string name="text_label_detail_tugas">Detail Tugas</string>
+    <string name="nama">Dinda Lusita</string>
+    <string name="dindafristiani_gmail_com">dindafristiani@gmail.com</string>
+    <string name="saldo">50.000</string>
+    <string name="akun">Akun</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="logout">Logout</string>
+    <string name="mengedit_profil">mengedit profil</string>
+    <string name="jumlah_saldo">jumlah saldo</string>
 </resources>
