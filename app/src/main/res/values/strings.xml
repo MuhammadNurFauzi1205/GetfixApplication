@@ -62,4 +62,6 @@
     <string name="logout">Logout</string>
     <string name="mengedit_profil">mengedit profil</string>
     <string name="jumlah_saldo">jumlah saldo</string>
+    <string name="tanggal_pembayaran_berhasil">23 Maret 2022, 10:30</string>
+    <string name="pembayaran_berhasil">Pembayaran anda untuk pesanan 123x4xxx telah berhasil</string>
 </resources>
