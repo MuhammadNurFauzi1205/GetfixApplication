@@ -5,6 +5,7 @@
             <gradient
                 android:startColor="@color/purple"
                 android:endColor="#8f94fb"
+                android:gradientRadius="180"
                 android:type="linear" />
         </shape>
     </item>

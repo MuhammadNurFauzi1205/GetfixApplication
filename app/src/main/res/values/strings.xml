@@ -64,4 +64,13 @@
     <string name="jumlah_saldo">jumlah saldo</string>
     <string name="tanggal_pembayaran_berhasil">23 Maret 2022, 10:30</string>
     <string name="pembayaran_berhasil">Pembayaran anda untuk pesanan 123x4xxx telah berhasil</string>
+    <string name="konfirmasi_pesanan">Konfirmasi Pesanan</string>
+    <string name="info_invoice">#PO0001</string>
+    <string name="pemesanan_selesai">Pemesanan anda untuk pesanan 123x4xxx telah selesai</string>
+    <string name="tab_text_1">Myorder</string>
+    <string name="tab_text_2">Finishorder</string>
+    <string name="status">Status</string>
+    <string name="process">Process</string>
+    <string name="nama_teknisi">Teknisi A</string>
+    <string name="id">ID 0001</string>
 </resources>
