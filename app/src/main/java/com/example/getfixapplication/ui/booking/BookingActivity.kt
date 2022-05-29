@@ -61,5 +61,11 @@ class BookingActivity : AppCompatActivity() {
             binding.tvWaktu.text = pickerTime.hour.toString() + ":" + pickerTime.minute.toString()
         }
 
+        //move from booking to pilih teknisi
+        binding.btnNext.setOnClickListener {
+            val intent = Intent(this, PilihTeknisiActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
