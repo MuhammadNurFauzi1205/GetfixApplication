@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GetfixApplication">
         <activity
+            android:name=".ui.booking.ListTeknisiActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false" />
         <activity

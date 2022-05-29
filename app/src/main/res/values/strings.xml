@@ -59,6 +59,7 @@
     <string name="text_waktu">Waktu</string>
     <string name="text_img_desc_pilih_waktu">Pilih Waktu</string>
     <string name="text_img_desc_pilih_tanggal">Pilih Tanggal</string>
+    <string name="pilih_teknisi_mu">Pilih Teknisi Mu !</string>
 
 
     <string-array name="data_jenis_layanan">
