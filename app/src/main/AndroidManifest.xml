@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GetfixApplication">
         <activity
+            android:name=".ui.Order.PayOrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.Order.DetailOrderActivity"
             android:exported="false" />
         <activity

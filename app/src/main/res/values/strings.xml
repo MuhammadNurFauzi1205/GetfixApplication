@@ -73,4 +73,20 @@
     <string name="process">Process</string>
     <string name="nama_teknisi">Teknisi A</string>
     <string name="id">ID 0001</string>
+    <string name="kirim_pesan">Kirim pesan</string>
+    <string name="telepon">Telepon</string>
+    <string name="lokasi_waktu_pengerjaan"><![CDATA[Lokasi & Waktu Pengerjaan]]></string>
+    <string name="rumahku">Rumahku</string>
+    <string name="alamat_rumahku">JL. Soekarno Hatta Blok. 4 A Blok ABC Jakarta Selatan, Indonesia</string>
+    <string name="tanggal">02 Jan 2022</string>
+    <string name="jam">08.00 – 12.00</string>
+    <string name="no_pekerjaan">No. Pekerjaan:</string>
+    <string name="detail_informasi">Detail informasi</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="perbaikan_layar_laptop">Perbaikan layar laptop</string>
+    <string name="pesanan_selesai">Pesanan Selesai</string>
+    <string name="wallet">Wallet</string>
+    <string name="cash">Cash</string>
+    <string name="total_biaya">Total Biaya</string>
+    <string name="idr_50_000">IDR 50.000</string>
 </resources>
