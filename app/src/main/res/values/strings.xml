@@ -54,4 +54,22 @@
     <string name="pilih_foto">Pilih Foto</string>
     <string name="selanjutnya">Selanjutnya</string>
     <string name="text_label_detail_tugas">Detail Tugas</string>
+    <string name="text_pilih_layanan">Pilih Layanan</string>
+    <string name="text_tanggal">Tanggal</string>
+    <string name="text_waktu">Waktu</string>
+    <string name="text_img_desc_pilih_waktu">Pilih Waktu</string>
+    <string name="text_img_desc_pilih_tanggal">Pilih Tanggal</string>
+
+
+    <string-array name="data_jenis_layanan">
+        <item>Konsultasi</item>
+        <item>Panggil Teknisi</item>
+    </string-array>
+
+    <string-array name="data_kota">
+        <item>Jakarta</item>
+        <item>Surabaya</item>
+        <item>Magelang</item>
+        <item>Surakarta</item>
+    </string-array>
 </resources>

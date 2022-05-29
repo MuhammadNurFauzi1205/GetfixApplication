@@ -118,9 +118,9 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/ed1"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="0dp"
-                        android:layout_height="40dp"
+                        android:layout_height="50dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
@@ -131,19 +131,21 @@
                         app:boxCornerRadiusTopEnd="10dp"
                         app:boxCornerRadiusTopStart="10dp"
                         app:boxStrokeColor="@color/border_grey"
+                        app:hintEnabled="false"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/alamat">
 
-                        <EditText
+                        <AutoCompleteTextView
+                            android:id="@+id/alamat_drop"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:autofillHints=""
-                            android:hint="@string/masukan_alamat_anda"
-                            android:inputType="text"
+                            android:layout_height="50dp"
+                            android:padding="16dp"
+                            android:layout_weight="1"
+                            android:inputType="none"
                             android:textSize="12sp"
-                            app:expandedHintEnabled="false" />
+                            android:text="@string/text_pilih_layanan"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -160,36 +162,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tanggal"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="24dp"
-                        app:boxBackgroundColor="@color/grey"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxStrokeColor="@color/border_grey"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Jadwal">
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:autofillHints=""
-                            android:hint="@string/jam_hari_bulan_tahun"
-                            android:inputType="text"
-                            android:textSize="12sp"
-                            app:expandedHintEnabled="false" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <TextView
                         android:id="@+id/Jadwal"
                         style="@style/TextSubHead"
@@ -202,6 +174,54 @@
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_tanggal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/text_tanggal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_calender"
+                        app:layout_constraintTop_toBottomOf="@+id/Jadwal" />
+
+                    <ImageView
+                        android:id="@+id/iv_calender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_tanggal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_tanggal"
+                        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+                        android:contentDescription="@string/text_img_desc_pilih_tanggal" />
+
+                    <TextView
+                        android:id="@+id/tv_waktu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:text="@string/text_waktu"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iv_calender"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_tanggal" />
+
+                    <ImageView
+                        android:id="@+id/iv_clock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_waktu"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_waktu"
+                        app:srcCompat="@android:drawable/ic_menu_recent_history"
+                        android:contentDescription="@string/text_img_desc_pilih_waktu" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -219,6 +239,36 @@
                     android:layout_height="match_parent">
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/jenis_layanan"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        app:boxBackgroundColor="@color/grey"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxStrokeColor="@color/border_grey"
+                        app:hintEnabled="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tugas">
+
+                       <AutoCompleteTextView
+                           android:id="@+id/jenis_tugas"
+                           android:layout_width="match_parent"
+                           android:layout_height="50dp"
+                           android:padding="16dp"
+                           android:layout_weight="1"
+                           android:inputType="none"
+                           android:textSize="12sp"
+                           android:text="@string/text_pilih_layanan"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/deskripsi_tugas"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
@@ -226,22 +276,22 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="24dp"
                         app:boxBackgroundColor="@color/grey"
                         app:boxCornerRadiusBottomEnd="10dp"
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
                         app:boxCornerRadiusTopStart="10dp"
                         app:boxStrokeColor="@color/border_grey"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:hintEnabled="false"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tugas">
+                        app:layout_constraintTop_toBottomOf="@+id/jenis_layanan">
 
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
                             android:autofillHints=""
+                            android:gravity="top|start"
                             android:hint="@string/deskripsi_tugas"
                             android:inputType="text"
                             android:textSize="12sp"
@@ -260,63 +310,6 @@
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView4">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/sisip_foto"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="85dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginEnd="16dp"
-                        app:boxBackgroundColor="@color/grey"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxStrokeColor="@color/border_grey"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/header_sisip_foto">
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                            android:autofillHints=""
-                            android:gravity="center"
-                            android:hint="@string/pilih_foto"
-                            android:inputType="text"
-                            android:textSize="12sp"
-                            app:expandedHintEnabled="false" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/header_sisip_foto"
-                        style="@style/TextSubHead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/sisipkan_foto"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_next"
@@ -326,14 +319,14 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="16dp"
                         android:text="@string/selanjutnya"
                         android:textSize="12sp"
                         app:cornerRadius="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sisip_foto" />
+                        app:layout_constraintTop_toBottomOf="@+id/deskripsi_tugas" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
