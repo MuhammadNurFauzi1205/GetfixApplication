@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.getfixapplication.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_image_classification"
+        android:name="com.example.getfixapplication.ui.notifications.ImageClassificationFragment"
+        android:label="navigation_image_classification"
+        tools:layout="@layout/fragment_image_classification" />
 </navigation>
