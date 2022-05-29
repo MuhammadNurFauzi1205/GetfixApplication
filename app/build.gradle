@@ -99,5 +99,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 
+    //recycleview selector
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
+
+    //ratingbar
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
 }
