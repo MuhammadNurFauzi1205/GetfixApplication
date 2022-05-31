@@ -16,10 +16,21 @@
         android:name="com.example.getfixapplication.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
-
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.getfixapplication.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.example.getfixapplication.ui.home.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.getfixapplication.ui.home.ProfileFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_profile" />
+
+
 </navigation>

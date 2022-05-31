@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivitySignupBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.ui.home.HomeActivity
+import com.example.getfixapplication.ui.home.HomeeActivity
 import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -72,7 +73,7 @@ class SignupActivity : AppCompatActivity() {
                 .add(user)
                 .addOnSuccessListener { documentReference ->
                     Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                    val home = Intent(this, HomeActivity::class.java)
+                    val home = Intent(this, HomeeActivity::class.java)
                     startActivity(home)
                     Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
                 }

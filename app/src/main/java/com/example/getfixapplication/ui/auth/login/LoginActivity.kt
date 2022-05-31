@@ -12,6 +12,7 @@ import androidx.core.view.isNotEmpty
 import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.HomeActivity
+import com.example.getfixapplication.ui.home.HomeeActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -32,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-    val WebClient = "116303479224-qe4kiq0uj2dfitj8raejbd5bsgvqsja1.apps.googleusercontent.com"
+    val WebClient = "1063081921561-nrcop7njimnvlf14njcjre8mhuueoqsq.apps.googleusercontent.com"
     val db = Firebase.firestore
     var EMAIL_KEY = "emailkey"
     var email_key = ""
@@ -107,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString(email_key, username.editText?.text.toString())
                             editor.apply()
                             //berpindah activity
-                            val two = Intent(this@LoginActivity, HomeActivity::class.java)
+                            val two = Intent(this@LoginActivity, HomeeActivity::class.java)
                             startActivity(two)
 
                         }
