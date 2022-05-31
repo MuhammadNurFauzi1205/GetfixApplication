@@ -22,8 +22,7 @@
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
             app:navigationIcon="@drawable/back"
-            app:title="Notifikasi"
-            />
+            app:title="Pesanan Saya" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -51,19 +50,16 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_laptop"
                 app:layout_constraintStart_toEndOf="@+id/iv_laptop"
-                app:layout_constraintTop_toTopOf="@+id/iv_laptop"
-                app:layout_constraintVertical_bias="0.032" />
+                app:layout_constraintTop_toTopOf="@+id/iv_laptop" />
 
             <ImageView
                 android:id="@+id/iv_laptop"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="@string/teknisi_laptop"
                 android:src="@drawable/laptop"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/layanan"
                 app:layout_constraintTop_toBottomOf="@+id/layanan" />
 
             <TextView
@@ -81,43 +77,48 @@
 
             <TextView
                 android:id="@+id/info_invoice"
+                style="@style/TextSubHead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
                 android:layout_marginEnd="40dp"
-                android:textSize="12sp"
                 android:text="@string/info_invoice"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/jenislayanan" />
 
             <TextView
                 android:id="@+id/tv_status"
+                style="@style/TextSubHead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/status"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_laptop"
+                app:layout_constraintStart_toStartOf="@+id/iv_laptop"
                 app:layout_constraintTop_toBottomOf="@id/iv_laptop" />
 
             <Button
-                style="@style/MaterialAlertDialog.Material3.Title.Icon"
-                android:layout_width="100dp"
+                style="@style/ButtonLogin"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginTop="24dp"
                 android:layout_marginEnd="38dp"
                 android:text="@string/process"
+                android:textSize="11sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_status"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info_invoice" />
+                app:layout_constraintTop_toTopOf="@+id/tv_status" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView1"
-                android:layout_width="363dp"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="50dp"
-                app:cardCornerRadius="10dp"
+                android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@color/purple"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status">
@@ -130,12 +131,12 @@
                         android:id="@+id/iv_foto"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginTop="23dp"
                         android:layout_marginStart="25dp"
+                        android:layout_marginTop="23dp"
+                        android:contentDescription="@string/jumlah_saldo"
                         android:src="@drawable/picture"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:contentDescription="@string/jumlah_saldo" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_desc_nama"
@@ -144,42 +145,44 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="24dp"
-                        android:textSize="14sp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/nama_teknisi"
+                        android:textSize="14sp"
                         app:layout_constraintStart_toEndOf="@id/iv_foto"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/textView2"
+                        style="@style/TextSubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="30dp"
                         android:layout_marginTop="24dp"
+                        android:layout_marginEnd="30dp"
                         android:text="@string/id"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/imageView"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="48dp"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="16dp"
                         android:src="@drawable/chat_dot"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/iv_foto" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_line_horizontal"
+                        android:contentDescription="@string/fitur_chat" />
 
                     <TextView
                         android:id="@+id/tv_kirim_pesan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
                         android:text="@string/kirim_pesan"
                         android:textColor="@color/white"
-                        android:layout_marginBottom="35dp"
-                        android:layout_marginStart="12dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintStart_toEndOf="@+id/imageView"
-                        />
+                        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
                     <ImageView
                         android:id="@+id/iv_telepon"
@@ -188,42 +191,79 @@
                         android:layout_marginEnd="12dp"
                         android:layout_marginBottom="28dp"
                         android:src="@drawable/telepon1"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintEnd_toStartOf="@id/tv_telepon"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintTop_toTopOf="@+id/imageView"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:contentDescription="@string/telepon" />
 
                     <TextView
                         android:id="@+id/tv_telepon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="48dp"
                         android:text="@string/telepon"
                         android:textColor="@color/white"
-                        android:layout_marginBottom="35dp"
-                        android:layout_marginEnd="48dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_telepon"
                         app:layout_constraintEnd_toEndOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="@+id/iv_telepon" />
 
-                    <ImageView
+                    <View
                         android:id="@+id/iv_line_horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
+                        android:layout_height="2dp"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
                         android:layout_marginEnd="16dp"
-                        android:src="@drawable/line_horizontal"
+                        android:layout_marginBottom="58dp"
+                        android:background="@color/grey"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_foto"
+                        app:layout_constraintVertical_bias="0.22000003" />
 
-                    <ImageView
+                    <View
                         android:id="@+id/iv_line_vertikal"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginBottom="28dp"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/grey"
                         android:src="@drawable/line_vertical"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_telepon"
-                        app:layout_constraintStart_toEndOf="@+id/tv_kirim_pesan" />
+                        app:layout_constraintStart_toEndOf="@+id/tv_kirim_pesan"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_line_horizontal" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_foto"
+                        app:layout_constraintStart_toStartOf="@+id/tv_desc_nama"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_desc_nama"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/ic_baseline_star_rate_24"
+                        android:contentDescription="@string/detailorder_rating" />
+
+                    <TextView
+                        android:id="@+id/tv_detailorder_count_rating"
+                        style="@style/TextSubHead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        app:text="4.8"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                        app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -286,15 +326,16 @@
                 android:layout_marginEnd="38dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_tanggal" />
+
             <TextView
                 android:id="@+id/tv_label_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/status"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:layout_marginTop="6dp"
-                android:layout_marginStart="32dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_alamat_lokasi" />
 

@@ -72,50 +72,56 @@
                         android:textSize="11sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layanan" />
+
                     <TextView
                         android:id="@+id/tv_status"
                         style="@style/TextSubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="21dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="24dp"
                         android:contentDescription="@string/lo_go"
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/status"
                         android:textSize="11sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_label_detail_informasi" />
+                        app:layout_constraintTop_toBottomOf="@+id/tanggal_info" />
+
                     <TextView
                         android:id="@+id/info_invoice"
+                        style="@style/TextSubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="38dp"
-                        android:textSize="12sp"
                         android:text="@string/info_invoice"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/detail_info"
+                        style="@style/TextSubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="38dp"
-                        android:textSize="12sp"
                         android:text="@string/perbaikan_layar_laptop"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/info_invoice" />
+
                     <TextView
                         android:id="@+id/tanggal_info"
+                        style="@style/TextDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="38dp"
-                        android:textSize="12sp"
                         android:fontFamily="@font/roboto"
-                        android:textColor="@color/gray_text"
                         android:text="@string/tanggal_pembayaran_berhasil"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/detail_info" />
 
@@ -123,23 +129,22 @@
                         android:id="@+id/pesanan_selesai"
                         android:layout_width="132dp"
                         android:layout_height="28dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="38dp"
-                        app:cardCornerRadius="4dp"
                         app:cardBackgroundColor="@color/purple"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_status"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tanggal_info" >
+                        app:layout_constraintTop_toTopOf="@+id/tv_status">
 
                         <TextView
                             android:id="@+id/tv_finish_order"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:fontFamily="@font/roboto"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
                             android:text="@string/pesanan_selesai"
-                            />
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -178,10 +183,12 @@
                         android:layout_width="65dp"
                         android:layout_height="65dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="16dp"
                         android:src="@drawable/cash"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tugas" />
+                        app:layout_constraintTop_toBottomOf="@+id/tugas"
+                        android:contentDescription="@string/cash" />
+
                     <ImageView
                         android:id="@+id/iv_wallet"
                         android:layout_width="65dp"
@@ -190,7 +197,8 @@
                         android:layout_marginTop="10dp"
                         android:src="@drawable/wallet"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_cash" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_cash"
+                        android:contentDescription="@string/wallet" />
 
                     <TextView
                         android:id="@+id/tv_cash"
@@ -237,39 +245,41 @@
                         android:id="@+id/iv_cash2"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:layout_marginTop="28dp"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="28dp"
                         android:src="@drawable/cash"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/cash" />
 
                     <TextView
                         android:id="@+id/tv_label_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/total_biaya"
                         android:fontFamily="@font/roboto"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
                         android:src="@drawable/cash"
+                        android:text="@string/total_biaya"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_cash2"
                         app:layout_constraintStart_toEndOf="@id/iv_cash2"
-                        app:layout_constraintTop_toTopOf="@id/iv_cash2"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_cash2"/>
+                        app:layout_constraintTop_toTopOf="@id/iv_cash2" />
 
                     <TextView
                         android:id="@+id/tv_total_cash"
+                        style="@style/TextDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="38dp"
                         android:layout_marginEnd="40dp"
                         android:fontFamily="@font/roboto"
-                        android:textColor="@color/gray_text"
                         android:text="@string/cash"
+                        android:textColor="@color/gray_text"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_total"
@@ -282,7 +292,7 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_total_cash"/>
+                        app:layout_constraintTop_toBottomOf="@id/tv_total_cash" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_next"
@@ -293,8 +303,9 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="8dp"
-                        android:text="@string/selanjutnya"
+                        android:text="@string/payoder_bayar"
                         android:textSize="12sp"
+                        android:textStyle="bold"
                         app:cornerRadius="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

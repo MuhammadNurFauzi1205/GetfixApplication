@@ -89,4 +89,6 @@
     <string name="cash">Cash</string>
     <string name="total_biaya">Total Biaya</string>
     <string name="idr_50_000">IDR 50.000</string>
+    <string name="payoder_bayar">BAYAR</string>
+    <string name="detailorder_rating">Rating</string>
 </resources>
