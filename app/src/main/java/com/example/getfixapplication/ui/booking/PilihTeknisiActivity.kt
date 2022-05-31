@@ -14,7 +14,7 @@ import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
 class PilihTeknisiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPilihTeknisiBinding
-   var idTeknisi: String =
+    var idTeknisi: String =
         ""
 
     val data = listOf(

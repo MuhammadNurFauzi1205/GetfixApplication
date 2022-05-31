@@ -61,6 +61,9 @@
     <string name="text_img_desc_pilih_tanggal">Pilih Tanggal</string>
     <string name="pilih_teknisi_mu">Pilih Teknisi Mu!</string>
     <string name="pesan_sekarang">Pesan Sekarang</string>
+    <string name="camera_upload">Upload</string>
+    <string name="camera_batal">Batal</string>
+    <string name="camera_ambil_gambar">Ambil Gambar</string>
 
 
     <string-array name="data_jenis_layanan">
