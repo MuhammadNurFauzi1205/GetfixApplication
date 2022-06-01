@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignupActivity : AppCompatActivity() {
-    private lateinit var myreference : DatabaseReference
+//    private lateinit var myreference : DatabaseReference
     private lateinit var binding: ActivitySignupBinding
     var EMAIL_KEY = "emailkey"
     var email_key = ""

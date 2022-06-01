@@ -5,19 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
-import androidx.core.view.isNotEmpty
 import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.HomeActivity
 import com.example.getfixapplication.ui.home.HomeeActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
@@ -29,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var myreference : DatabaseReference
+//    private lateinit var myreference : DatabaseReference
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
