@@ -7,6 +7,7 @@ import android.os.Handler
 import androidx.lifecycle.lifecycleScope
 import com.example.getfixapplication.databinding.ActivityMainBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
+import com.example.getfixapplication.ui.home.HomeeActivity
 import com.example.getfixapplication.utils.ConstVal.timeSplash
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        val intentToSignup = Intent(this@MainActivity, SignupActivity::class.java)
+        val intentToSignup = Intent(this@MainActivity, HomeeActivity::class.java)
         val handler = Handler(mainLooper)
 
         lifecycleScope.launch(Dispatchers.Default) {
@@ -30,5 +30,8 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }, timeSplash.toLong())
         }
-    }
+        }
+
+
+
 }

@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.HomeActivity
-import com.example.getfixapplication.ui.home.HomeActivity_GeneratedInjector
-
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -31,28 +31,31 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var myreference : DatabaseReference
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var oneTapClient: SignInClient
     private lateinit var googleSignInClient: GoogleSignInClient
-    val WebClient = "116303479224-qe4kiq0uj2dfitj8raejbd5bsgvqsja1.apps.googleusercontent.com"
-
+    private lateinit var signInRequest: BeginSignInRequest
+    val WebClient = "1063081921561-nrcop7njimnvlf14njcjre8mhuueoqsq.apps.googleusercontent.com"
     var EMAIL_KEY = "emailkey"
     var email_key = ""
-//    lateinit var  username : TextInputLayout
-//    lateinit var passwordd: TextInputLayout
+    lateinit var  username : TextInputLayout
+    lateinit var passwordd: TextInputLayout
     lateinit var google: ImageView
+    private val REQ_ONE_TAP = 1001
+    private var showOneTapUI = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val username = binding.ed1
-        val passwordd = binding.ed2
+        username = binding.ed1
+        passwordd = binding.ed2
         google = binding.google
         auth = Firebase.auth
         binding.btnLogin.setOnClickListener {
 
 
             myreference = FirebaseDatabase.getInstance().reference
-                .child("users").child(username.editText?.text.toString())
+                .child("users").child(username.editText.toString())
 
 
             myreference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -63,12 +66,12 @@ class LoginActivity : AppCompatActivity() {
                         val passwordFromFirebase = dataSnapshot.child("password").value.toString()
 
                         //validasi password dengan firebase
-                        if (passwordd.editText?.text.toString() == passwordFromFirebase) {
+                        if (passwordd.editText.toString() == passwordFromFirebase) {
 
                             //simpan username pada local
                             val sharedPreferences = getSharedPreferences(EMAIL_KEY, MODE_PRIVATE)
                             val editor = sharedPreferences.edit()
-                            editor.putString(email_key, username.editText?.text.toString())
+                            editor.putString(email_key, username.editText.toString())
                             editor.apply()
                             //berpindah activity
                             val two = Intent(this@LoginActivity , HomeActivity::class.java)
@@ -95,8 +98,6 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, googlesignin)
-
-        auth = FirebaseAuth.getInstance()
 
         binding.google.setOnClickListener {
             GoogleSign()
@@ -126,55 +127,45 @@ class LoginActivity : AppCompatActivity() {
 
         if (requestCode ==  RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            val exception= task.exception
-            if (task.isSuccessful){
-                try {
-                    val account = task.getResult(ApiException::class.java)
-                    Log.d("LoginActivity", "firebaseauthwithgoogle:"+account.id)
-                    firebaseAuthWithGugel(account.idToken!!)
-                } catch (e : ApiException) {
-                    Log.w("LoginActivity", "google sign in failed", e)
-                }
-            }else{
-                Log.w("LoginActivity", exception.toString())
+            try {
+                val account = task.getResult(ApiException::class.java)
+                Log.d(TAG, "firebaseauthwithgoogle:"+account.id)
+                firebaseAuthWithGugel(account.id!!)
+            } catch (e : ApiException) {
+                Log.w(TAG, "google sign in failed", e)
             }
-
         }
 
     }
 
-    private fun firebaseAuthWithGugel(idToken: String) {
-        val credit = GoogleAuthProvider.getCredential(idToken, null)
+    private fun firebaseAuthWithGugel(token: String) {
+        val credit = GoogleAuthProvider.getCredential(token, null)
         auth.signInWithCredential(credit)
             .addOnCompleteListener(this) {task ->
                 if (task.isSuccessful){
                     Log.d(TAG, "signinwithcredit:sukses")
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                    finish()
-//                    val user = auth.currentUser
-//                    updateUI(user)
+                    val user = auth.currentUser
+                    updateUI(user)
                 }
                 else {
                     Log.w(TAG, "signinwithcredit:gagal", task.exception)
-//                    updateUI(null)
+                    updateUI(null)
                 }
             }
     }
 
-//    private fun updateUI(user: FirebaseUser?) {
-//        if (user != null){
-//            val intent = Intent(applicationContext, HomeActivity::class.java)
-//            intent.putExtra(EXTRA_NAME, user.displayName)
-//            startActivity(intent)
-//            finish()
-//        }
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        val currentUser = auth.currentUser
-//        updateUI(currentUser)
-//    }
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null){
+            val intent = Intent(applicationContext, HomeActivity::class.java)
+            intent.putExtra(EXTRA_NAME, user.displayName)
+            startActivity(intent)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        currentUser
+    }
 }

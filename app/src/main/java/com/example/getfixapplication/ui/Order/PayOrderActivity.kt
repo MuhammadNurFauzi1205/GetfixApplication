@@ -2,6 +2,7 @@ package com.example.getfixapplication.ui.Order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.getfixapplication.R
 
 class PayOrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -13,8 +13,8 @@ class TabOrderAdapter (activity: AppCompatActivity) : FragmentStateAdapter(activ
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = MyorderFragment()
-            1 -> fragment = FinishorderFragment()
+            0 -> fragment = FinishorderFragment()
+            1 -> fragment = MyorderFragment()
         }
         return fragment as Fragment
     }
