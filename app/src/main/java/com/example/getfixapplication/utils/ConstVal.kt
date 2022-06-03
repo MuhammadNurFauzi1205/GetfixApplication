@@ -6,6 +6,12 @@ object ConstVal {
     const val timeSplash: Int = 3000
     const val FILENAME_FORMAT = "dd-MMM-yyyy"
     const val CAMERA_X_RESULT = 200
+    const val USER_JADWAL = "EX_JADWAL"
+    const val USER_TANGGAL = "EX_TANGGAL"
+    const val USER_DESC = "EX_DESC"
+    const val USER_LAYANAN = "EX_LAYANAN"
+    const val USER_TIPE_LAYANAN = "EX_TIPE_LAYANAN"
+    const val USER_WILAYAH = "EX_WILAYAH"
     var PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,
         Manifest.permission.READ_EXTERNAL_STORAGE,

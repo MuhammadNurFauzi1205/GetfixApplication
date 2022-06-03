@@ -4,18 +4,34 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
+import androidx.activity.viewModels
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.selection.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.TeknisiModel
+import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
+import com.example.getfixapplication.utils.ConstVal.USER_DESC
+import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
+import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
+import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
+import com.example.getfixapplication.utils.ConstVal.USER_TIPE_LAYANAN
+import com.example.getfixapplication.utils.ConstVal.USER_WILAYAH
+import com.example.getfixapplication.utils.Status
+import com.example.getfixapplication.utils.showPositiveAlert
+import com.example.getfixapplication.utils.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PilihTeknisiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPilihTeknisiBinding
-    var idTeknisi: String =
-        ""
+    var namaTeknisi: String =
+        "Teknisi 1"
 
     val data = listOf(
         TeknisiModel(
@@ -41,28 +57,70 @@ class PilihTeknisiActivity : AppCompatActivity() {
         )
     )
 
+    private val bookVM: BookingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPilihTeknisiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val waktu = intent.getStringExtra(USER_JADWAL)
+        val wilayah = intent.getStringExtra(USER_WILAYAH)
+        val tanggal = intent.getStringExtra(USER_TANGGAL)
+        val descLayanan = intent.getStringExtra(USER_DESC)
+        val jenisLayanan = intent.getStringExtra(USER_TIPE_LAYANAN)
+        val layanan = intent.getStringExtra(USER_LAYANAN)
+
+        Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
+
+
         val teknisiAdapter = TeknisiAdapter()
 
         binding.rvTeknisi.layoutManager = LinearLayoutManager(this)
         binding.rvTeknisi.adapter = teknisiAdapter
+
         teknisiAdapter.items = data
         teknisiAdapter.setOnItemClickCallback(object : TeknisiAdapter.OnItemClickCallback {
             override fun onItemClicked(data: TeknisiModel) {
-                idTeknisi = data.id
-                Log.d("id teknisi", idTeknisi)
+                Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
+                namaTeknisi = data.nama
             }
         })
 
         binding.btnPesanTeknisi.setOnClickListener {
-
-            Log.e("id teknisi", idTeknisi)
+            val request = AddOrdersBody(
+                tanggal,
+                jenisLayanan,
+                namaTeknisi,
+                waktu,
+                wilayah,
+                descLayanan,
+                "bb12",
+                "ad"
+            )
+            bookTeknisi(request)
         }
 
+    }
+
+    private fun bookTeknisi(addBook: AddOrdersBody) {
+        bookVM.addOrdersService(addBook).observe(this) { data ->
+            when (data.status) {
+                Status.LOADING -> {
+                    showToast(this, "LOADING")
+                }
+                Status.SUCCESS -> {
+                    showToast(this, data.data?.message.toString())
+                }
+                Status.ERROR -> {
+                    showPositiveAlert(
+                        this,
+                        getString(R.string.error_data),
+                        data.message.toString()
+                    )
+                }
+            }
+        }
     }
 
 }

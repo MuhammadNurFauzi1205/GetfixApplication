@@ -1,6 +1,7 @@
 package com.example.getfixapplication.di
 
 import android.content.Context
+import com.example.getfixapplication.data.remote.order.OrdersService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,20 +17,25 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
+
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .connectTimeout(150, TimeUnit.SECONDS)
-            .readTimeout(150, TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
             .build()
     }
 
     @Provides
     fun provideRetrofit(client: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl("https://story-api.dicoding.dev/v1/")
+        .baseUrl("https://getfix-351406.et.r.appspot.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
+
+    @Provides
+    fun provideOrdersService(retrofit: Retrofit): OrdersService =
+        retrofit.create(OrdersService::class.java)
 
 }

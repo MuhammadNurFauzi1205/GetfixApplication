@@ -64,6 +64,7 @@
     <string name="camera_upload">Upload</string>
     <string name="camera_batal">Batal</string>
     <string name="camera_ambil_gambar">Ambil Gambar</string>
+    <string name="error_data">Ups Terjadi Kesalahan</string>
 
 
     <string-array name="data_jenis_layanan">

@@ -62,7 +62,7 @@ class CameraActivity : AppCompatActivity() {
 
         getPermissions()
         startCamera()
-        binding.imageView.setOnClickListener { takePhoto() }
+        binding.ivCameraCapture.setOnClickListener { takePhoto() }
     }
 
     public override fun onResume() {
@@ -115,7 +115,7 @@ class CameraActivity : AppCompatActivity() {
             val preview = Preview.Builder()
                 .build()
                 .also {
-                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+                    it.setSurfaceProvider(binding.vfCameraContainer.surfaceProvider)
                 }
 
             imageCapture = ImageCapture.Builder().build()
