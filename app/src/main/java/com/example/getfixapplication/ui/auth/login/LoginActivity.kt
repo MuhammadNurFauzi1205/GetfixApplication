@@ -9,7 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
-import com.example.getfixapplication.ui.home.HomeActivity
+import com.example.getfixapplication.ui.home.HomeeActivity
+
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -74,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString(email_key, username.editText.toString())
                             editor.apply()
                             //berpindah activity
-                            val two = Intent(this@LoginActivity , HomeActivity::class.java)
+                            val two = Intent(this@LoginActivity , HomeeActivity::class.java)
                             startActivity(two)
                         } else {
                             Toast.makeText(applicationContext, "Password salah", Toast.LENGTH_SHORT)
@@ -156,7 +157,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null){
-            val intent = Intent(applicationContext, HomeActivity::class.java)
+            val intent = Intent(applicationContext, HomeeActivity::class.java)
             intent.putExtra(EXTRA_NAME, user.displayName)
             startActivity(intent)
         }

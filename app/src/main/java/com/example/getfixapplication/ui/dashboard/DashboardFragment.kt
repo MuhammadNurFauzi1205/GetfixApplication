@@ -26,22 +26,8 @@ class DashboardFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    companion object {
-        @StringRes
-        private val TAB_TITLES = intArrayOf(
-            R.string.tab_text_1,
-            R.string.tab_text_2
-        )
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-
-    ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val tabOrderAdapter = TabOrderAdapter(this)
         val viewPager= _binding?.viewPager
         viewPager?.adapter = tabOrderAdapter
@@ -55,14 +41,26 @@ class DashboardFragment : Fragment() {
 
         }
 
+    }
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+
+    ): View {
+//        val dashboardViewModel =
+//            ViewModelProvider(this).get(DashboardViewModel::class.java)
+
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TabLayout = binding.tabs
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.tabMode
-        }
+//        val textView: TabLayout = binding.tabs
+//        dashboardViewModel.text.observe(viewLifecycleOwner) {
+//            textView.tabMode
+//        }
 
         return root
 
@@ -72,5 +70,11 @@ class DashboardFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
+    companion object {
+        @StringRes
+        private val TAB_TITLES = intArrayOf(
+            R.string.tab_text_1,
+            R.string.tab_text_2
+        )
+    }
 }

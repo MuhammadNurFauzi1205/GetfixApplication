@@ -5,7 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivitySignupBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
-import com.example.getfixapplication.ui.home.HomeActivity
+import com.example.getfixapplication.ui.home.HomeeActivity
+
 import com.google.firebase.database.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,7 +51,7 @@ class SignupActivity : AppCompatActivity() {
 
                 override fun onCancelled(databaseError: DatabaseError) {}
             })
-            val home = Intent(this, HomeActivity::class.java)
+            val home = Intent(this, HomeeActivity::class.java)
             startActivity(home)
 //            Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
         }
