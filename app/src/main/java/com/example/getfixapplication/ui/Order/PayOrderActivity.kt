@@ -1,14 +1,12 @@
-package com.example.getfixapplication.ui.home
+package com.example.getfixapplication.ui.Order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.getfixapplication.R
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
+class PayOrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_pay_order)
     }
 }

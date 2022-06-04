@@ -54,28 +54,41 @@
     <string name="pilih_foto">Pilih Foto</string>
     <string name="selanjutnya">Selanjutnya</string>
     <string name="text_label_detail_tugas">Detail Tugas</string>
-    <string name="text_pilih_layanan">Pilih Layanan</string>
-    <string name="text_tanggal">Tanggal</string>
-    <string name="text_waktu">Waktu</string>
-    <string name="text_img_desc_pilih_waktu">Pilih Waktu</string>
-    <string name="text_img_desc_pilih_tanggal">Pilih Tanggal</string>
-    <string name="pilih_teknisi_mu">Pilih Teknisi Mu!</string>
-    <string name="pesan_sekarang">Pesan Sekarang</string>
-    <string name="camera_upload">Upload</string>
-    <string name="camera_batal">Batal</string>
-    <string name="camera_ambil_gambar">Ambil Gambar</string>
-    <string name="error_data">Ups Terjadi Kesalahan</string>
-
-
-    <string-array name="data_jenis_layanan">
-        <item>Konsultasi</item>
-        <item>Panggil Teknisi</item>
-    </string-array>
-
-    <string-array name="data_kota">
-        <item>Jakarta</item>
-        <item>Surabaya</item>
-        <item>Magelang</item>
-        <item>Surakarta</item>
-    </string-array>
+    <string name="nama">Dinda Lusita</string>
+    <string name="dindafristiani_gmail_com">dindafristiani@gmail.com</string>
+    <string name="saldo">50.000</string>
+    <string name="akun">Akun</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="logout">Logout</string>
+    <string name="mengedit_profil">mengedit profil</string>
+    <string name="jumlah_saldo">jumlah saldo</string>
+    <string name="tanggal_pembayaran_berhasil">23 Maret 2022, 10:30</string>
+    <string name="pembayaran_berhasil">Pembayaran anda untuk pesanan 123x4xxx telah berhasil</string>
+    <string name="konfirmasi_pesanan">Konfirmasi Pesanan</string>
+    <string name="info_invoice">#PO0001</string>
+    <string name="pemesanan_selesai">Pemesanan anda untuk pesanan 123x4xxx telah selesai</string>
+    <string name="tab_text_1">Myorder</string>
+    <string name="tab_text_2">Finishorder</string>
+    <string name="status">Status</string>
+    <string name="process">Process</string>
+    <string name="nama_teknisi">Teknisi A</string>
+    <string name="id">ID 0001</string>
+    <string name="kirim_pesan">Kirim pesan</string>
+    <string name="telepon">Telepon</string>
+    <string name="lokasi_waktu_pengerjaan"><![CDATA[Lokasi & Waktu Pengerjaan]]></string>
+    <string name="rumahku">Rumahku</string>
+    <string name="alamat_rumahku">JL. Soekarno Hatta Blok. 4 A Blok ABC Jakarta Selatan, Indonesia</string>
+    <string name="tanggal">02 Jan 2022</string>
+    <string name="jam">08.00 – 12.00</string>
+    <string name="no_pekerjaan">No. Pekerjaan:</string>
+    <string name="detail_informasi">Detail informasi</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="perbaikan_layar_laptop">Perbaikan layar laptop</string>
+    <string name="pesanan_selesai">Pesanan Selesai</string>
+    <string name="wallet">Wallet</string>
+    <string name="cash">Cash</string>
+    <string name="total_biaya">Total Biaya</string>
+    <string name="idr_50_000">IDR 50.000</string>
+    <string name="payoder_bayar">BAYAR</string>
+    <string name="detailorder_rating">Rating</string>
 </resources>

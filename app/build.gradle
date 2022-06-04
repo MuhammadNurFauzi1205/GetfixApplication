@@ -66,6 +66,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.4.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.2'
 
     //testing
     testImplementation 'junit:junit:4.13.2'
@@ -97,10 +98,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
 
-    //recycleview selector
-    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
-
-    //ratingbar
-    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
 }

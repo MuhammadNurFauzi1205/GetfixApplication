@@ -2,31 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.getfixapplication">
 
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-
     <application
-        android:name=".base.GetFixBase"
         android:allowBackup="true"
+        android:name=".base.GetFixBase"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".base.GetFixBase"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GetfixApplication">
         <activity
-            android:name=".ui.booking.PilihTeknisiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.camera.CameraActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.splash.MainActivity"
+            android:name=".ui.booking.BookingActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeeActivity"
@@ -42,7 +28,7 @@
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.booking.BookingActivity"
+            android:name=".ui.splash.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

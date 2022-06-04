@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:paddingTop="20dp"
-        android:paddingStart="20dp"
+        android:paddingStart="10dp"
         android:paddingEnd="20dp"
         android:layout_height="80dp">
 
@@ -26,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="@string/teknisi_a"
-            android:textSize="15sp"
+            android:text="@string/pembayaran_berhasil"
+            android:textSize="12sp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toEndOf="@+id/foto_profil"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,22 +36,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="@string/dekripsi"
-            android:textSize="12sp"
-            android:layout_marginTop="5dp"
+            android:text="@string/tanggal_pembayaran_berhasil"
+            android:textSize="11sp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toEndOf="@+id/foto_profil"
             app:layout_constraintTop_toBottomOf="@id/nama_teknisi" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:fontFamily="@font/roboto_light"
-            android:text="10:30"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
