@@ -13,6 +13,8 @@ object ConstVal {
     const val USER_TIPE_LAYANAN = "EX_TIPE_LAYANAN"
     const val USER_WILAYAH = "EX_WILAYAH"
     const val USER_ID_SESSION = "EX_ID_SESSION"
+    const val TEKNISI_RATING = "EX_RATING"
+    const val TEKNISI_FOTO = "EX_TEKNISI_FOTO"
     const val USER_LAYANAN_GAMBAR = "EX_GAMBAR"
 
     const val TEKNISI_NAMA = "EX_NAMA_TEKNISI"

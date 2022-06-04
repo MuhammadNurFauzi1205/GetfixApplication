@@ -10,22 +10,20 @@ import com.example.getfixapplication.data.model.OrderItem
 import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
-import com.example.getfixapplication.di.AppModule
 import com.example.getfixapplication.ui.booking.BookingViewModel
+import com.example.getfixapplication.utils.ConstVal
+import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
+import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
+import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
 import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
 import com.example.getfixapplication.utils.ConstVal.USER_TIPE_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_WILAYAH
-import com.example.getfixapplication.utils.Status
-import com.example.getfixapplication.utils.showPositiveAlert
-import com.example.getfixapplication.utils.showToast
-import dagger.Module
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-@Module
 class DetailOrderActivity : AppCompatActivity() {
 
     private val detailorderVM: DetailOrderViewModel by viewModels()
@@ -69,9 +67,35 @@ class DetailOrderActivity : AppCompatActivity() {
         val tanggal = intent.getStringExtra(USER_TANGGAL)
         val descLayanan = intent.getStringExtra(USER_DESC)
         val jenisLayanan = intent.getStringExtra(USER_TIPE_LAYANAN)
+        val teknisiNama = intent.getStringExtra(TEKNISI_NAMA)
+        val teknisiRating = intent.getStringExtra(TEKNISI_RATING)
+        val teknisiFoto = intent.getStringExtra(TEKNISI_FOTO)
         val layanan = intent.getStringExtra(USER_LAYANAN)
 
-        Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan ")
+
+
+        when (layanan) {
+            "Laptop" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_laptop)
+                binding.ivBookingLayanan.setImageResource(R.drawable.laptop)
+            }
+            "Komputer" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_komputer)
+                binding.ivBookingLayanan.setImageResource(R.drawable.workstation)
+            }
+            "Televisi" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_televisi)
+                binding.ivBookingLayanan.setImageResource(R.drawable.tv)
+            }
+            "Handphone" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_handphone)
+                binding.ivBookingLayanan.setImageResource(R.drawable.touchscreen)
+            }
+
+        }
+
+        Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan " +
+                "$teknisiNama $teknisiFoto $teknisiRating")
 
 
         binding.btnNext.setOnClickListener {

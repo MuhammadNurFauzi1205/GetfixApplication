@@ -1,5 +1,6 @@
 package com.example.getfixapplication.ui.booking
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,10 @@ import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
+import com.example.getfixapplication.ui.Order.DetailOrderActivity
+import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
+import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
 import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
@@ -113,6 +117,14 @@ class PilihTeknisiActivity : AppCompatActivity() {
                 }
                 Status.SUCCESS -> {
                     showToast(this, data.data?.message.toString())
+                    val intent = Intent(this@PilihTeknisiActivity,
+                        DetailOrderActivity::class.java)
+                    intent.putExtra(USER_LAYANAN, "Teknisi")
+                    intent.putExtra(TEKNISI_NAMA, "Nama Teknisi")
+                    intent.putExtra(USER_WILAYAH, "Wilayah")
+                    intent.putExtra(TEKNISI_RATING, "Float" )
+                    intent.putExtra(TEKNISI_FOTO, "Teknisi Foto")
+                    startActivity(intent)
                 }
                 Status.ERROR -> {
                     showPositiveAlert(
