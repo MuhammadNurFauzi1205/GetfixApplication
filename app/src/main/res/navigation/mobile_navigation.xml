@@ -18,9 +18,9 @@
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.getfixapplication.ui.notifications.NotificationsFragment"
+        android:name="com.example.getfixapplication.ui.notifications.NotificationActivity"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/activity_notification" />
     <fragment
         android:id="@+id/navigation_chat"
         android:name="com.example.getfixapplication.ui.home.ChatFragment"
@@ -28,13 +28,13 @@
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.getfixapplication.ui.home.ProfileFragment"
+        android:name="com.example.getfixapplication.ui.profile.ProfileFragment"
         android:label="Chat"
         tools:layout="@layout/fragment_profile" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_image_classification"
-        android:name="com.example.getfixapplication.ui.notifications.ImageClassificationFragment"
+        android:name="com.example.getfixapplication.ui.camera.CameraActivity"
         android:label="navigation_image_classification"
         tools:layout="@layout/fragment_image_classification" />
 </navigation>

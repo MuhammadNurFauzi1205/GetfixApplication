@@ -62,6 +62,11 @@ class CameraActivity : AppCompatActivity() {
 
         getPermissions()
         startCamera()
+
+        binding.tvCameraBatal.setOnClickListener {
+            finish()
+        }
+
         binding.ivCameraCapture.setOnClickListener { takePhoto() }
     }
 

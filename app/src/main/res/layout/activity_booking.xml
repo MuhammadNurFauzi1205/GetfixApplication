@@ -58,12 +58,12 @@
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/teknisi_laptop"
                         android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/iv_laptop"
-                        app:layout_constraintStart_toEndOf="@+id/iv_laptop"
-                        app:layout_constraintTop_toTopOf="@+id/iv_laptop" />
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_booking_layanan"
+                        app:layout_constraintStart_toEndOf="@+id/iv_booking_layanan"
+                        app:layout_constraintTop_toTopOf="@+id/iv_booking_layanan" />
 
                     <ImageView
-                        android:id="@+id/iv_laptop"
+                        android:id="@+id/iv_booking_layanan"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="16dp"
@@ -226,7 +226,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
+                android:id="@+id/cv_profile_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

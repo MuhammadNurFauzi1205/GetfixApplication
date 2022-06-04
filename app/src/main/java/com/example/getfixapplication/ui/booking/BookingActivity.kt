@@ -43,9 +43,37 @@ class BookingActivity : AppCompatActivity() {
         val adapterDropdownKota = ArrayAdapter(this, R.layout.drowdown_item, dataKota)
         binding.alamatDrop.setAdapter(adapterDropdownKota)
 
+        val layanan = intent.getStringExtra(USER_LAYANAN)
+
+        when (layanan) {
+            "Laptop" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_laptop)
+                binding.ivBookingLayanan.setImageResource(R.drawable.laptop)
+            }
+            "Komputer" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_komputer)
+                binding.ivBookingLayanan.setImageResource(R.drawable.workstation)
+            }
+            "Televisi" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_televisi)
+                binding.ivBookingLayanan.setImageResource(R.drawable.tv)
+            }
+            "Handphone" -> {
+                binding.jenislayanan.text = getString(R.string.teknisi_handphone)
+                binding.ivBookingLayanan.setImageResource(R.drawable.touchscreen)
+            }
+
+        }
+
         //Create Date picker
         val builder = MaterialDatePicker.Builder.datePicker()
         val picker = builder.build()
+
+        // click navigation item toolbar to back
+        binding.topAppBar.setNavigationOnClickListener {
+            finish()
+        }
+
         binding.ivCalender.setOnClickListener {
             picker.show(supportFragmentManager, picker.toString())
         }
@@ -75,7 +103,6 @@ class BookingActivity : AppCompatActivity() {
             val descLayanan = binding.descTugas.text.toString()
             val jenisTugas = binding.jenisTugas.text.toString()
 
-            Log.e("data1", "$wilayah $descLayanan $jenisTugas")
             val intent = Intent(this, PilihTeknisiActivity::class.java)
             intent.putExtra(USER_DESC, descLayanan)
             intent.putExtra(USER_TANGGAL, binding.tvTanggal.text)

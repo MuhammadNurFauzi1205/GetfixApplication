@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
-            app:navigationIcon="@drawable/back"
-            app:title="Booking" />
+            app:titleCentered="true"
+            app:title="Riwayat Pesanan" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

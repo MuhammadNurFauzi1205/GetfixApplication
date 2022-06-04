@@ -1,6 +1,9 @@
 package com.example.getfixapplication.ui.home
 
+import android.content.ClipData.newIntent
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,7 +12,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityNavigationHomeBinding
+import com.example.getfixapplication.ui.camera.CameraActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NavigationHomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNavigationHomeBinding
@@ -24,17 +30,7 @@ class NavigationHomeActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         supportActionBar?.elevation = 0f
         val navController = findNavController(R.id.nav_host_fragment_activity_homee)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,
-//                R.id.navigation_chat, R.id.navigation_profile
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
 
     }
 }

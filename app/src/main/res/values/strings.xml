@@ -103,6 +103,9 @@
     <string name="camera_batal">Batal</string>
     <string name="camera_ambil_gambar">Ambil Gambar</string>
     <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="teknisi_komputer">Teknisi Komputer</string>
+    <string name="teknisi_televisi">Teknisi Televisi</string>
+    <string name="teknisi_handphone">Teknisi Handphone</string>
     <string-array name="data_jenis_layanan">
         <item>Konsultasi</item>
         <item>Panggil Teknisi</item>

@@ -6,68 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/menu"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_menu"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/menampilkan_menu" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
 
-        <ImageView
-            android:id="@+id/getfix_header"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/getfix_logo"
-            app:layout_constraintStart_toEndOf="@+id/menu"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/lo_go" />
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/menampilkan_menu"
+                android:src="@drawable/ic_menu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="18dp"
-            android:src="@drawable/ic_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/fitur_pencarian" />
+            <ImageView
+                android:id="@+id/getfix_header"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/lo_go"
+                android:scaleType="fitCenter"
+                android:src="@drawable/getfix_logo"
+                app:layout_constraintStart_toEndOf="@+id/menu"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/notif"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/ic_notif"
-            app:layout_constraintEnd_toStartOf="@+id/search"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/fitur_notifikasi" />
+            <ImageView
+                android:id="@+id/iv_home_notif"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:contentDescription="@string/fitur_notifikasi"
+                android:src="@drawable/ic_notif"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat"
         android:layout_width="350dp"
         android:layout_height="150dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@color/purple_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
 
     <TextView
         android:id="@+id/textView"
@@ -91,29 +87,31 @@
 
 
         <ImageView
-            android:id="@+id/iv_laptop"
+            android:id="@+id/iv_home_laptop"
             android:src="@drawable/laptop"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="20dp"
 
             />
+
         <com.google.android.material.imageview.ShapeableImageView
-            android:src="@drawable/touchscreen"
+            android:id="@+id/iv_home_handphone"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            />
+            android:src="@drawable/touchscreen" />
+
         <com.google.android.material.imageview.ShapeableImageView
-            android:src="@drawable/tv"
+            android:id="@+id/iv_home_televisi"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            />
-        <com.google.android.material.imageview.ShapeableImageView
-            android:src="@drawable/workstation"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
+            android:src="@drawable/tv" />
 
-            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_home_komputer"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/workstation" />
         <TextView
             android:id="@+id/tv_laptop"
             android:layout_row="1"
@@ -141,17 +139,4 @@
             android:layout_marginStart="26dp"/>
     </GridLayout>
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-         />
 </androidx.constraintlayout.widget.ConstraintLayout>

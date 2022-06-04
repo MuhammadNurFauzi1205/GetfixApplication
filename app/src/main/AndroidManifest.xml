@@ -26,6 +26,9 @@
             android:name=".ui.booking.BookingActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.camera.CameraActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.NavigationHomeActivity"
             android:exported="false"
             android:label="@string/title_activity_homee" />

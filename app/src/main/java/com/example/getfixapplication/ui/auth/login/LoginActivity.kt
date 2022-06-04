@@ -10,6 +10,7 @@ import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.NavigationHomeActivity
 import com.example.getfixapplication.utils.ConstVal.RC_SIGN_IN
+import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.showToast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -60,9 +61,9 @@ class LoginActivity : AppCompatActivity() {
                         for (document in documents) {
                             Log.d(TAG, "${document.id} => ${document.data}")
                             val sharedPreferences =
-                                getSharedPreferences(EMAIL_KEY, MODE_PRIVATE)
+                                getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
                             val editor = sharedPreferences.edit()
-                            editor.putString(email_key, username.editText?.text.toString())
+                            editor.putString(USER_ID_SESSION, document.id)
                             editor.apply()
                             //berpindah activity
                             val two = Intent(this@LoginActivity, NavigationHomeActivity::class.java)

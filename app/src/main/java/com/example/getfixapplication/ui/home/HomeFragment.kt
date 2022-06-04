@@ -7,10 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.getfixapplication.databinding.FragmentHomeBinding
 import com.example.getfixapplication.ui.booking.BookingActivity
+import com.example.getfixapplication.ui.notifications.NotificationActivity
+import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
+import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN_GAMBAR
 
 
 class HomeFragment : Fragment() {
@@ -28,22 +32,42 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        return root
+    }
 
-        binding.ivLaptop.setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.ivHomeLaptop.setOnClickListener {
             val intent = Intent(context,BookingActivity::class.java)
+            intent.putExtra(USER_LAYANAN, "Laptop")
             startActivity(intent)
         }
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.ivHomeHandphone.setOnClickListener {
+            val intent = Intent(context,BookingActivity::class.java)
+            intent.putExtra(USER_LAYANAN, "Handphone")
+            startActivity(intent)
         }
-        return root
+
+        binding.ivHomeKomputer.setOnClickListener {
+            val intent = Intent(context,BookingActivity::class.java)
+            intent.putExtra(USER_LAYANAN, "Komputer")
+            startActivity(intent)
+        }
+
+        binding.ivHomeTelevisi.setOnClickListener {
+            val intent = Intent(context,BookingActivity::class.java)
+            intent.putExtra(USER_LAYANAN, "Televisi")
+            startActivity(intent)
+        }
+
+        binding.ivHomeNotif.setOnClickListener {
+            val intent = Intent(context,NotificationActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {
