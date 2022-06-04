@@ -31,6 +31,7 @@ class SignupActivity : AppCompatActivity() {
         setContentView(binding.root)
         val username = binding.ed1.editText?.text.toString()
         val email = binding.ed2.editText?.text.toString()
+        val nama = binding.edtSignupNama.editText?.text.toString()
         val password = binding.ed3.editText?.text.toString()
         val dbcoll = db.collection("users")
 
@@ -41,6 +42,7 @@ class SignupActivity : AppCompatActivity() {
             editor.putString(email_key, username)
             editor.apply()
             val user = hashMapOf(
+                "nama" to nama,
                 "username" to username,
                 "email" to email,
                 "password" to password
