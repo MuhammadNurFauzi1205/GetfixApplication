@@ -8,4 +8,10 @@ interface OrdersService {
     suspend fun addOrders(
         @Body addOrdersBody: AddOrdersBody
     ): AddOrdersResponse
+
+    @GET("orders/{id}")
+    suspend fun getOrders(
+        @Query ("id") id :String
+    ): AddOrdersResponse
+
 }

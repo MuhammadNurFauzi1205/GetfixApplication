@@ -8,13 +8,14 @@ import androidx.activity.viewModels
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.selection.*
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
+import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
 import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
@@ -70,6 +71,7 @@ class PilihTeknisiActivity : AppCompatActivity() {
         val descLayanan = intent.getStringExtra(USER_DESC)
         val jenisLayanan = intent.getStringExtra(USER_TIPE_LAYANAN)
         val layanan = intent.getStringExtra(USER_LAYANAN)
+
 
         Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
 
