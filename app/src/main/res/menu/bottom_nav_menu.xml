@@ -12,7 +12,7 @@
         android:title="" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_image_classification"
         android:icon="@drawable/ic_add"
         android:title="" />
     <item

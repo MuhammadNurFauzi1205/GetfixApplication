@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.getfixapplication.databinding.FragmentNotificationsBinding
+import com.example.getfixapplication.databinding.FragmentImageClassificationBinding
 
-class NotificationsFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+class ImageClassificationFragment : Fragment() {
+
+    private var _binding: FragmentImageClassificationBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,12 +24,12 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(ImageClassificationViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentImageClassificationBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
+        val textView: TextView = binding.tvImageClassification
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }

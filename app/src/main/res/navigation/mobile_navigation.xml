@@ -32,5 +32,9 @@
         android:label="Chat"
         tools:layout="@layout/fragment_profile" />
 
-
+    <fragment
+        android:id="@+id/navigation_image_classification"
+        android:name="com.example.getfixapplication.ui.notifications.ImageClassificationFragment"
+        android:label="navigation_image_classification"
+        tools:layout="@layout/fragment_image_classification" />
 </navigation>
