@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
     val db = Firebase.firestore
     var EMAIL_KEY = "emailkey"
     var email_key = ""
+
 //    lateinit var  username : TextInputLayout
 //    lateinit var passwordd: TextInputLayout
     lateinit var google: ImageView
