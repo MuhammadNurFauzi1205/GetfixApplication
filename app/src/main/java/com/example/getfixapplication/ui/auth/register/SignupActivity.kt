@@ -29,14 +29,14 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val username = binding.ed1.editText?.text.toString()
-        val email = binding.ed2.editText?.text.toString()
-        val nama = binding.edtSignupNama.editText?.text.toString()
-        val password = binding.ed3.editText?.text.toString()
         val dbcoll = db.collection("users")
 
         binding.btnSign.setOnClickListener {
             //simpan username pada local
+            val username = binding.ed1.editText?.text.toString()
+            val email = binding.ed2.editText?.text.toString()
+            val nama = binding.edtSignupNama.editText?.text.toString()
+            val password = binding.ed3.editText?.text.toString()
             val sharedPreferences = getSharedPreferences(EMAIL_KEY, MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString(email_key, username)
@@ -53,20 +53,21 @@ class SignupActivity : AppCompatActivity() {
                     if (document.get("username") == username) {
                         showToast(this, "Username already taken")
                         return@addOnSuccessListener
-                    } else {
-                        db.collection("users")
-                            .add(user)
-                            .addOnSuccessListener { documentReference ->
-                                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                                val home = Intent(this, NavigationHomeActivity::class.java)
-                                startActivity(home)
-                                Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(TAG, "Error adding document", e)
-                            }
+                    } else if (document.get("email") == email) {
+                        showToast(this, "Email already taken")
+                        return@addOnSuccessListener
                     }
                 }
+                dbcoll.add(user)
+                    .addOnSuccessListener { documentReference ->
+                        Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                        val login = Intent(this, LoginActivity::class.java)
+                        startActivity(login)
+                        Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(TAG, "Error adding document", e)
+                    }
             }
 
 
