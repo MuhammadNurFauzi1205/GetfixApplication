@@ -2,6 +2,7 @@ package com.example.getfixapplication.di
 
 import android.content.Context
 import com.example.getfixapplication.data.remote.order.OrdersService
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,5 +38,8 @@ class AppModule {
     @Provides
     fun provideOrdersService(retrofit: Retrofit): OrdersService =
         retrofit.create(OrdersService::class.java)
+
+    @Provides
+    fun provideFirestore() = FirebaseFirestore.getInstance()
 
 }

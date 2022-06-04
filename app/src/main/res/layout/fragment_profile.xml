@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -22,6 +22,7 @@
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
             app:title="Profile"
+            app:titleCentered="true"
             app:titleMarginStart="72dp" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -222,7 +223,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
+        android:id="@+id/cv_profile_logout"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="26dp"
