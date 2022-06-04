@@ -12,6 +12,7 @@ object ConstVal {
     const val USER_LAYANAN = "EX_LAYANAN"
     const val USER_TIPE_LAYANAN = "EX_TIPE_LAYANAN"
     const val USER_WILAYAH = "EX_WILAYAH"
+    const val RC_SIGN_IN = 1001
     var PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,
         Manifest.permission.READ_EXTERNAL_STORAGE,

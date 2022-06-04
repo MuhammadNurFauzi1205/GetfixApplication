@@ -8,16 +8,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.getfixapplication.R
-import com.example.getfixapplication.databinding.ActivityHomeeBinding
+import com.example.getfixapplication.databinding.ActivityNavigationHomeBinding
 
-class HomeeActivity : AppCompatActivity() {
+class NavigationHomeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomeeBinding
+    private lateinit var binding: ActivityNavigationHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityHomeeBinding.inflate(layoutInflater)
+        binding = ActivityNavigationHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 

@@ -8,9 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivitySignupBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
-import com.example.getfixapplication.ui.home.HomeActivity
-import com.example.getfixapplication.ui.home.HomeeActivity
-import com.google.firebase.database.*
+import com.example.getfixapplication.ui.home.NavigationHomeActivity
+import com.example.getfixapplication.utils.showToast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,59 +29,47 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val usernamee=binding.ed1
-        val emaill=binding.ed2
-        val passwordd=binding.ed3
+        val username = binding.ed1.editText?.text.toString()
+        val email = binding.ed2.editText?.text.toString()
+        val password = binding.ed3.editText?.text.toString()
+        val dbcoll = db.collection("users")
 
         binding.btnSign.setOnClickListener {
             //simpan username pada local
             val sharedPreferences = getSharedPreferences(EMAIL_KEY, MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.putString(email_key, usernamee.editText?.text.toString())
+            editor.putString(email_key, username)
             editor.apply()
-//
-//
-//            //simpan username pada firebase
-//            myreference = FirebaseDatabase.getInstance().reference
-//                .child("users").child(usernamee.editText?.text.toString())
-//
-//            myreference.addListenerForSingleValueEvent(object : ValueEventListener {
-//                override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                    dataSnapshot.ref.child("username").setValue(usernamee.editText?.text.toString())
-//                    dataSnapshot.ref.child("email").setValue(emaill.editText?.text.toString())
-//                    dataSnapshot.ref.child("password").setValue(passwordd.editText?.text.toString())
-//                }
-//
-//                override fun onCancelled(databaseError: DatabaseError) {}
-//            })
-//            val home = Intent(this, HomeActivity::class.java)
-//            startActivity(home)
-////            Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
-
-            val username = usernamee.editText?.text.toString()
-            val email = emaill.editText?.text.toString()
-            val password = passwordd.editText?.text.toString()
             val user = hashMapOf(
                 "username" to username,
                 "email" to email,
                 "password" to password
             )
-            // Add a new document with a generated ID
-            db.collection("users")
-                .add(user)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                    val home = Intent(this, HomeeActivity::class.java)
-                    startActivity(home)
-                    Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
+            // Check if username is already taken
+            dbcoll.get().addOnSuccessListener {
+                for (document in it) {
+                    if (document.get("username") == username) {
+                        showToast(this, "Username already taken")
+                        return@addOnSuccessListener
+                    } else {
+                        db.collection("users")
+                            .add(user)
+                            .addOnSuccessListener { documentReference ->
+                                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                                val home = Intent(this, NavigationHomeActivity::class.java)
+                                startActivity(home)
+                                Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w(TAG, "Error adding document", e)
+                            }
+                    }
                 }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
-                }
+            }
 
 
         }
+
 
         binding.tvActionLogin.setOnClickListener {
             val login = Intent(this, LoginActivity::class.java)
