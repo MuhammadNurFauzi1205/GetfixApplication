@@ -13,6 +13,7 @@ import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
+import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
@@ -29,7 +30,7 @@ class DetailOrderActivity : AppCompatActivity() {
     private val detailorderVM: DetailOrderViewModel by viewModels()
     private lateinit var binding: ActivityDetailOrderBinding
 
-    var namaTeknisi: String =
+   private var namaTeknisi: String =
         "Teknisi 1"
 
     val data = listOf(
@@ -64,11 +65,9 @@ class DetailOrderActivity : AppCompatActivity() {
         val waktu = intent.getStringExtra(USER_JADWAL)
         val wilayah = intent.getStringExtra(USER_WILAYAH)
         val tanggal = intent.getStringExtra(USER_TANGGAL)
-        val descLayanan = intent.getStringExtra(USER_DESC)
+        val userId = intent.getStringExtra(USER_ID_SESSION)
         val jenisLayanan = intent.getStringExtra(USER_TIPE_LAYANAN)
-        val teknisiNama = intent.getStringExtra(TEKNISI_NAMA)
-        val teknisiRating = intent.getStringExtra(TEKNISI_RATING)
-        val teknisiFoto = intent.getStringExtra(TEKNISI_FOTO)
+
         val layanan = intent.getStringExtra(USER_LAYANAN)
 
 
@@ -93,11 +92,10 @@ class DetailOrderActivity : AppCompatActivity() {
 
         }
 
-        Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan " +
-                "$teknisiNama $teknisiFoto $teknisiRating")
 
 
         binding.btnNext.setOnClickListener {
+
 
             val request = OrderItem(
                 tanggal.toString(),
@@ -105,9 +103,10 @@ class DetailOrderActivity : AppCompatActivity() {
                 namaTeknisi,
                 waktu.toString(),
                 wilayah.toString(),
-                descLayanan.toString(),
+                userId.toString(),
                 "22 mei 2022",
-                "19.00"
+                "19.00",
+
             )
             bookTeknisi(request)
 
@@ -124,9 +123,8 @@ class DetailOrderActivity : AppCompatActivity() {
                 }
                 Status.SUCCESS -> {
                     showToast(this, data.data?.message.toString())
-                    intent.getStringExtra(USER_JADWAL)
-                    intent.getStringExtra(USER_WILAYAH)
-                    intent.getStringExtra(USER_TANGGAL)
+                    intent.getStringExtra(USER_ID_SESSION)
+
                     binding.infoInvoice.text = addBook.infoInvoice
                     binding.tvDescNama.text = addBook.nameTechnision
                     binding.textView2.text = addBook.id
