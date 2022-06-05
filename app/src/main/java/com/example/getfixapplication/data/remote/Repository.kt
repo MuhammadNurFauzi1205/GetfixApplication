@@ -3,6 +3,7 @@ package com.example.getfixapplication.data.remote
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.example.getfixapplication.data.model.OrderItem
+import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.data.model.User
 import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.data.remote.order.AddOrdersResponse
@@ -30,6 +31,10 @@ class Repository @Inject constructor
 
     suspend fun getProfileUserService(userId: String): User {
         return profileSource.getProfileData(userId)
+    }
+
+    suspend fun getListOrderItemService(userId : String): Flow<ApiResult<List<OrderListItem>>> {
+        return ordersSource.getListOrders(userId)
     }
 
 //    suspend fun getOrderService(Id: String): OrderItem {

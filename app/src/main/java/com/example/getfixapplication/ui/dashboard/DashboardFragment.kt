@@ -8,7 +8,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.FragmentDashboardBinding
-import com.example.getfixapplication.ui.Order.TabOrderAdapter
+import com.example.getfixapplication.ui.order.TabOrderAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DashboardFragment : Fragment() {

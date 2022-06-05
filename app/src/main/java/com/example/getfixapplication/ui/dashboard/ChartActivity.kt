@@ -1,12 +1,8 @@
 package com.example.getfixapplication.ui.dashboard
 
 import android.os.Bundle
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.FragmentDashboardBinding
-import com.example.getfixapplication.ui.Order.TabOrderAdapter
-import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

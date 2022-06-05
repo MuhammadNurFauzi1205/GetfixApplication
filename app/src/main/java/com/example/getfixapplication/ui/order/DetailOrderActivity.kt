@@ -1,4 +1,4 @@
-package com.example.getfixapplication.ui.Order
+package com.example.getfixapplication.ui.order
 
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +11,6 @@ import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
 import com.example.getfixapplication.ui.booking.BookingViewModel
-import com.example.getfixapplication.utils.ConstVal
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING

@@ -4,19 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import androidx.activity.viewModels
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
-import com.example.getfixapplication.ui.Order.DetailOrderActivity
+import com.example.getfixapplication.ui.order.DetailOrderActivity
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING
@@ -75,11 +70,6 @@ class PilihTeknisiActivity : AppCompatActivity() {
         val descLayanan = intent.getStringExtra(USER_DESC)
         val jenisLayanan = intent.getStringExtra(USER_TIPE_LAYANAN)
         val layanan = intent.getStringExtra(USER_LAYANAN)
-
-
-        Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
-
-
         val teknisiAdapter = TeknisiAdapter()
 
         binding.rvTeknisi.layoutManager = LinearLayoutManager(this)

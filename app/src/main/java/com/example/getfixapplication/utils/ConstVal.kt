@@ -15,7 +15,7 @@ object ConstVal {
     const val USER_ID_SESSION = "EX_ID_SESSION"
     const val TEKNISI_RATING = "EX_RATING"
     const val TEKNISI_FOTO = "EX_TEKNISI_FOTO"
-    const val USER_LAYANAN_GAMBAR = "EX_GAMBAR"
+    const val USERNAME = "EX_USERNAME"
 
     const val TEKNISI_NAMA = "EX_NAMA_TEKNISI"
     const val RC_SIGN_IN = 1001

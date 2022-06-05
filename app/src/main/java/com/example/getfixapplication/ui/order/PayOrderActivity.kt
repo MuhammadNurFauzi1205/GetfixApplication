@@ -1,4 +1,4 @@
-package com.example.getfixapplication.ui.Order
+package com.example.getfixapplication.ui.order
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

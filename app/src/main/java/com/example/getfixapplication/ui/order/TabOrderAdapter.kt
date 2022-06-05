@@ -1,6 +1,5 @@
-package com.example.getfixapplication.ui.Order
+package com.example.getfixapplication.ui.order
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.getfixapplication.ui.dashboard.DashboardFragment

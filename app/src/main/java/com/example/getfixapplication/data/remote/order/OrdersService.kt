@@ -1,5 +1,6 @@
 package com.example.getfixapplication.data.remote.order
 
+import com.example.getfixapplication.data.model.OrderListItem
 import retrofit2.http.*
 
 interface OrdersService {
@@ -13,5 +14,10 @@ interface OrdersService {
     suspend fun getOrders(
         @Query ("id") id :String
     ): AddOrdersResponse
+
+    @GET("allorder")
+    suspend fun getAllOrders(
+        @Query ("username") username :String
+    ): List<OrderListItem>
 
 }
