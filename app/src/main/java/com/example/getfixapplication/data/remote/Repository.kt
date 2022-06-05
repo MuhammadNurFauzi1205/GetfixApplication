@@ -7,7 +7,6 @@ import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.data.model.User
 import com.example.getfixapplication.data.remote.order.AddOrdersBody
 import com.example.getfixapplication.data.remote.order.AddOrdersResponse
-import com.example.getfixapplication.data.remote.order.OrderItemSource
 import com.example.getfixapplication.data.remote.order.OrdersSource
 import com.example.getfixapplication.data.remote.profile.ProfileSource
 import kotlinx.coroutines.Dispatchers
@@ -19,8 +18,7 @@ import javax.inject.Singleton
 
 @Singleton
 class Repository @Inject constructor
-    (private val ordersSource: OrdersSource, private val profileSource: ProfileSource,
-     private val orderItemSource: OrderItemSource)
+    (private val ordersSource: OrdersSource, private val profileSource: ProfileSource)
 {
 
     suspend fun addOrdersService(
@@ -37,7 +35,7 @@ class Repository @Inject constructor
         return ordersSource.getListOrders(userId)
     }
 
-//    suspend fun getOrderService(Id: String): OrderItem {
-//        return orderItemSource.getOrders(Id)
-//    }
+    suspend fun getOrderService(Id: OrderItem): Flow<ApiResult<AddOrdersResponse>> {
+        return ordersSource.getOrdersId(Id)
+    }
 }

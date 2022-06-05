@@ -1,5 +1,6 @@
 package com.example.getfixapplication.data.remote.order
 
+import com.example.getfixapplication.data.model.OrderItem
 import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.data.model.User
 import com.example.getfixapplication.data.remote.ApiResult
@@ -17,7 +18,7 @@ import javax.inject.Singleton
 @Singleton
 class OrdersSource @Inject constructor(
     private val ordersService: OrdersService,
-    private val firestore: FirebaseFirestore
+    private val firestore: FirebaseFirestore,
 ) {
 
     suspend fun addOrders(
@@ -52,6 +53,27 @@ class OrdersSource @Inject constructor(
                     emit(ApiResult.success(response))
                 } else {
                     emit(ApiResult.error("No Orders Found"))
+                }
+            } catch (ex: Exception) {
+                emit(ApiResult.error(ex.message.toString()))
+            }
+        }
+    }
+
+    //get orders by id
+    suspend fun getOrdersId(
+        getOrderId: OrderItem
+    ): Flow<ApiResult<AddOrdersResponse>> {
+        return flow {
+            try {
+                emit(ApiResult.loading())
+                val response = ordersService.getOrders(
+                    getOrderId.id
+                )
+                if (!response.message.isNullOrEmpty()) {
+                    emit(ApiResult.success(response))
+                } else {
+                    emit(ApiResult.error(response.message))
                 }
             } catch (ex: Exception) {
                 emit(ApiResult.error(ex.message.toString()))

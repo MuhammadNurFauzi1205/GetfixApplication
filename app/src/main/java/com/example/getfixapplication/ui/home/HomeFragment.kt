@@ -14,7 +14,7 @@ import com.example.getfixapplication.databinding.FragmentHomeBinding
 import com.example.getfixapplication.ui.booking.BookingActivity
 import com.example.getfixapplication.ui.notifications.NotificationActivity
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
-import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN_GAMBAR
+
 
 
 class HomeFragment : Fragment() {
