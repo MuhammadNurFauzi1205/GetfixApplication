@@ -1,0 +1,177 @@
+user_id;nama_user;pilihan_layanan;daerah_user;teknisi
+1;nama1;Teknisi Laptop;Surakarta;teknisi 1
+2;nama2;Teknisi Laptop;Surabaya;teknisi 2
+3;nama3;Teknisi Laptop;Magelang;teknisi 3
+4;nama4;Teknisi Laptop;DKI Jakarta;teknisi 4
+5;nama5;Teknisi Handphone;Surakarta;teknisi 5
+6;nama6;Teknisi Handphone;Surabaya;teknisi 6
+7;nama7;Teknisi Handphone;Magelang;teknisi 7
+8;nama8;Teknisi Handphone;DKI Jakarta;teknisi 8
+9;nama9;Teknisi Tv;Surakarta;teknisi 9
+10;nama10;Teknisi Tv;Surabaya;teknisi 10
+11;nama11;Teknisi Tv;Magelang;teknisi 11
+12;nama12;Teknisi Tv;DKI Jakarta;teknisi 12
+13;nama13;Teknisi Komputer;Surakarta;teknisi 13
+14;nama14;Teknisi Komputer;Surabaya;teknisi 14
+15;nama15;Teknisi Komputer;Magelang;teknisi 15
+16;nama16;Teknisi Komputer;DKI Jakarta;teknisi 16
+17;nama17;Teknisi Laptop;Surakarta;teknisi 1
+18;nama18;Teknisi Laptop;Surabaya;teknisi 2
+19;nama19;Teknisi Laptop;Magelang;teknisi 3
+20;nama20;Teknisi Laptop;DKI Jakarta;teknisi 4
+21;nama21;Teknisi Handphone;Surakarta;teknisi 5
+22;nama22;Teknisi Handphone;Surabaya;teknisi 6
+23;nama23;Teknisi Handphone;Magelang;teknisi 7
+24;nama24;Teknisi Handphone;DKI Jakarta;teknisi 8
+25;nama25;Teknisi Tv;Surakarta;teknisi 9
+26;nama26;Teknisi Tv;Surabaya;teknisi 10
+27;nama27;Teknisi Tv;Magelang;teknisi 11
+28;nama28;Teknisi Tv;DKI Jakarta;teknisi 12
+29;nama29;Teknisi Komputer;Surakarta;teknisi 13
+30;nama30;Teknisi Komputer;Surabaya;teknisi 14
+31;nama31;Teknisi Komputer;Magelang;teknisi 15
+32;nama32;Teknisi Komputer;DKI Jakarta;teknisi 16
+33;nama33;Teknisi Laptop;Surakarta;teknisi 1
+34;nama34;Teknisi Laptop;Surabaya;teknisi 2
+35;nama35;Teknisi Laptop;Magelang;teknisi 3
+36;nama36;Teknisi Laptop;DKI Jakarta;teknisi 4
+37;nama37;Teknisi Handphone;Surakarta;teknisi 5
+38;nama38;Teknisi Handphone;Surabaya;teknisi 6
+39;nama39;Teknisi Handphone;Magelang;teknisi 7
+40;nama40;Teknisi Handphone;DKI Jakarta;teknisi 8
+41;nama41;Teknisi Tv;Surakarta;teknisi 9
+42;nama42;Teknisi Tv;Surabaya;teknisi 10
+43;nama43;Teknisi Tv;Magelang;teknisi 11
+44;nama44;Teknisi Tv;DKI Jakarta;teknisi 12
+45;nama45;Teknisi Komputer;Surakarta;teknisi 13
+46;nama46;Teknisi Komputer;Surabaya;teknisi 14
+47;nama47;Teknisi Komputer;Magelang;teknisi 15
+48;nama48;Teknisi Komputer;DKI Jakarta;teknisi 16
+49;nama49;Teknisi Laptop;Surakarta;teknisi 1
+50;nama50;Teknisi Laptop;Surabaya;teknisi 2
+51;nama51;Teknisi Laptop;Magelang;teknisi 3
+52;nama52;Teknisi Laptop;DKI Jakarta;teknisi 4
+53;nama53;Teknisi Handphone;Surakarta;teknisi 5
+54;nama54;Teknisi Handphone;Surabaya;teknisi 6
+55;nama55;Teknisi Handphone;Magelang;teknisi 7
+56;nama56;Teknisi Handphone;DKI Jakarta;teknisi 8
+57;nama57;Teknisi Tv;Surakarta;teknisi 9
+58;nama58;Teknisi Tv;Surabaya;teknisi 10
+59;nama59;Teknisi Tv;Magelang;teknisi 11
+60;nama60;Teknisi Tv;DKI Jakarta;teknisi 12
+61;nama61;Teknisi Komputer;Surakarta;teknisi 13
+62;nama62;Teknisi Komputer;Surabaya;teknisi 14
+63;nama63;Teknisi Komputer;Magelang;teknisi 15
+64;nama64;Teknisi Komputer;DKI Jakarta;teknisi 16
+65;nama65;Teknisi Laptop;Surakarta;teknisi 1
+66;nama66;Teknisi Laptop;Surabaya;teknisi 2
+67;nama67;Teknisi Laptop;Magelang;teknisi 3
+68;nama68;Teknisi Laptop;DKI Jakarta;teknisi 4
+69;nama69;Teknisi Handphone;Surakarta;teknisi 5
+70;nama70;Teknisi Handphone;Surabaya;teknisi 6
+71;nama71;Teknisi Handphone;Magelang;teknisi 7
+72;nama72;Teknisi Handphone;DKI Jakarta;teknisi 8
+73;nama73;Teknisi Tv;Surakarta;teknisi 9
+74;nama74;Teknisi Tv;Surabaya;teknisi 10
+75;nama75;Teknisi Tv;Magelang;teknisi 11
+76;nama76;Teknisi Tv;DKI Jakarta;teknisi 12
+77;nama77;Teknisi Komputer;Surakarta;teknisi 13
+78;nama78;Teknisi Komputer;Surabaya;teknisi 14
+79;nama79;Teknisi Komputer;Magelang;teknisi 15
+80;nama80;Teknisi Komputer;DKI Jakarta;teknisi 16
+81;nama81;Teknisi Laptop;Surakarta;teknisi 1
+82;nama82;Teknisi Laptop;Surabaya;teknisi 2
+83;nama83;Teknisi Laptop;Magelang;teknisi 3
+84;nama84;Teknisi Laptop;DKI Jakarta;teknisi 4
+85;nama85;Teknisi Handphone;Surakarta;teknisi 5
+86;nama86;Teknisi Handphone;Surabaya;teknisi 6
+87;nama87;Teknisi Handphone;Magelang;teknisi 7
+88;nama88;Teknisi Handphone;DKI Jakarta;teknisi 8
+89;nama89;Teknisi Tv;Surakarta;teknisi 9
+90;nama90;Teknisi Tv;Surabaya;teknisi 10
+91;nama91;Teknisi Tv;Magelang;teknisi 11
+92;nama92;Teknisi Tv;DKI Jakarta;teknisi 12
+93;nama93;Teknisi Komputer;Surakarta;teknisi 13
+94;nama94;Teknisi Komputer;Surabaya;teknisi 14
+95;nama95;Teknisi Komputer;Magelang;teknisi 15
+96;nama96;Teknisi Komputer;DKI Jakarta;teknisi 16
+97;nama97;Teknisi Laptop;Surakarta;teknisi 1
+98;nama98;Teknisi Laptop;Surabaya;teknisi 2
+99;nama99;Teknisi Laptop;Magelang;teknisi 3
+100;nama100;Teknisi Laptop;DKI Jakarta;teknisi 4
+101;nama101;Teknisi Handphone;Surakarta;teknisi 5
+102;nama102;Teknisi Handphone;Surabaya;teknisi 6
+103;nama103;Teknisi Handphone;Magelang;teknisi 7
+104;nama104;Teknisi Handphone;DKI Jakarta;teknisi 8
+105;nama105;Teknisi Tv;Surakarta;teknisi 9
+106;nama106;Teknisi Tv;Surabaya;teknisi 10
+107;nama107;Teknisi Tv;Magelang;teknisi 11
+108;nama108;Teknisi Tv;DKI Jakarta;teknisi 12
+109;nama109;Teknisi Komputer;Surakarta;teknisi 13
+110;nama110;Teknisi Komputer;Surabaya;teknisi 14
+111;nama111;Teknisi Komputer;Magelang;teknisi 15
+112;nama112;Teknisi Komputer;DKI Jakarta;teknisi 16
+113;nama113;Teknisi Laptop;Surakarta;teknisi 1
+114;nama114;Teknisi Laptop;Surabaya;teknisi 2
+115;nama115;Teknisi Laptop;Magelang;teknisi 3
+116;nama116;Teknisi Laptop;DKI Jakarta;teknisi 4
+117;nama117;Teknisi Handphone;Surakarta;teknisi 5
+118;nama118;Teknisi Handphone;Surabaya;teknisi 6
+119;nama119;Teknisi Handphone;Magelang;teknisi 7
+120;nama120;Teknisi Handphone;DKI Jakarta;teknisi 8
+121;nama121;Teknisi Tv;Surakarta;teknisi 9
+122;nama122;Teknisi Tv;Surabaya;teknisi 10
+123;nama123;Teknisi Tv;Magelang;teknisi 11
+124;nama124;Teknisi Tv;DKI Jakarta;teknisi 12
+125;nama125;Teknisi Komputer;Surakarta;teknisi 13
+126;nama126;Teknisi Komputer;Surabaya;teknisi 14
+127;nama127;Teknisi Komputer;Magelang;teknisi 15
+128;nama128;Teknisi Komputer;DKI Jakarta;teknisi 16
+129;nama129;Teknisi Laptop;Surakarta;teknisi 1
+130;nama130;Teknisi Laptop;Surabaya;teknisi 2
+131;nama131;Teknisi Laptop;Magelang;teknisi 3
+132;nama132;Teknisi Laptop;DKI Jakarta;teknisi 4
+133;nama133;Teknisi Handphone;Surakarta;teknisi 5
+134;nama134;Teknisi Handphone;Surabaya;teknisi 6
+135;nama135;Teknisi Handphone;Magelang;teknisi 7
+136;nama136;Teknisi Handphone;DKI Jakarta;teknisi 8
+137;nama137;Teknisi Tv;Surakarta;teknisi 9
+138;nama138;Teknisi Tv;Surabaya;teknisi 10
+139;nama139;Teknisi Tv;Magelang;teknisi 11
+140;nama140;Teknisi Tv;DKI Jakarta;teknisi 12
+141;nama141;Teknisi Komputer;Surakarta;teknisi 13
+142;nama142;Teknisi Komputer;Surabaya;teknisi 14
+143;nama143;Teknisi Komputer;Magelang;teknisi 15
+144;nama144;Teknisi Komputer;DKI Jakarta;teknisi 16
+145;nama145;Teknisi Laptop;Surakarta;teknisi 1
+146;nama146;Teknisi Laptop;Surabaya;teknisi 2
+147;nama147;Teknisi Laptop;Magelang;teknisi 3
+148;nama148;Teknisi Laptop;DKI Jakarta;teknisi 4
+149;nama149;Teknisi Handphone;Surakarta;teknisi 5
+150;nama150;Teknisi Handphone;Surabaya;teknisi 6
+151;nama151;Teknisi Handphone;Magelang;teknisi 7
+152;nama152;Teknisi Handphone;DKI Jakarta;teknisi 8
+153;nama153;Teknisi Tv;Surakarta;teknisi 9
+154;nama154;Teknisi Tv;Surabaya;teknisi 10
+155;nama155;Teknisi Tv;Magelang;teknisi 11
+156;nama156;Teknisi Tv;DKI Jakarta;teknisi 12
+157;nama157;Teknisi Komputer;Surakarta;teknisi 13
+158;nama158;Teknisi Komputer;Surabaya;teknisi 14
+159;nama159;Teknisi Komputer;Magelang;teknisi 15
+160;nama160;Teknisi Komputer;DKI Jakarta;teknisi 16
+161;nama161;Teknisi Laptop;Surakarta;teknisi 1
+162;nama162;Teknisi Laptop;Surabaya;teknisi 2
+163;nama163;Teknisi Laptop;Magelang;teknisi 3
+164;nama164;Teknisi Laptop;DKI Jakarta;teknisi 4
+165;nama165;Teknisi Handphone;Surakarta;teknisi 5
+166;nama166;Teknisi Handphone;Surabaya;teknisi 6
+167;nama167;Teknisi Handphone;Magelang;teknisi 7
+168;nama168;Teknisi Handphone;DKI Jakarta;teknisi 8
+169;nama169;Teknisi Tv;Surakarta;teknisi 9
+170;nama170;Teknisi Tv;Surabaya;teknisi 10
+171;nama171;Teknisi Tv;Magelang;teknisi 11
+172;nama172;Teknisi Tv;DKI Jakarta;teknisi 12
+173;nama173;Teknisi Komputer;Surakarta;teknisi 13
+174;nama174;Teknisi Komputer;Surabaya;teknisi 14
+175;nama175;Teknisi Komputer;Magelang;teknisi 15
+176;nama176;Teknisi Komputer;DKI Jakarta;teknisi 16
