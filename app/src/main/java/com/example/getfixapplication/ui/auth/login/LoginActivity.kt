@@ -12,6 +12,7 @@ import com.example.getfixapplication.ui.home.NavigationHomeActivity
 import com.example.getfixapplication.utils.ConstVal.RC_SIGN_IN
 import com.example.getfixapplication.utils.ConstVal.USERNAME
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
+import com.example.getfixapplication.utils.hideKeyboard
 import com.example.getfixapplication.utils.showToast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -51,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
         google = binding.google
         auth = Firebase.auth
         binding.btnLogin.setOnClickListener {
-
+            hideKeyboard()
             val user = db.collection("users")
 
 
@@ -60,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                 .get()
                     .addOnSuccessListener { documents ->
                         for (document in documents) {
-                            Log.d(TAG, "${document.id} => ${document.data}")
+                            showToast(this,"Login Berhasil")
                             val sharedPreferences =
                                 getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
                             val editor = sharedPreferences.edit()
@@ -70,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
                             //berpindah activity
                             val two = Intent(this@LoginActivity, NavigationHomeActivity::class.java)
                             startActivity(two)
+                            finish()
 
                         }
                     }

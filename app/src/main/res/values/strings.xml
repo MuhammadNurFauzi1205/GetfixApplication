@@ -106,6 +106,7 @@
     <string name="teknisi_komputer">Teknisi Komputer</string>
     <string name="teknisi_televisi">Teknisi Televisi</string>
     <string name="teknisi_handphone">Teknisi Handphone</string>
+    <string name="alamat_anda">Alamat Anda</string>
     <string-array name="data_jenis_layanan">
         <item>Konsultasi</item>
         <item>Panggil Teknisi</item>

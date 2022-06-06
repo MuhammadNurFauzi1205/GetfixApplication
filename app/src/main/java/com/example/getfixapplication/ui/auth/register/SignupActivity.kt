@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivitySignupBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.ui.home.NavigationHomeActivity
+import com.example.getfixapplication.utils.hideKeyboard
 import com.example.getfixapplication.utils.showToast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -33,6 +34,7 @@ class SignupActivity : AppCompatActivity() {
 
         binding.btnSign.setOnClickListener {
             //simpan username pada local
+            hideKeyboard()
             val username = binding.ed1.editText?.text.toString()
             val email = binding.ed2.editText?.text.toString()
             val nama = binding.edtSignupNama.editText?.text.toString()

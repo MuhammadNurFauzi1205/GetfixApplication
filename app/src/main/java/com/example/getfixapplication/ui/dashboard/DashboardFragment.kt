@@ -14,9 +14,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,19 +40,8 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?,
 
     ): View {
-//        val dashboardViewModel =
-//            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
-
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-//        val textView: TabLayout = binding.tabs
-//        dashboardViewModel.text.observe(viewLifecycleOwner) {
-//            textView.tabMode
-//        }
-
-        return root
+        return binding.root
 
     }
 
@@ -63,6 +49,7 @@ class DashboardFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     companion object {
         @StringRes
         private val TAB_TITLES = intArrayOf(

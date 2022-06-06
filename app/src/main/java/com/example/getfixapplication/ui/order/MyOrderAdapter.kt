@@ -37,7 +37,7 @@ class MyOrderAdapter :
             tvLabelInvoice.text = orderId
             tvLaptop.text = jenisOrder
 
-            holder.itemView.setOnClickListener {
+            holder.binding.button2.setOnClickListener {
                 onItemClickCallback.onItemClicked(items[holder.adapterPosition])
             }
         }

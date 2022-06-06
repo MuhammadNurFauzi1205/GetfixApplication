@@ -2,6 +2,7 @@ package com.example.getfixapplication.ui.profile
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import com.example.getfixapplication.databinding.FragmentProfileBinding
+import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.utils.ConstVal
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +45,10 @@ class ProfileFragment : Fragment() {
         }
         binding.cvProfileLogout.setOnClickListener {
             sharedPreferences.edit().clear().apply()
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
             activity?.finish()
+
         }
     }
 

@@ -1,24 +1,15 @@
 package com.example.getfixapplication.ui.order
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.getfixapplication.R
-import com.example.getfixapplication.data.model.OrderItem
 import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
-import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
-import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
-import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING
-import com.example.getfixapplication.utils.ConstVal.USER_DESC
+import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
-import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
-import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
-import com.example.getfixapplication.utils.ConstVal.USER_TIPE_LAYANAN
-import com.example.getfixapplication.utils.ConstVal.USER_WILAYAH
 import com.example.getfixapplication.utils.Status
 import com.example.getfixapplication.utils.showPositiveAlert
 import com.example.getfixapplication.utils.showToast
@@ -30,49 +21,19 @@ class DetailOrderActivity : AppCompatActivity() {
     private val detailorderVM: DetailOrderViewModel by viewModels()
     private lateinit var binding: ActivityDetailOrderBinding
 
-   private var namaTeknisi: String =
-        "Teknisi 1"
-
-    val data = listOf(
-        TeknisiModel(
-            "Teknisi 1",
-            "Jl. Teknik 1",
-            "1",
-            "https://i.pinimg.com/736x/47/a8/24/47a824c67db1ec78cc9f9011ba52022e--wallpaper-lucu-foto-lucu.jpg",
-            4.5f
-        ),
-        TeknisiModel(
-            "Teknisi 2",
-            "Jl. Teknik 2",
-            "2",
-            "https://i.ytimg.com/vi/kinwDmOO5ns/maxresdefault.jpg",
-            4.3f
-        ),
-        TeknisiModel(
-            "Teknisi 3",
-            "Jl. Teknik 3",
-            "3",
-            "https://4.bp.blogspot.com/_jJu6heRzjEA/TGJc5QBw86I/AAAAAAAAAZA/fzxpbgl-vYs/w1200-h630-p-k-no-nu/binatang+lucu.jpg",
-            3.8f
-        )
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val waktu = intent.getStringExtra(USER_JADWAL)
-        val wilayah = intent.getStringExtra(USER_WILAYAH)
-        val tanggal = intent.getStringExtra(USER_TANGGAL)
-        val userId = intent.getStringExtra(USER_ID_SESSION)
-        val jenisLayanan = intent.getStringExtra(USER_TIPE_LAYANAN)
+        val orderId = intent.getStringExtra(ORDER_ID)
 
-        val layanan = intent.getStringExtra(USER_LAYANAN)
+        binding.topDetailOrder.setNavigationOnClickListener {
+            finish()
+        }
 
-
-
-        when (layanan) {
+        when (intent.getStringExtra(USER_LAYANAN)) {
             "Laptop" -> {
                 binding.jenislayanan.text = getString(R.string.teknisi_laptop)
                 binding.ivBookingLayanan.setImageResource(R.drawable.laptop)
@@ -89,51 +50,36 @@ class DetailOrderActivity : AppCompatActivity() {
                 binding.jenislayanan.text = getString(R.string.teknisi_handphone)
                 binding.ivBookingLayanan.setImageResource(R.drawable.touchscreen)
             }
-
         }
 
-
-
-        binding.btnNext.setOnClickListener {
-
-
-            val request = OrderItem(
-                tanggal.toString(),
-                jenisLayanan.toString(),
-                namaTeknisi,
-                waktu.toString(),
-                wilayah.toString(),
-                userId.toString(),
-                "22 mei 2022",
-                "19.00",
-
-            )
-            bookTeknisi(request)
-
+        if (orderId != null) {
+            getData(orderId)
         }
 
 
     }
 
-    private fun bookTeknisi(addBook: OrderItem) {
-        detailorderVM.addOrdersService(addBook).observe(this) { data ->
+    private fun getData(orderId: String) {
+        detailorderVM.addOrdersService(orderId).observe(this) { data ->
             when (data.status) {
                 Status.LOADING -> {
                     showToast(this, "LOADING")
                 }
                 Status.SUCCESS -> {
-                    showToast(this, data.data?.message.toString())
+                    showToast(this, "SUCCESS")
+
                     intent.getStringExtra(USER_ID_SESSION)
 
-                    binding.infoInvoice.text = addBook.infoInvoice
-                    binding.tvDescNama.text = addBook.nameTechnision
-                    binding.textView2.text = addBook.id
-                    binding.tvAlamatLokasi.text = addBook.alamat
-                    binding.tvTanggal.text=addBook.tanggal
-                    binding.tvJam.text=addBook.waktu
-                    Glide.with(this@DetailOrderActivity)
-                        .load(data)
-                        .into(binding.ivFoto)
+                    binding.apply {
+                        data.data?.apply {
+                            tvDetailOrderId.text = orderId
+                            tvDescNama.text = "Teknisi 1"
+                            tvDetailOrderIdteknisi.text = "T123"
+                            tvAlamatLokasi.text = alamat
+                            tvTanggal.text = jadwal
+                            tvDetailOrderDeskripsiTugas.text = deskripsi
+                        }
+                    }
                 }
                 Status.ERROR -> {
                     showPositiveAlert(

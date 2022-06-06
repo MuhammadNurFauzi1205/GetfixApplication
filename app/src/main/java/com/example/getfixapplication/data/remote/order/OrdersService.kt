@@ -7,17 +7,17 @@ interface OrdersService {
 
     @POST("orders")
     suspend fun addOrders(
-        @Body addOrdersBody: AddOrdersBody
+        @Body addOrdersBody: OrdersBody
     ): AddOrdersResponse
 
     @GET("orders/{id}")
     suspend fun getOrders(
-        @Query ("id") id :String
-    ): AddOrdersResponse
+        @Path ("id") id :String
+    ): OrdersBody
 
-    @GET("allorder")
+    @GET("allorder/{id}")
     suspend fun getAllOrders(
-        @Query ("username") username :String
+        @Path ("id") username :String
     ): List<OrderListItem>
 
 }

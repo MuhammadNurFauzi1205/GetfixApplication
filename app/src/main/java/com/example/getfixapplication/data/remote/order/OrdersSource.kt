@@ -1,17 +1,11 @@
 package com.example.getfixapplication.data.remote.order
 
-import com.example.getfixapplication.data.model.OrderItem
 import com.example.getfixapplication.data.model.OrderListItem
-import com.example.getfixapplication.data.model.User
 import com.example.getfixapplication.data.remote.ApiResult
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.getField
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,7 +16,7 @@ class OrdersSource @Inject constructor(
 ) {
 
     suspend fun addOrders(
-        addOrdersBody: AddOrdersBody
+        addOrdersBody: OrdersBody
     ): Flow<ApiResult<AddOrdersResponse>> {
         return flow {
             try {
@@ -48,11 +42,12 @@ class OrdersSource @Inject constructor(
                 emit(ApiResult.loading())
                 val user = firestore.collection("users").document(userId).get().await()
                 user.get("username").toString()
-                val response = ordersService.getAllOrders(user.data?.get("username") as String)
+//                val response = ordersService.getAllOrders(user.data?.get("username") as String)
+                val response = ordersService.getAllOrders("12211")
                 if (response.isNotEmpty()) {
                     emit(ApiResult.success(response))
                 } else {
-                    emit(ApiResult.error("No Orders Found"))
+                    emit(ApiResult.error("Tidak Ada Pesanan"))
                 }
             } catch (ex: Exception) {
                 emit(ApiResult.error(ex.message.toString()))
@@ -62,18 +57,18 @@ class OrdersSource @Inject constructor(
 
     //get orders by id
     suspend fun getOrdersId(
-        getOrderId: OrderItem
-    ): Flow<ApiResult<AddOrdersResponse>> {
+        orderId: String
+    ): Flow<ApiResult<OrdersBody>> {
         return flow {
             try {
                 emit(ApiResult.loading())
                 val response = ordersService.getOrders(
-                    getOrderId.id
+                    orderId
                 )
-                if (!response.message.isNullOrEmpty()) {
+                if (response.id?.isEmpty() == false) {
                     emit(ApiResult.success(response))
                 } else {
-                    emit(ApiResult.error(response.message))
+                    emit(ApiResult.error("Tidak Ada Data"))
                 }
             } catch (ex: Exception) {
                 emit(ApiResult.error(ex.message.toString()))
