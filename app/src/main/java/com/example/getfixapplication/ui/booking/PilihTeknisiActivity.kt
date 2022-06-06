@@ -9,17 +9,18 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.TeknisiModel
-import com.example.getfixapplication.data.remote.order.AddOrdersBody
+import com.example.getfixapplication.data.remote.order.OrdersBody
 import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
 import com.example.getfixapplication.ui.order.DetailOrderActivity
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING
+import com.example.getfixapplication.utils.ConstVal.USER_ALAMAT
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
 import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
-import com.example.getfixapplication.utils.ConstVal.USER_TIPE_LAYANAN
+import com.example.getfixapplication.utils.ConstVal.USER_JENIS_TUGAS
 import com.example.getfixapplication.utils.ConstVal.USER_WILAYAH
 import com.example.getfixapplication.utils.Status
 import com.example.getfixapplication.utils.showPositiveAlert
@@ -68,8 +69,10 @@ class PilihTeknisiActivity : AppCompatActivity() {
         val wilayah = intent.getStringExtra(USER_WILAYAH)
         val tanggal = intent.getStringExtra(USER_TANGGAL)
         val descLayanan = intent.getStringExtra(USER_DESC)
-        val jenisLayanan = intent.getStringExtra(USER_TIPE_LAYANAN)
+        val jenisLayanan = intent.getStringExtra(USER_JENIS_TUGAS)
         val layanan = intent.getStringExtra(USER_LAYANAN)
+        val alamat = intent.getStringExtra(USER_ALAMAT)
+
         val teknisiAdapter = TeknisiAdapter()
 
         binding.rvTeknisi.layoutManager = LinearLayoutManager(this)
@@ -83,8 +86,10 @@ class PilihTeknisiActivity : AppCompatActivity() {
             }
         })
 
+        binding.topAppBar.setNavigationOnClickListener { finish() }
+
         binding.btnPesanTeknisi.setOnClickListener {
-            val request = AddOrdersBody(
+            val request = OrdersBody(
                 tanggal,
                 jenisLayanan,
                 namaTeknisi,
@@ -92,14 +97,15 @@ class PilihTeknisiActivity : AppCompatActivity() {
                 wilayah,
                 descLayanan,
                 "bb12",
-                "ad"
+                "ad",
+                alamat
             )
             bookTeknisi(request)
         }
 
     }
 
-    private fun bookTeknisi(addBook: AddOrdersBody) {
+    private fun bookTeknisi(addBook: OrdersBody) {
         bookVM.addOrdersService(addBook).observe(this) { data ->
             when (data.status) {
                 Status.LOADING -> {
@@ -107,14 +113,6 @@ class PilihTeknisiActivity : AppCompatActivity() {
                 }
                 Status.SUCCESS -> {
                     showToast(this, data.data?.message.toString())
-                    val intent = Intent(this@PilihTeknisiActivity,
-                        DetailOrderActivity::class.java)
-                    intent.putExtra(USER_LAYANAN, "Teknisi")
-                    intent.putExtra(TEKNISI_NAMA, "Nama Teknisi")
-                    intent.putExtra(USER_WILAYAH, "Wilayah")
-                    intent.putExtra(TEKNISI_RATING, "Float" )
-                    intent.putExtra(TEKNISI_FOTO, "Teknisi Foto")
-                    startActivity(intent)
                 }
                 Status.ERROR -> {
                     showPositiveAlert(
