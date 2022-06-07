@@ -42,8 +42,7 @@ class OrdersSource @Inject constructor(
                 emit(ApiResult.loading())
                 val user = firestore.collection("users").document(userId).get().await()
                 user.get("username").toString()
-//                val response = ordersService.getAllOrders(user.data?.get("username") as String)
-                val response = ordersService.getAllOrders("12211")
+                val response = ordersService.getAllOrders(user.data?.get("username") as String)
                 if (response.isNotEmpty()) {
                     emit(ApiResult.success(response))
                 } else {

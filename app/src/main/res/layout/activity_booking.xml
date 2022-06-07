@@ -188,7 +188,7 @@
                             android:layout_weight="1"
                             android:inputType="none"
                             android:padding="16dp"
-                            android:text="@string/text_pilih_layanan"
+                            android:text="@string/booking_pilih_area"
                             android:textSize="12sp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>

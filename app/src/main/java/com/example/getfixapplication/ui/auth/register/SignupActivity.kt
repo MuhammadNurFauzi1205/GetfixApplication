@@ -39,8 +39,10 @@ class SignupActivity : AppCompatActivity() {
             val email = binding.ed2.editText?.text.toString()
             val nama = binding.edtSignupNama.editText?.text.toString()
             val password = binding.ed3.editText?.text.toString()
+
             val sharedPreferences = getSharedPreferences(EMAIL_KEY, MODE_PRIVATE)
             val editor = sharedPreferences.edit()
+
             editor.putString(email_key, username)
             editor.apply()
             val user = hashMapOf(
@@ -65,7 +67,7 @@ class SignupActivity : AppCompatActivity() {
                         Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
                         val login = Intent(this, LoginActivity::class.java)
                         startActivity(login)
-                        Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
+                        showToast(this, "Register Berhasil")
                     }
                     .addOnFailureListener { e ->
                         Log.w(TAG, "Error adding document", e)

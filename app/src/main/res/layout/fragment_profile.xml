@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
-            app:title="Profile"
+            app:title="Profil"
             app:titleCentered="true"
             app:titleMarginStart="72dp" />
 

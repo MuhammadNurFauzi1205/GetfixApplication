@@ -14,9 +14,9 @@
     <string name="text_label_login">Sudah punya akun?</string>
     <string name="text_label_email">Email</string>
     <string name="text_label_password">Password</string>
-    <string name="text_label_login_description">Login to your existent account of GetFix</string>
-    <string name="text_label_register_description">Get Technician Get Fix</string>
-    <string name="our_services">Our Services</string>
+    <string name="text_label_login_description">Masuk untuk menggunakan aplikasi!</string>
+    <string name="text_label_register_description">Daftarkan diri anda!</string>
+    <string name="our_services">Pelayanan Kami</string>
     <string name="menampilkan_menu">menampilkan menu</string>
     <string name="lo_go">logo</string>
     <string name="fitur_pencarian">fitur pencarian</string>
@@ -91,7 +91,7 @@
     <string name="idr_50_000">IDR 50.000</string>
     <string name="payoder_bayar">BAYAR</string>
     <string name="detailorder_rating">Rating</string>
-    <string name="error_data">Ups Terjadi Kesalahan</string>
+    <string name="error_data">Ups!! Terjadi Kesalahan</string>
     <string name="text_pilih_layanan">Pilih Layanan</string>
     <string name="text_tanggal">Tanggal</string>
     <string name="text_waktu">Waktu</string>
@@ -107,6 +107,7 @@
     <string name="teknisi_televisi">Teknisi Televisi</string>
     <string name="teknisi_handphone">Teknisi Handphone</string>
     <string name="alamat_anda">Alamat Anda</string>
+    <string name="booking_pilih_area">Pilih Area</string>
     <string-array name="data_jenis_layanan">
         <item>Konsultasi</item>
         <item>Panggil Teknisi</item>

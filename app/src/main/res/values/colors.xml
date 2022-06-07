@@ -11,6 +11,7 @@
     <color name="border_grey">#D1D3D8</color>
     <color name="grey">#FAFAFA</color>
     <color name="grey_200">#F5F5F5</color>
+    <color name="grey_100">#F5EEFF</color>
     <color name="blue">#676FC4</color>
     <color name="purple">#AB6DFD</color>
     <color name="gray_text">#B3B4B8</color>

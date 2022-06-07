@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="71dp"
         android:layout_marginBottom="8dp"
-        app:cardBackgroundColor="@color/grey_200"
+        app:cardBackgroundColor="@color/grey_100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,11 +67,11 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginStart="16dp"
+                android:contentDescription="@string/konfirmasi_pesanan"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_label_invoice"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_laptop"
-                app:srcCompat="@drawable/bullet_purple"
-                android:contentDescription="@string/konfirmasi_pesanan" />
+                app:srcCompat="@drawable/bullet_purple" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -5,13 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -20,16 +18,17 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityCameraBinding
 import com.example.getfixapplication.ml.Model
 import com.example.getfixapplication.utils.ConstVal.CAMERA_X_RESULT
 import com.example.getfixapplication.utils.ConstVal.PERMISSIONS
 import com.example.getfixapplication.utils.createFile
+import com.example.getfixapplication.utils.reduceFileImage
 import com.example.getfixapplication.utils.showToast
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -80,6 +79,19 @@ class CameraActivity : AppCompatActivity() {
 
         binding.ivCameraCapture.setOnClickListener { takePhoto() }
 
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        startCamera()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
+    }
+
+    private fun imageClassification(photoFile: File) {
         val labels = application.assets.open("label.txt").bufferedReader().use { it.readText() }.split("\n")
 
 //        select_image_button.setOnClickListener(View.OnClickListener {
@@ -92,7 +104,7 @@ class CameraActivity : AppCompatActivity() {
 
 
 //            var resized = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
-            val model = Model.newInstance(this)
+        val model = Model.newInstance(this)
 
 //            var tbuffer = TensorImage.fromBitmap(resized)
 //            var byteBuffer = tbuffer.buffer
@@ -101,36 +113,25 @@ class CameraActivity : AppCompatActivity() {
 //            val inputFeature0 =
 //                TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
 //            inputFeature0.loadBuffer(byteBuffer)
+        val file = reduceFileImage(photoFile)
+        bitmap = BitmapFactory.decodeFile(file.absolutePath)
+        val inputFeature0 =
+            TensorBuffer.createFixedSize(intArrayOf(1, 150, 150, 3), DataType.FLOAT32)
 
-            val inputFeature0 =
-                TensorBuffer.createFixedSize(intArrayOf(1, 150, 150, 3), DataType.FLOAT32)
+        val input = Bitmap.createScaledBitmap(bitmap ,150, 150, true)
+        val image = TensorImage(DataType.FLOAT32)
+        image.load(input)
+        val byteBuffer = image.buffer
+        inputFeature0.loadBuffer(byteBuffer)
 
-            val input = Bitmap.createScaledBitmap(bitmap ,150, 150, true)
-            val image = TensorImage(DataType.FLOAT32)
-            image.load(input)
-            val byteBuffer = image.buffer
-            inputFeature0.loadBuffer(byteBuffer)
+        val outputs = model.process(inputFeature0)
+        val outputFeature0 = outputs.outputFeature0AsTensorBuffer
 
-// Runs model inference and gets result.
-            val outputs = model.process(inputFeature0)
-            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+        var max = getMax(outputFeature0.floatArray)
 
-            var max = getMax(outputFeature0.floatArray)
+        binding.tvCameraUpload.text = labels[max]
 
-            binding.tvCameraUpload.setText(labels[max])
-
-// Releases model resources if no longer used.
-            model.close()
-    }
-
-    public override fun onResume() {
-        super.onResume()
-        startCamera()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cameraExecutor.shutdown()
+        model.close()
     }
 
     private fun takePhoto() {
@@ -151,14 +152,7 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val intent = Intent()
-                    intent.putExtra("picture", photoFile)
-                    intent.putExtra(
-                        "isBackCamera",
-                        cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA
-                    )
-                    setResult(CAMERA_X_RESULT, intent)
-                    finish()
+                    imageClassification(photoFile)
                 }
             }
         )
@@ -191,22 +185,6 @@ class CameraActivity : AppCompatActivity() {
             }
         }, ContextCompat.getMainExecutor(this))
     }
-
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
-
-            if(requestCode == 250){
-                binding.ivCameraCapture.setImageURI(data?.data)
-
-                var uri : Uri?= data?.data
-                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
-            }
-            else if(requestCode == 200 && resultCode == Activity.RESULT_OK){
-                bitmap = data?.extras?.get("data") as Bitmap
-                binding.ivCameraCapture.setImageBitmap(bitmap)
-            }
-
-        }
 
         fun getMax(arr:FloatArray) : Int{
             var ind = 0;

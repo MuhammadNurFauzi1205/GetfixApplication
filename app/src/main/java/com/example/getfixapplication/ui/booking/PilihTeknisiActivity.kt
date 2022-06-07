@@ -1,6 +1,7 @@
 package com.example.getfixapplication.ui.booking
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,8 +16,10 @@ import com.example.getfixapplication.ui.order.DetailOrderActivity
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_FOTO
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_NAMA
 import com.example.getfixapplication.utils.ConstVal.TEKNISI_RATING
+import com.example.getfixapplication.utils.ConstVal.USERNAME
 import com.example.getfixapplication.utils.ConstVal.USER_ALAMAT
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
+import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
@@ -33,6 +36,7 @@ class PilihTeknisiActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPilihTeknisiBinding
     var namaTeknisi: String =
         "Teknisi 1"
+    private lateinit var idTeknisi: String
 
     val data = listOf(
         TeknisiModel(
@@ -59,11 +63,14 @@ class PilihTeknisiActivity : AppCompatActivity() {
     )
 
     private val bookVM: BookingViewModel by viewModels()
-
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPilihTeknisiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
+        val userId = sharedPreferences.getString(USERNAME, null)
 
         val waktu = intent.getStringExtra(USER_JADWAL)
         val wilayah = intent.getStringExtra(USER_WILAYAH)
@@ -83,6 +90,8 @@ class PilihTeknisiActivity : AppCompatActivity() {
             override fun onItemClicked(data: TeknisiModel) {
                 Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
                 namaTeknisi = data.nama
+                idTeknisi = data.id
+
             }
         })
 
@@ -93,11 +102,11 @@ class PilihTeknisiActivity : AppCompatActivity() {
                 tanggal,
                 jenisLayanan,
                 namaTeknisi,
-                waktu,
-                wilayah,
+                idTeknisi,
                 descLayanan,
-                "bb12",
-                "ad",
+                null,
+                userId,
+                wilayah,
                 alamat
             )
             bookTeknisi(request)
