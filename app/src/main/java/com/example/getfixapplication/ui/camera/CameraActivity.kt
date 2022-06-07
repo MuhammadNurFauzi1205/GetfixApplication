@@ -10,6 +10,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -18,13 +20,16 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityCameraBinding
+import com.example.getfixapplication.databinding.BottomSheetDialogLayoutBinding
 import com.example.getfixapplication.ml.Model
 import com.example.getfixapplication.utils.ConstVal.CAMERA_X_RESULT
 import com.example.getfixapplication.utils.ConstVal.PERMISSIONS
 import com.example.getfixapplication.utils.createFile
 import com.example.getfixapplication.utils.reduceFileImage
 import com.example.getfixapplication.utils.showToast
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -35,6 +40,7 @@ import java.util.concurrent.Executors
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityCameraBinding
+    private lateinit var bottomSheet : BottomSheetDialogLayoutBinding
     private var imageCapture: ImageCapture? = null
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private lateinit var cameraExecutor: ExecutorService
@@ -79,7 +85,12 @@ class CameraActivity : AppCompatActivity() {
 
         binding.ivCameraCapture.setOnClickListener { takePhoto() }
 
+
+
     }
+
+
+
 
     public override fun onResume() {
         super.onResume()
@@ -91,28 +102,19 @@ class CameraActivity : AppCompatActivity() {
         cameraExecutor.shutdown()
     }
 
+
+
     private fun imageClassification(photoFile: File) {
         val labels = application.assets.open("label.txt").bufferedReader().use { it.readText() }.split("\n")
 
-//        select_image_button.setOnClickListener(View.OnClickListener {
-//            Log.d("mssg", "button pressed")
-//            var intent : Intent = Intent(Intent.ACTION_GET_CONTENT)
-//            intent.type = "image/*"
-//
-//            startActivityForResult(intent, 250)
-//        })
-
-
-//            var resized = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
         val model = Model.newInstance(this)
 
-//            var tbuffer = TensorImage.fromBitmap(resized)
-//            var byteBuffer = tbuffer.buffer
-//
-//// Creates inputs for reference.
-//            val inputFeature0 =
-//                TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
-//            inputFeature0.loadBuffer(byteBuffer)
+        val dialog = BottomSheetDialog(this)
+        val view = BottomSheetDialogLayoutBinding.inflate(layoutInflater)
+        dialog.setCancelable(false)
+
+        dialog.setContentView(view.root)
+
         val file = reduceFileImage(photoFile)
         bitmap = BitmapFactory.decodeFile(file.absolutePath)
         val inputFeature0 =
@@ -129,7 +131,9 @@ class CameraActivity : AppCompatActivity() {
 
         var max = getMax(outputFeature0.floatArray)
 
-        binding.tvCameraUpload.text = labels[max]
+       bottomSheet.tvClassification.text = labels[max]
+
+        dialog.show()
 
         model.close()
     }
@@ -200,4 +204,20 @@ class CameraActivity : AppCompatActivity() {
             }
             return ind
         }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == 250){
+            bottomSheet.ivClassification.setImageURI(data?.data)
+
+            var uri : Uri ?= data?.data
+            bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+        }
+        else if(requestCode == 200 && resultCode == Activity.RESULT_OK){
+            bitmap = data?.extras?.get("data") as Bitmap
+            bottomSheet.ivClassification.setImageBitmap(bitmap)
+        }
+
+    }
 }
