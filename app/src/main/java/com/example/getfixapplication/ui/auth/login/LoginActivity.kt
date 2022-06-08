@@ -28,17 +28,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-//    private lateinit var myreference : DatabaseReference
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     val WebClient = "1063081921561-nrcop7njimnvlf14njcjre8mhuueoqsq.apps.googleusercontent.com"
     val db = Firebase.firestore
-    var EMAIL_KEY = "emailkey"
-    var email_key = ""
 
-//    lateinit var  username : TextInputLayout
-//    lateinit var passwordd: TextInputLayout
     lateinit var google: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {

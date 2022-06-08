@@ -17,15 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignupActivity : AppCompatActivity() {
-//    private lateinit var myreference : DatabaseReference
+
     private lateinit var binding: ActivitySignupBinding
     var EMAIL_KEY = "emailkey"
     var email_key = ""
     val db = Firebase.firestore
 
-//    lateinit var usernamee: TextInputLayout
-//    lateinit var passwordd: TextInputLayout
-//    lateinit var  emaill : TextInputLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
@@ -74,9 +71,7 @@ class SignupActivity : AppCompatActivity() {
                     }
             }
 
-
         }
-
 
         binding.tvActionLogin.setOnClickListener {
             val login = Intent(this, LoginActivity::class.java)

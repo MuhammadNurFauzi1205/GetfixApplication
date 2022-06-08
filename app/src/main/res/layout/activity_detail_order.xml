@@ -41,7 +41,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/jenislayanan"
+                android:id="@+id/jenisLayanan"
                 style="@style/TextSubHead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 android:text="@string/info_invoice"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/jenislayanan" />
+                app:layout_constraintTop_toTopOf="@+id/jenisLayanan" />
 
             <TextView
                 android:id="@+id/tv_status"
@@ -279,7 +279,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:text="4.8"
+                        android:text="@string/angkaRating"
                         android:textColor="@color/white"
                         android:textSize="11sp"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView3"

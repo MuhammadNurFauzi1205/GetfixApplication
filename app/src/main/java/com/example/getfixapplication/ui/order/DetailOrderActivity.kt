@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
+
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
@@ -35,19 +36,19 @@ class DetailOrderActivity : AppCompatActivity() {
 
         when (intent.getStringExtra(USER_LAYANAN)) {
             "Laptop" -> {
-                binding.jenislayanan.text = getString(R.string.teknisi_laptop)
+                binding.jenisLayanan.text = getString(R.string.teknisi_laptop)
                 binding.ivBookingLayanan.setImageResource(R.drawable.laptop)
             }
             "Komputer" -> {
-                binding.jenislayanan.text = getString(R.string.teknisi_komputer)
+                binding.jenisLayanan.text = getString(R.string.teknisi_komputer)
                 binding.ivBookingLayanan.setImageResource(R.drawable.workstation)
             }
             "Televisi" -> {
-                binding.jenislayanan.text = getString(R.string.teknisi_televisi)
+                binding.jenisLayanan.text = getString(R.string.teknisi_televisi)
                 binding.ivBookingLayanan.setImageResource(R.drawable.tv)
             }
             "Handphone" -> {
-                binding.jenislayanan.text = getString(R.string.teknisi_handphone)
+                binding.jenisLayanan.text = getString(R.string.teknisi_handphone)
                 binding.ivBookingLayanan.setImageResource(R.drawable.touchscreen)
             }
         }

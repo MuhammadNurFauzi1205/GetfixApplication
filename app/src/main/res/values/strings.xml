@@ -109,6 +109,7 @@
     <string name="alamat_anda">Alamat Anda</string>
     <string name="booking_pilih_area">Pilih Area</string>
     <string name="tv_label_classification">Gambarnya Adalah!</string>
+    <string name="angkaRating">4.8</string>
     <string-array name="data_jenis_layanan">
         <item>Konsultasi</item>
         <item>Panggil Teknisi</item>

@@ -206,15 +206,15 @@ class CameraActivity : AppCompatActivity() {
     }
 
         fun getMax(arr:FloatArray) : Int{
-            var ind = 0;
-            var min = 0.0f;
+            var ind = 0
+            var min = 0.0f
 
             for(i in 0..1)
             {
                 if(arr[i] > min)
                 {
                     min = arr[i]
-                    ind = i;
+                    ind = i
                 }
             }
             return ind
