@@ -20,6 +20,9 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityCameraBinding
 import com.example.getfixapplication.databinding.BottomSheetDialogLayoutBinding
@@ -76,10 +79,12 @@ class CameraActivity : AppCompatActivity() {
 
         cameraExecutor = Executors.newSingleThreadExecutor()
 
+        bottomSheet = BottomSheetDialogLayoutBinding.inflate(layoutInflater)
+
         getPermissions()
         startCamera()
 
-        binding.tvCameraBatal.setOnClickListener {
+        binding.topAppBar.setNavigationOnClickListener {
             finish()
         }
 
@@ -111,7 +116,10 @@ class CameraActivity : AppCompatActivity() {
 
         val dialog = BottomSheetDialog(this)
         val view = BottomSheetDialogLayoutBinding.inflate(layoutInflater)
-        dialog.setCancelable(false)
+
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.dismissWithAnimation = true
 
         dialog.setContentView(view.root)
 
@@ -119,6 +127,7 @@ class CameraActivity : AppCompatActivity() {
         bitmap = BitmapFactory.decodeFile(file.absolutePath)
         val inputFeature0 =
             TensorBuffer.createFixedSize(intArrayOf(1, 150, 150, 3), DataType.FLOAT32)
+
 
         val input = Bitmap.createScaledBitmap(bitmap ,150, 150, true)
         val image = TensorImage(DataType.FLOAT32)
@@ -131,7 +140,13 @@ class CameraActivity : AppCompatActivity() {
 
         var max = getMax(outputFeature0.floatArray)
 
-       bottomSheet.tvClassification.text = labels[max]
+        view.tvClassification.text = labels[max]
+        Glide
+            .with(this)
+            .load(bitmap)
+            .transform(CenterCrop(), RoundedCorners(20))
+            .into(view.ivClassification)
+        view.ivClassification.setImageBitmap(bitmap)
 
         dialog.show()
 
@@ -204,20 +219,4 @@ class CameraActivity : AppCompatActivity() {
             }
             return ind
         }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == 250){
-            bottomSheet.ivClassification.setImageURI(data?.data)
-
-            var uri : Uri ?= data?.data
-            bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
-        }
-        else if(requestCode == 200 && resultCode == Activity.RESULT_OK){
-            bitmap = data?.extras?.get("data") as Bitmap
-            bottomSheet.ivClassification.setImageBitmap(bitmap)
-        }
-
-    }
 }
