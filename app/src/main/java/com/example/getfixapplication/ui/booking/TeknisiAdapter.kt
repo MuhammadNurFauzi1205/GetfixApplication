@@ -2,14 +2,13 @@ package com.example.getfixapplication.ui.booking
 
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.githubsocial.util.AutoUpdatableAdapter
 import com.example.getfixapplication.R
-import com.example.getfixapplication.data.model.TeknisiModel
+import com.example.getfixapplication.data.model.Teknisi
 import com.example.getfixapplication.databinding.ItemTeknisiBinding
 import kotlin.properties.Delegates
 
@@ -23,7 +22,7 @@ class TeknisiAdapter :
         this.onItemClickCallback = onItemClickCallback
     }
 
-    var items: List<TeknisiModel> by Delegates.observable(emptyList()) { _, oldList, newList ->
+    var items: List<Teknisi> by Delegates.observable(emptyList()) { _, oldList, newList ->
         autoNotify(oldList, newList) { o, n -> o.id == n.id }
     }
 
@@ -69,6 +68,6 @@ class TeknisiAdapter :
     override fun getItemCount(): Int = items.size
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: TeknisiModel)
+        fun onItemClicked(data: Teknisi)
     }
 }
