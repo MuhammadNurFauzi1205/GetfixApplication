@@ -54,7 +54,7 @@ class MyOrderFragment : Fragment() {
         val userId = sharedPreferences.getString(USER_ID_SESSION, null)
 
         if (userId != null) {
-            orderListItemVM.getOrdersService(userId).observe(viewLifecycleOwner) { data ->
+            orderListItemVM.getOrdersService(userId, 0).observe(viewLifecycleOwner) { data ->
                 when (data.status) {
                     Status.LOADING -> {
                         showToast(requireContext(), "LOADING")

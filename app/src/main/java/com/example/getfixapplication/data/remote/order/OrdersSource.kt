@@ -36,15 +36,23 @@ class OrdersSource @Inject constructor(
     }
 
     // Create get All Orders Flow
-    suspend fun getListOrders(userId : String): Flow<ApiResult<List<OrderListItem>>> {
+    suspend fun getListOrders(userId: String, type: Int): Flow<ApiResult<List<OrderListItem>>> {
         return flow {
             try {
                 emit(ApiResult.loading())
                 val user = firestore.collection("users").document(userId).get().await()
                 user.get("username").toString()
+                var filtering = listOf<OrderListItem>()
                 val response = ordersService.getAllOrders(user.data?.get("username") as String)
-                if (response.isNotEmpty()) {
-                    emit(ApiResult.success(response))
+
+                if (type == 0) {
+                    filtering = response.filter { it.statusOrder == "sedang dikerjakan" }
+                } else if (type == 1) {
+                    filtering = response.filter { it.statusOrder == "selesai" }
+                }
+
+                if (filtering.isNotEmpty()) {
+                    emit(ApiResult.success(filtering))
                 } else {
                     emit(ApiResult.error("Tidak Ada Pesanan"))
                 }

@@ -7,7 +7,6 @@ import com.example.getfixapplication.data.remote.order.OrdersBody
 import com.example.getfixapplication.data.remote.order.AddOrdersResponse
 import com.example.getfixapplication.data.remote.order.OrdersSource
 import com.example.getfixapplication.data.remote.profile.ProfileSource
-import com.example.getfixapplication.data.remote.profile.TeknisiResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -33,8 +32,8 @@ class Repository @Inject constructor
         return profileSource.getProfileDataTeknisi(userId).flowOn(Dispatchers.Default)
     }
 
-    suspend fun getListOrderItemService(userId : String): Flow<ApiResult<List<OrderListItem>>> {
-        return ordersSource.getListOrders(userId).flowOn(Dispatchers.Default)
+    suspend fun getListOrderItemService(userId: String, type: Int): Flow<ApiResult<List<OrderListItem>>> {
+        return ordersSource.getListOrders(userId, type).flowOn(Dispatchers.Default)
     }
 
     suspend fun getOrderService(orderId: String): Flow<ApiResult<OrdersBody>> {

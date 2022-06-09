@@ -9,17 +9,16 @@ import com.example.getfixapplication.data.remote.ApiResult
 import com.example.getfixapplication.data.remote.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ListOrderViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    fun getOrdersService(userId : String): LiveData<ApiResult<List<OrderListItem>>> {
+    fun getOrdersService(userId : String, type: Int): LiveData<ApiResult<List<OrderListItem>>> {
         val result = MutableLiveData<ApiResult<List<OrderListItem>>>()
         viewModelScope.launch {
-            repository.getListOrderItemService(userId).collect { data ->
+            repository.getListOrderItemService(userId, type).collect { data ->
                 result.postValue(data)
             }
         }

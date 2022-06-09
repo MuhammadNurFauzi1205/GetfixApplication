@@ -15,10 +15,10 @@ import javax.inject.Inject
 @HiltViewModel
 class PayOrderViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    fun getOrdersService(userId : String): LiveData<ApiResult<List<OrderListItem>>> {
+    fun getOrdersService(userId : String, type : Int): LiveData<ApiResult<List<OrderListItem>>> {
         val result = MutableLiveData<ApiResult<List<OrderListItem>>>()
         viewModelScope.launch {
-            repository.getListOrderItemService(userId).collect { data ->
+            repository.getListOrderItemService(userId, type).collect { data ->
                 result.postValue(data)
             }
         }
