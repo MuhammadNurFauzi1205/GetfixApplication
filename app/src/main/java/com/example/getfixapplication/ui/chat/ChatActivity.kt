@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.Chat
 import com.example.getfixapplication.databinding.ActivityChatBinding
+import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
@@ -21,13 +23,19 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
+    private lateinit var bindingg: ActivityLoginBinding
     private lateinit var binding: ActivityChatBinding
     private lateinit var adapter: FirebaseMessageAdapter
+    var fire = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        val user = fire.collection("users")
+            user.get()
+                user.whereEqualTo("username", bindingg.ed1.editText?.text.toString())
+//        val firebaseUser = fire.collection("users")
         auth = Firebase.auth
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
