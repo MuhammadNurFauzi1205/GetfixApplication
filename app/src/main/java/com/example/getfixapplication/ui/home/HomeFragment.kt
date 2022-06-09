@@ -10,11 +10,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
+import com.denzcoskun.imageslider.ImageSlider
+import com.denzcoskun.imageslider.models.SlideModel
+import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.FragmentHomeBinding
 import com.example.getfixapplication.ui.booking.BookingActivity
 import com.example.getfixapplication.ui.notifications.NotificationActivity
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
-
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class HomeFragment : Fragment() {
@@ -39,6 +44,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val imageList = ArrayList<SlideModel>() // Create image list
+        // imageList.add(SlideModel("String Url" or R.drawable)
+        // imageList.add(SlideModel("String Url" or R.drawable, "title") You can add title
+
+        imageList.add(SlideModel(R.drawable.carousel1))
+        imageList.add(SlideModel(R.drawable.carousel2))
+        imageList.add(SlideModel(R.drawable.carousel3))
+
+        val imageSlider = binding.imageSlider
+        imageSlider.setImageList(imageList)
 
         binding.ivHomeLaptop.setOnClickListener {
             val intent = Intent(context,BookingActivity::class.java)
