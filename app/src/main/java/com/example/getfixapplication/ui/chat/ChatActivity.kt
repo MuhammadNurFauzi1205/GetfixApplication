@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.Chat
 import com.example.getfixapplication.databinding.ActivityChatBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -20,6 +22,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var db: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityChatBinding
+    private lateinit var adapter: FirebaseMessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +57,26 @@ class ChatActivity : AppCompatActivity() {
             binding.messageEditText.setText("")
         }
 
+        val manager = LinearLayoutManager(this)
+        manager.stackFromEnd = true
+        binding.messageRecyclerView.layoutManager = manager
 
+        val options = FirebaseRecyclerOptions.Builder<Chat>()
+            .setQuery(messagesRef, Chat::class.java)
+            .build()
+        adapter = FirebaseMessageAdapter(options, firebaseUser.displayName)
+        binding.messageRecyclerView.adapter = adapter
+
+
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        adapter.startListening()
+    }
+    public override fun onPause() {
+        adapter.stopListening()
+        super.onPause()
     }
 
     companion object {
