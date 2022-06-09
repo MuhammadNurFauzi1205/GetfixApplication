@@ -23,7 +23,7 @@ class TeknisiAdapter :
     }
 
     var items: List<Teknisi> by Delegates.observable(emptyList()) { _, oldList, newList ->
-        autoNotify(oldList, newList) { o, n -> o.id == n.id }
+        autoNotify(oldList, newList) { o, n -> o.username == n.username }
     }
 
     class ListViewHolder(var binding: ItemTeknisiBinding) : RecyclerView.ViewHolder(binding.root)
