@@ -61,12 +61,12 @@
         android:layout_width="350dp"
         android:layout_height="150dp"
         android:layout_marginTop="24dp"
-        android:background="@color/purple_200"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView4" >
+
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/image_slider"
             android:layout_width="wrap_content"
@@ -74,6 +74,7 @@
             app:iss_auto_cycle="true"
             app:iss_period="1000"
             app:iss_delay="0"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
