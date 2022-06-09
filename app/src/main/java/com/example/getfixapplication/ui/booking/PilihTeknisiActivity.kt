@@ -1,5 +1,6 @@
 package com.example.getfixapplication.ui.booking
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,8 @@ import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.Teknisi
 import com.example.getfixapplication.data.remote.order.OrdersBody
 import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
+import com.example.getfixapplication.ui.order.PayOrderActivity
+import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.USERNAME
 import com.example.getfixapplication.utils.ConstVal.USER_ALAMAT
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
@@ -93,6 +96,10 @@ class PilihTeknisiActivity : AppCompatActivity() {
                 }
                 Status.SUCCESS -> {
                     showToast(this, data.data?.message.toString())
+                    // move to pay activity
+                    val pay = Intent(this, PayOrderActivity::class.java)
+                    pay.putExtra(ORDER_ID, data.data?.data?.map { it.orderId }.toString())
+                    startActivity(pay)
                 }
                 Status.ERROR -> {
                     showPositiveAlert(

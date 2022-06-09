@@ -14,5 +14,6 @@ data class OrderListItem (
 
     @field:SerializedName("status")
     val statusOrder: String,
+
     val fotoUser: String
     )
