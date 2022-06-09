@@ -3,9 +3,7 @@ package com.example.getfixapplication.ui.order
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.example.getfixapplication.R
-import com.example.getfixapplication.data.model.TeknisiModel
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
 
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
@@ -61,7 +59,7 @@ class DetailOrderActivity : AppCompatActivity() {
     }
 
     private fun getData(orderId: String) {
-        detailorderVM.addOrdersService(orderId).observe(this) { data ->
+        detailorderVM.getOrdersService(orderId).observe(this) { data ->
             when (data.status) {
                 Status.LOADING -> {
                     showToast(this, "LOADING")
@@ -74,8 +72,23 @@ class DetailOrderActivity : AppCompatActivity() {
                     binding.apply {
                         data.data?.apply {
                             tvDetailOrderId.text = orderId
-                            tvDescNama.text = "Teknisi 1"
-                            tvDetailOrderIdteknisi.text = "T123"
+                            if (idTeknisi != null) {
+                                detailorderVM.getTeknisiService(idTeknisi).observe(this@DetailOrderActivity) { teknisi ->
+                                    when (teknisi.status) {
+                                        Status.LOADING -> {
+                                            showToast(this@DetailOrderActivity, "Mengambil Data Teknisi")
+                                        }
+                                        Status.SUCCESS -> {
+                                            tvDescNama.text = teknisi.data?.nama
+                                            tvDetailOrderIdteknisi.text = teknisi.data?.username
+                                            tvDetailorderCountRating.text = teknisi.data?.rating.toString()
+                                        }
+                                        Status.ERROR -> {
+                                            showToast(this@DetailOrderActivity, "Error Mengambil Data Teknisi")
+                                        }
+                                    }
+                                }
+                            }
                             tvAlamatLokasi.text = alamat
                             tvTanggal.text = jadwal
                             tvDetailOrderDeskripsiTugas.text = deskripsi

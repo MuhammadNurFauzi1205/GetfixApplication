@@ -1,11 +1,13 @@
 package com.example.getfixapplication.data.remote
 
 import com.example.getfixapplication.data.model.OrderListItem
+import com.example.getfixapplication.data.model.Teknisi
 import com.example.getfixapplication.data.model.User
 import com.example.getfixapplication.data.remote.order.OrdersBody
 import com.example.getfixapplication.data.remote.order.AddOrdersResponse
 import com.example.getfixapplication.data.remote.order.OrdersSource
 import com.example.getfixapplication.data.remote.profile.ProfileSource
+import com.example.getfixapplication.data.remote.profile.TeknisiResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -24,7 +26,11 @@ class Repository @Inject constructor
     }
 
     suspend fun getProfileUserService(userId: String): User {
-        return profileSource.getProfileData(userId)
+        return profileSource.getProfileDataUser(userId)
+    }
+
+    suspend fun getProfileTeknisiService(userId: String): Flow<ApiResult<Teknisi>> {
+        return profileSource.getProfileDataTeknisi(userId).flowOn(Dispatchers.Default)
     }
 
     suspend fun getListOrderItemService(userId : String): Flow<ApiResult<List<OrderListItem>>> {
