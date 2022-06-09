@@ -46,11 +46,29 @@ class LoginActivity : AppCompatActivity() {
 
         google = binding.google
         auth = Firebase.auth
+
         binding.btnLogin.setOnClickListener {
             hideKeyboard()
+
+            username.editText?.let {
+                if (it.text.isNullOrEmpty()) {
+                    username.editText!!.error = "Please enter your username"
+                    return@setOnClickListener
+                }
+            }
+            // Check if password less 6 characters
+            passwordd.editText?.let {
+                if (it.text.isNullOrEmpty()) {
+                    passwordd.editText!!.error = "Please enter your password"
+                    return@setOnClickListener
+                }
+                if (it.text.toString().length < 6) {
+                    passwordd.editText!!.error = "Password must be at least 6 characters"
+                    return@setOnClickListener
+                }
+            }
+
             val user = db.collection("users")
-
-
             user.get()
                 user.whereEqualTo("username", username.editText?.text.toString()).whereEqualTo("password",passwordd.editText?.text.toString())
                 .get()
@@ -63,11 +81,9 @@ class LoginActivity : AppCompatActivity() {
                             editor.putString(USER_ID_SESSION, document.id)
                             editor.putString(USERNAME, document.data["username"].toString())
                             editor.apply()
-                            //berpindah activity
                             val two = Intent(this@LoginActivity, NavigationHomeActivity::class.java)
                             startActivity(two)
                             finish()
-
                         }
                     }
                     .addOnFailureListener {

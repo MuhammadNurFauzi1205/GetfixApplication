@@ -107,7 +107,5 @@ dependencies {
     //ratingbar
     implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
-    //carousel
-    implementation 'com.synnapps:carouselview:0.1.5'
 
 }

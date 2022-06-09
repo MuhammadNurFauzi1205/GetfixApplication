@@ -210,7 +210,7 @@
                 android:layout_height="wrap_content"
                 android:autofillHints=""
                 android:hint="@string/text_label_password"
-                android:inputType="textVisiblePassword"
+                android:inputType="text|textPassword"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
