@@ -15,6 +15,7 @@ import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.databinding.FragmentMyorderBinding
 import com.example.getfixapplication.utils.ConstVal
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
+import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.Status
@@ -82,6 +83,7 @@ class MyOrderFragment : Fragment() {
                 val intent = Intent(activity, DetailOrderActivity::class.java)
                 intent.putExtra(ORDER_ID, data.orderId)
                 intent.putExtra(USER_LAYANAN, data.jenisOrder)
+                intent.putExtra(ORDER_STATUS, data.statusOrder)
                 startActivity(intent)
             }
         })

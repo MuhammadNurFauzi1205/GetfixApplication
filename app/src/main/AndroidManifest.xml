@@ -29,6 +29,9 @@
             android:name=".ui.booking.BookingActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.order.PayOrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.booking.PilihTeknisiActivity"
             android:exported="false" />
         <activity

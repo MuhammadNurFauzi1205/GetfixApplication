@@ -4,7 +4,6 @@ data class Teknisi (
         val nama: String,
         val daerah_user: String,
         val username: String,
-        val password: String,
         val email: String,
         val layanan: String,
         val foto: String,

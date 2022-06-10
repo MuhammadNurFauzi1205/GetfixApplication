@@ -19,6 +19,7 @@ object ConstVal {
     const val USERNAME = "EX_USERNAME"
     const val ORDER_ID  = "EX_ORDER_ID"
     const val TEKNISI_NAMA = "EX_NAMA_TEKNISI"
+    const val ORDER_STATUS = "EX_ORDER_STATUS"
     const val RC_SIGN_IN = 1001
     var PERMISSIONS = arrayOf(
         Manifest.permission.CAMERA,

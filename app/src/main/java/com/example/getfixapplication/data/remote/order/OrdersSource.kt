@@ -42,13 +42,15 @@ class OrdersSource @Inject constructor(
                 emit(ApiResult.loading())
                 val user = firestore.collection("users").document(userId).get().await()
                 user.get("username").toString()
-                var filtering = listOf<OrderListItem>()
+                val filtering: List<OrderListItem>
                 val response = ordersService.getAllOrders(user.data?.get("username") as String)
 
-                if (type == 0) {
-                    filtering = response.filter { it.statusOrder == "sedang dikerjakan" }
+                filtering = if (type == 0) {
+                    response.filter { it.statusOrder == "Pesanan Success" }
                 } else if (type == 1) {
-                    filtering = response.filter { it.statusOrder == "selesai" }
+                    response.filter { it.statusOrder == "Pesanan Success" }
+                } else {
+                    response
                 }
 
                 if (filtering.isNotEmpty()) {
@@ -72,7 +74,7 @@ class OrdersSource @Inject constructor(
                 val response = ordersService.getOrders(
                     orderId
                 )
-                if (response.id?.isEmpty() == false) {
+                if (response.userTeknisi?.isEmpty() == false) {
                     emit(ApiResult.success(response))
                 } else {
                     emit(ApiResult.error("Tidak Ada Data"))

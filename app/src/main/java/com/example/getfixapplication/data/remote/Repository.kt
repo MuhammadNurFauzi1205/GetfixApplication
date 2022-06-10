@@ -33,7 +33,7 @@ class Repository @Inject constructor
     }
 
     suspend fun getListTeknisiService(layanan: String, area: String): Flow<ApiResult<List<Teknisi>>> {
-        return profileSource.getListTeknsisi(layanan, area).flowOn(Dispatchers.Default)
+        return profileSource.getListTeknisi(layanan, area).flowOn(Dispatchers.Default)
     }
 
     suspend fun getListOrderItemService(userId: String, type: Int): Flow<ApiResult<List<OrderListItem>>> {

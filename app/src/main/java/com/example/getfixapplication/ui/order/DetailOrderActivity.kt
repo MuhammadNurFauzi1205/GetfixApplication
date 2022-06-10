@@ -7,6 +7,7 @@ import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
 
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
+import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.Status
@@ -67,13 +68,13 @@ class DetailOrderActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     showToast(this, "SUCCESS")
 
-                    intent.getStringExtra(USER_ID_SESSION)
+                    val stat = intent.getStringExtra(ORDER_STATUS)
 
                     binding.apply {
                         data.data?.apply {
                             tvDetailOrderId.text = orderId
-                            if (idTeknisi != null) {
-                                detailorderVM.getTeknisiService(idTeknisi).observe(this@DetailOrderActivity) { teknisi ->
+                            if (userTeknisi != null) {
+                                detailorderVM.getTeknisiService(userTeknisi).observe(this@DetailOrderActivity) { teknisi ->
                                     when (teknisi.status) {
                                         Status.LOADING -> {
                                             showToast(this@DetailOrderActivity, "Mengambil Data Teknisi")
@@ -89,8 +90,10 @@ class DetailOrderActivity : AppCompatActivity() {
                                     }
                                 }
                             }
+                            tvDescProcess.text = stat
                             tvAlamatLokasi.text = alamat
                             tvTanggal.text = jadwal
+                            tvJam.text = waktu
                             tvDetailOrderDeskripsiTugas.text = deskripsi
                         }
                     }
@@ -105,7 +108,4 @@ class DetailOrderActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
 }

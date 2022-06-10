@@ -32,9 +32,9 @@ class MyOrderAdapter :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (orderId, jenisOrder, _, statusOrder, _) = items[holder.adapterPosition]
+        val (_, jenisOrder, tanggal, _, _) = items[holder.adapterPosition]
         holder.binding.apply {
-            tvLabelInvoice.text = orderId
+            tvLabelInvoice.text = tanggal
             tvLaptop.text = jenisOrder
 
             holder.binding.button2.setOnClickListener {

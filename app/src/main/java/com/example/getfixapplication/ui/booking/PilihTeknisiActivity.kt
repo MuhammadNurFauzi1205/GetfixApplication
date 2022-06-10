@@ -48,7 +48,7 @@ class PilihTeknisiActivity : AppCompatActivity() {
 
         val waktu = intent.getStringExtra(USER_JADWAL)
         val wilayah = intent.getStringExtra(USER_WILAYAH)
-        val tanggal = intent.getStringExtra(USER_TANGGAL)
+        val jadwal = intent.getStringExtra(USER_TANGGAL)
         val descLayanan = intent.getStringExtra(USER_DESC)
         val jenisLayanan = intent.getStringExtra(USER_JENIS_TUGAS)
         val layanan = intent.getStringExtra(USER_LAYANAN)
@@ -68,7 +68,7 @@ class PilihTeknisiActivity : AppCompatActivity() {
                         teknisiAdapter.items = data.data!!
                         teknisiAdapter.setOnItemClickCallback(object : TeknisiAdapter.OnItemClickCallback {
                             override fun onItemClicked(data: Teknisi) {
-                                Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
+                                Log.e("data", "$waktu $wilayah $descLayanan $jenisLayanan $layanan")
                                 namaTeknisi = data.nama
                                 idTeknisi = data.username
                             }
@@ -85,14 +85,13 @@ class PilihTeknisiActivity : AppCompatActivity() {
 
             binding.btnPesanTeknisi.setOnClickListener {
                 val request = OrdersBody(
-                    tanggal,
-                    jenisLayanan,
-                    namaTeknisi,
+                    jadwal,
+                    layanan,
                     idTeknisi,
-                    descLayanan,
-                    "aku",
-                    userId,
+                    waktu,
                     wilayah,
+                    descLayanan,
+                    userId,
                     alamat
                 )
                 bookTeknisi(request)
@@ -110,7 +109,7 @@ class PilihTeknisiActivity : AppCompatActivity() {
                         showToast(this, data.data?.message.toString())
                         // move to pay activity
                         val pay = Intent(this, PayOrderActivity::class.java)
-                        pay.putExtra(ORDER_ID, data.data?.data?.map { it.orderId }.toString())
+                        pay.putExtra(ORDER_ID, data.data?.data?.pesanan?.id.toString())
                         startActivity(pay)
                     }
                     Status.ERROR -> {
@@ -119,6 +118,7 @@ class PilihTeknisiActivity : AppCompatActivity() {
                             getString(R.string.error_data),
                             data.message.toString()
                         )
+                        Log.e("Error", data.data?.message.toString())
                     }
                 }
             }

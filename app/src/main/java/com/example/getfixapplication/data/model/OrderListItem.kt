@@ -12,7 +12,7 @@ data class OrderListItem (
     @field:SerializedName("jadwal")
     val tanggalOrder: String,
 
-    @field:SerializedName("status")
+    @field:SerializedName("keterangan")
     val statusOrder: String,
 
     val fotoUser: String

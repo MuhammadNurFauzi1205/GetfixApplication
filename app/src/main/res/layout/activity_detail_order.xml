@@ -103,8 +103,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_process"
-                android:layout_width="90dp"
-                android:layout_height="28dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="35dp"
                 app:cardBackgroundColor="@color/purple"
                 app:cardCornerRadius="10dp"
@@ -114,19 +114,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp">
 
                     <TextView
                         android:id="@+id/tv_desc_process"
                         style="@style/TextSubHead"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/process"
-                        android:textSize="16sp"
-                         />
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -361,29 +361,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_tanggal" />
 
-            <TextView
-                android:id="@+id/tv_label_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/status"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_detail_order_deskripsi_tugas" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_status"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_label_status"/>
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_next"
                 style="@style/ButtonLogin"
@@ -398,8 +375,10 @@
                 app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_status" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_order_deskripsi_tugas"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/tv_detail_order_deskripsi_tugas"

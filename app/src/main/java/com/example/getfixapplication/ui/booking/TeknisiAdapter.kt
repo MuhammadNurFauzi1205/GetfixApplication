@@ -37,7 +37,7 @@ class TeknisiAdapter :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (nama, daerah, username, _, _, _, avatar, rating ) = items[holder.adapterPosition]
+        val (nama, daerah, username, _, _, avatar, rating ) = items[holder.adapterPosition]
         Glide.with(holder.itemView.context)
             .load(avatar)
             .circleCrop()
