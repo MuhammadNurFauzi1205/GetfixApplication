@@ -32,10 +32,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class PilihTeknisiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPilihTeknisiBinding
-
-    var namaTeknisi: String =
-        "Teknisi 1"
+    var namaTeknisi: String = ""
     private lateinit var idTeknisi: String
+    private val teknisiAdapter = TeknisiAdapter()
 
     private val bookVM: BookingViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
@@ -54,62 +53,74 @@ class PilihTeknisiActivity : AppCompatActivity() {
         val jenisLayanan = intent.getStringExtra(USER_JENIS_TUGAS)
         val layanan = intent.getStringExtra(USER_LAYANAN)
         val alamat = intent.getStringExtra(USER_ALAMAT)
-        val teknisiAdapter = TeknisiAdapter()
 
         binding.rvTeknisi.layoutManager = LinearLayoutManager(this)
         binding.rvTeknisi.adapter = teknisiAdapter
 
-        /*teknisiAdapter.items = data
-        teknisiAdapter.setOnItemClickCallback(object : TeknisiAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Teknisi) {
-                Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
-                namaTeknisi = data.nama
-                idTeknisi = data.id
-
-            }
-        })*/
-
-        binding.topAppBar.setNavigationOnClickListener { finish() }
-
-        binding.btnPesanTeknisi.setOnClickListener {
-            val request = OrdersBody(
-                tanggal,
-                jenisLayanan,
-                namaTeknisi,
-                idTeknisi,
-                descLayanan,
-                null,
-                userId,
-                wilayah,
-                alamat
-            )
-            bookTeknisi(request)
-        }
-
-    }
-
-    private fun bookTeknisi(addBook: OrdersBody) {
-        bookVM.addOrdersService(addBook).observe(this) { data ->
-            when (data.status) {
-                Status.LOADING -> {
-                    showToast(this, "LOADING")
-                }
-                Status.SUCCESS -> {
-                    showToast(this, data.data?.message.toString())
-                    // move to pay activity
-                    val pay = Intent(this, PayOrderActivity::class.java)
-                    pay.putExtra(ORDER_ID, data.data?.data?.map { it.orderId }.toString())
-                    startActivity(pay)
-                }
-                Status.ERROR -> {
-                    showPositiveAlert(
-                        this,
-                        getString(R.string.error_data),
-                        data.message.toString()
-                    )
+        if (layanan != null && wilayah != null) {
+            bookVM.getTeknisiService(layanan, wilayah).observe(this) { data ->
+                when (data.status) {
+                    Status.LOADING -> {
+                        Log.d("Teknisi", "Loading")
+                    }
+                    Status.SUCCESS -> {
+                        Log.d("Teknisi", "Success")
+                        teknisiAdapter.items = data.data!!
+                        teknisiAdapter.setOnItemClickCallback(object : TeknisiAdapter.OnItemClickCallback {
+                            override fun onItemClicked(data: Teknisi) {
+                                Log.e("data", "$waktu $wilayah $tanggal $descLayanan $jenisLayanan $layanan")
+                                namaTeknisi = data.nama
+                                idTeknisi = data.username
+                            }
+                        })
+                    }
+                    Status.ERROR -> {
+                        Log.d("Teknisi", "Error")
+                    }
                 }
             }
         }
-    }
 
+            binding.topAppBar.setNavigationOnClickListener { finish() }
+
+            binding.btnPesanTeknisi.setOnClickListener {
+                val request = OrdersBody(
+                    tanggal,
+                    jenisLayanan,
+                    namaTeknisi,
+                    idTeknisi,
+                    descLayanan,
+                    "aku",
+                    userId,
+                    wilayah,
+                    alamat
+                )
+                bookTeknisi(request)
+            }
+
+        }
+
+        private fun bookTeknisi(addBook: OrdersBody) {
+            bookVM.addOrdersService(addBook).observe(this) { data ->
+                when (data.status) {
+                    Status.LOADING -> {
+                        showToast(this, "LOADING")
+                    }
+                    Status.SUCCESS -> {
+                        showToast(this, data.data?.message.toString())
+                        // move to pay activity
+                        val pay = Intent(this, PayOrderActivity::class.java)
+                        pay.putExtra(ORDER_ID, data.data?.data?.map { it.orderId }.toString())
+                        startActivity(pay)
+                    }
+                    Status.ERROR -> {
+                        showPositiveAlert(
+                            this,
+                            getString(R.string.error_data),
+                            data.message.toString()
+                        )
+                    }
+                }
+            }
+        }
 }

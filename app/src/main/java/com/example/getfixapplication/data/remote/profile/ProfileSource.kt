@@ -45,4 +45,22 @@ class ProfileSource @Inject constructor (private val firestore: FirebaseFirestor
         }
     }
 
+    // Create get Teknisi
+    suspend fun getListTeknsisi(layanan : String, area : String): Flow<ApiResult<List<Teknisi>>> {
+        return flow {
+            try {
+                emit(ApiResult.loading())
+                val response = profileService.getTeknisiList(layanan, area)
+                if (response.isNotEmpty()) {
+                    emit(ApiResult.success(response))
+                } else {
+                    emit(ApiResult.error("User tidak ada"))
+                }
+            } catch (ex: Exception) {
+                emit(ApiResult.error(ex.message.toString()))
+            }
+        }
+    }
+
+
 }

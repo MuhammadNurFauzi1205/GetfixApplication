@@ -28,10 +28,10 @@ class BookingViewModel @Inject constructor(private val repository: Repository) :
         return result
     }
 
-    fun getTeknisiService(orderId: String): LiveData<ApiResult<Teknisi>> {
-        val result = MutableLiveData<ApiResult<Teknisi>>()
+    fun getTeknisiService(layanan : String, area : String): LiveData<ApiResult<List<Teknisi>>> {
+        val result = MutableLiveData<ApiResult<List<Teknisi>>>()
         viewModelScope.launch {
-            repository.getProfileTeknisiService(orderId).collect {
+            repository.getListTeknisiService(layanan, area).collect {
                 result.postValue(it)
             }
         }

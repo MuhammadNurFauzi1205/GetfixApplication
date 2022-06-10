@@ -2,7 +2,7 @@ package com.example.getfixapplication.data.model
 
 data class Teknisi (
         val nama: String,
-        val daerah: String,
+        val daerah_user: String,
         val username: String,
         val password: String,
         val email: String,

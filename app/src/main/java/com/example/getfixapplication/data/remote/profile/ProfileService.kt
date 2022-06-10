@@ -16,4 +16,9 @@ interface ProfileService {
         @Path("id") username :String
     ): Teknisi
 
+    @GET("teknisi/{layanan}/{area}")
+    suspend fun getTeknisiList(
+        @Path ("layanan") layanan :String,
+        @Path ("area") area :String
+    ): List<Teknisi>
 }

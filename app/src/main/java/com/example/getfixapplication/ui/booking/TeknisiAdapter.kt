@@ -37,7 +37,7 @@ class TeknisiAdapter :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (nama, alamat, id, avatar, rating) = items[holder.adapterPosition]
+        val (nama, daerah, username, _, _, _, avatar, rating ) = items[holder.adapterPosition]
         Glide.with(holder.itemView.context)
             .load(avatar)
             .circleCrop()
@@ -51,8 +51,8 @@ class TeknisiAdapter :
 
         holder.binding.apply {
             tvItemTeknisi.text = nama
-            tvItemId.text = StringBuilder("ID : ").append(id.toString())
-            tvItemArea.text = alamat
+            tvItemId.text = StringBuilder("@").append(username.toString())
+            tvItemArea.text = daerah
             ratingTeknisi.rating = rating.toFloat()
             if(selectedItemPosition == holder.adapterPosition) {
                 cvTeknisi.setCardBackgroundColor(Color.parseColor("#AB6DFD"))

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
@@ -22,7 +23,7 @@ class FinishorderFragment : Fragment() {
 
     private lateinit var binding: FragmentFinishorderBinding
     private val finishOrderAdapter = FinishOrderAdapter()
-    private val orderListItemVM: ListOrderViewModel by viewModels()
+    private val orderListItemVM: ListOrderViewModel by activityViewModels()
 
     private lateinit var sharedPreferences : SharedPreferences
 
