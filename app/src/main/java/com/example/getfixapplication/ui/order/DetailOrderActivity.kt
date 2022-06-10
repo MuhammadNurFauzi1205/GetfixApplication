@@ -1,10 +1,12 @@
 package com.example.getfixapplication.ui.order
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
+import com.example.getfixapplication.utils.ConstVal
 
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
@@ -20,12 +22,16 @@ class DetailOrderActivity : AppCompatActivity() {
 
     private val detailorderVM: DetailOrderViewModel by viewModels()
     private lateinit var binding: ActivityDetailOrderBinding
+    private lateinit var sharedPreferences : SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
+        val token = sharedPreferences.getString(USER_ID_SESSION, null)
 
         val orderId = intent.getStringExtra(ORDER_ID)
 
@@ -52,15 +58,15 @@ class DetailOrderActivity : AppCompatActivity() {
             }
         }
 
-        if (orderId != null) {
-            getData(orderId)
+        if (orderId != null && token != null) {
+            getData(token, orderId)
         }
 
 
     }
 
-    private fun getData(orderId: String) {
-        detailorderVM.getOrdersService(orderId).observe(this) { data ->
+    private fun getData(token: String, orderId: String) {
+        detailorderVM.getOrdersService(token, orderId).observe(this) { data ->
             when (data.status) {
                 Status.LOADING -> {
                     showToast(this, "LOADING")

@@ -30,10 +30,10 @@
             android:exported="false" />
         <activity
             android:name=".ui.order.PayOrderActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.booking.PilihTeknisiActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.order.DetailOrderActivity"
             android:exported="false" />
@@ -46,13 +46,14 @@
             android:label="@string/title_activity_homee" />
         <activity
             android:name=".ui.auth.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.auth.register.SignupActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.splash.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

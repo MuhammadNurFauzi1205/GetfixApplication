@@ -13,6 +13,7 @@ import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
 import com.example.getfixapplication.utils.ConstVal.USER_JENIS_TUGAS
 import com.example.getfixapplication.utils.ConstVal.USER_WILAYAH
+import com.example.getfixapplication.utils.showToast
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -34,9 +35,7 @@ class BookingActivity : AppCompatActivity() {
         val adapterDropdownKota = ArrayAdapter(this, R.layout.drowdown_item, dataKota)
         binding.alamatDrop.setAdapter(adapterDropdownKota)
 
-        val layanan = intent.getStringExtra(USER_LAYANAN)
-
-        when (layanan) {
+        when (intent.getStringExtra(USER_LAYANAN)) {
             "Laptop" -> {
                 binding.jenislayanan.text = getString(R.string.teknisi_laptop)
                 binding.ivBookingLayanan.setImageResource(R.drawable.laptop)
@@ -90,20 +89,25 @@ class BookingActivity : AppCompatActivity() {
 
         //move from booking to pilih teknisi
         binding.btnNext.setOnClickListener {
+            // check if field is empty
             val wilayah = binding.alamatDrop.text.toString()
             val descLayanan = binding.descTugas.text.toString()
             val jenisTugas = binding.jenisTugas.text.toString()
             val alamat = binding.edtBookingAlamat.editText?.text.toString()
 
-            val intent = Intent(this, PilihTeknisiActivity::class.java)
-            intent.putExtra(USER_DESC, descLayanan)
-            intent.putExtra(USER_TANGGAL, binding.tvTanggal.text)
-            intent.putExtra(USER_JADWAL, binding.tvWaktu.text)
-            intent.putExtra(USER_LAYANAN, binding.jenislayanan.text)
-            intent.putExtra(USER_JENIS_TUGAS, jenisTugas)
-            intent.putExtra(USER_WILAYAH, wilayah)
-            intent.putExtra(USER_ALAMAT, alamat)
-            startActivity(intent)
+            if (binding.edtAlamatAnda.text.isEmpty() || binding.descTugas.text.isNullOrEmpty() || jenisTugas == "Pilih Layanan" || wilayah == "Pilih Area" || binding.tvTanggal.text == "Tanggal" || binding.tvWaktu.text == "Waktu") {
+                showToast(this, "Lengkapi Data")
+            } else {
+                val intent = Intent(this, PilihTeknisiActivity::class.java)
+                intent.putExtra(USER_DESC, descLayanan)
+                intent.putExtra(USER_TANGGAL, binding.tvTanggal.text)
+                intent.putExtra(USER_JADWAL, binding.tvWaktu.text)
+                intent.putExtra(USER_LAYANAN, binding.jenislayanan.text)
+                intent.putExtra(USER_JENIS_TUGAS, jenisTugas)
+                intent.putExtra(USER_WILAYAH, wilayah)
+                intent.putExtra(USER_ALAMAT, alamat)
+                startActivity(intent)
+            }
         }
 
     }

@@ -42,8 +42,9 @@ class OrdersSource @Inject constructor(
                 emit(ApiResult.loading())
                 val user = firestore.collection("users").document(userId).get().await()
                 user.get("username").toString()
+                val getUser = user.data?.get("username") as String
                 val filtering: List<OrderListItem>
-                val response = ordersService.getAllOrders(user.data?.get("username") as String)
+                val response = ordersService.getAllOrders(getUser)
 
                 filtering = if (type == 0) {
                     response.filter { it.statusOrder == "Pesanan Success" }
@@ -66,12 +67,14 @@ class OrdersSource @Inject constructor(
 
     //get orders by id
     suspend fun getOrdersId(
+        token: String,
         orderId: String
     ): Flow<ApiResult<OrdersBody>> {
         return flow {
             try {
                 emit(ApiResult.loading())
                 val response = ordersService.getOrders(
+                    BearerToken = "Bearer $token",
                     orderId
                 )
                 if (response.userTeknisi?.isEmpty() == false) {

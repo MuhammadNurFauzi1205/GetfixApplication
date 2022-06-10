@@ -20,10 +20,10 @@ import javax.inject.Inject
 class DetailOrderViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
 
-    fun getOrdersService(orderId: String): LiveData<ApiResult<OrdersBody>> {
+    fun getOrdersService(token: String, orderId: String): LiveData<ApiResult<OrdersBody>> {
         val result = MutableLiveData<ApiResult<OrdersBody>>()
         viewModelScope.launch {
-            repository.getOrderService(orderId).collect {
+            repository.getOrderService(token, orderId).collect {
                 result.postValue(it)
             }
         }

@@ -15,7 +15,7 @@ import kotlin.properties.Delegates
 class TeknisiAdapter :
     RecyclerView.Adapter<TeknisiAdapter.ListViewHolder>(), AutoUpdatableAdapter {
 
-    private var selectedItemPosition: Int = 0
+    private var selectedItemPosition: Int ?= null
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {

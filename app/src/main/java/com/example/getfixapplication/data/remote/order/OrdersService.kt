@@ -12,6 +12,7 @@ interface OrdersService {
 
     @GET("orders/{id}")
     suspend fun getOrders(
+        @Header("Authorization") BearerToken: String,
         @Path ("id") id :String
     ): OrdersBody
 

@@ -40,7 +40,7 @@ class Repository @Inject constructor
         return ordersSource.getListOrders(userId, type).flowOn(Dispatchers.Default)
     }
 
-    suspend fun getOrderService(orderId: String): Flow<ApiResult<OrdersBody>> {
-        return ordersSource.getOrdersId(orderId).flowOn(Dispatchers.Default)
+    suspend fun getOrderService(token: String, orderId: String): Flow<ApiResult<OrdersBody>> {
+        return ordersSource.getOrdersId(token, orderId).flowOn(Dispatchers.Default)
     }
 }

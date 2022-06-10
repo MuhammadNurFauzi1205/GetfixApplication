@@ -33,16 +33,19 @@ class PilihTeknisiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPilihTeknisiBinding
     var namaTeknisi: String = ""
-    private lateinit var idTeknisi: String
     private val teknisiAdapter = TeknisiAdapter()
 
     private val bookVM: BookingViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPilihTeknisiBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var idTeknisi: String? = null
         sharedPreferences = getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
         val userId = sharedPreferences.getString(USERNAME, null)
 
@@ -84,7 +87,10 @@ class PilihTeknisiActivity : AppCompatActivity() {
             binding.topAppBar.setNavigationOnClickListener { finish() }
 
             binding.btnPesanTeknisi.setOnClickListener {
-                val request = OrdersBody(
+                if (idTeknisi == null) {
+                    showToast(this, "Pilih Teknisi Terlebih Dahulu")
+                } else {
+                    val request = OrdersBody(
                     jadwal,
                     layanan,
                     idTeknisi,
@@ -94,12 +100,13 @@ class PilihTeknisiActivity : AppCompatActivity() {
                     userId,
                     alamat
                 )
-                bookTeknisi(request)
+                bookTeknisi(request, jadwal, layanan)
+                }
             }
 
         }
 
-        private fun bookTeknisi(addBook: OrdersBody) {
+        private fun bookTeknisi(addBook: OrdersBody, jadwal: String?, layanan: String?) {
             bookVM.addOrdersService(addBook).observe(this) { data ->
                 when (data.status) {
                     Status.LOADING -> {
@@ -107,9 +114,12 @@ class PilihTeknisiActivity : AppCompatActivity() {
                     }
                     Status.SUCCESS -> {
                         showToast(this, data.data?.message.toString())
+                        val id = data.data?.data?.pesanan?.id.toString()
                         // move to pay activity
                         val pay = Intent(this, PayOrderActivity::class.java)
-                        pay.putExtra(ORDER_ID, data.data?.data?.pesanan?.id.toString())
+                        pay.putExtra(ORDER_ID, id)
+                        pay.putExtra(USER_TANGGAL, jadwal)
+                        pay.putExtra(USER_LAYANAN, layanan)
                         startActivity(pay)
                     }
                     Status.ERROR -> {

@@ -127,6 +127,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/alamat2">
 
                         <EditText
+                            android:id="@+id/edt_alamat_anda"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:autofillHints=""
