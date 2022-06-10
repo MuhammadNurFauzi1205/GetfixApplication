@@ -17,6 +17,7 @@
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/button_pressed.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/button_style1.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/default_dot.xml" value="0.143" />
+        <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/edit_text_shadow.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_add.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1425" />
@@ -24,6 +25,7 @@
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_menu.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_notif.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_search.xml" value="0.1425" />
+        <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/outline_send_24.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/roundedborder.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/selected_dot.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/tab_selector.xml" value="0.143" />
@@ -50,6 +52,7 @@
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/fragment_profile.xml" value="0.209375" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/item_chat.xml" value="0.209375" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/item_finish_order.xml" value="0.1" />
+        <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/item_massage.xml" value="0.1718683197947841" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/item_my_order.xml" value="0.1" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/item_notif.xml" value="0.1" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/item_teknisi.xml" value="0.25" />
