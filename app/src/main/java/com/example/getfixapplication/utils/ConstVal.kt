@@ -14,10 +14,12 @@ object ConstVal {
     const val USER_WILAYAH = "EX_WILAYAH"
     const val USER_ALAMAT = "EX_STATUS"
     const val USER_ID_SESSION = "EX_ID_SESSION"
+    const val UID_TOKEN = "EX_UID"
     const val TEKNISI_RATING = "EX_RATING"
     const val TEKNISI_FOTO = "EX_TEKNISI_FOTO"
     const val USERNAME = "EX_USERNAME"
     const val ORDER_ID  = "EX_ORDER_ID"
+    const val ORDER_ID_1  = "EX_ORDER_ID_1"
     const val TEKNISI_NAMA = "EX_NAMA_TEKNISI"
     const val ORDER_STATUS = "EX_ORDER_STATUS"
     const val RC_SIGN_IN = 1001

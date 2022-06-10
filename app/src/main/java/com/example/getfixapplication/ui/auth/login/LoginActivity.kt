@@ -10,6 +10,7 @@ import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.NavigationHomeActivity
 import com.example.getfixapplication.utils.ConstVal.RC_SIGN_IN
+import com.example.getfixapplication.utils.ConstVal.UID_TOKEN
 import com.example.getfixapplication.utils.ConstVal.USERNAME
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.hideKeyboard
@@ -24,6 +25,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.tasks.await
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -32,8 +34,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     val WebClient = "1063081921561-nrcop7njimnvlf14njcjre8mhuueoqsq.apps.googleusercontent.com"
-    val db = Firebase.firestore
 
+    val db = Firebase.firestore
     lateinit var google: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,58 +49,64 @@ class LoginActivity : AppCompatActivity() {
         google = binding.google
         auth = Firebase.auth
 
-        binding.btnLogin.setOnClickListener {
-            hideKeyboard()
-
-            username.editText?.let {
-                if (it.text.isNullOrEmpty()) {
-                    username.editText!!.error = "Please enter your username"
-                    return@setOnClickListener
-                }
-            }
-            // Check if password less 6 characters
-            passwordd.editText?.let {
-                if (it.text.isNullOrEmpty()) {
-                    passwordd.editText!!.error = "Please enter your password"
-                    return@setOnClickListener
-                }
-                if (it.text.toString().length < 6) {
-                    passwordd.editText!!.error = "Password must be at least 6 characters"
-                    return@setOnClickListener
-                }
-            }
-
-            val user = db.collection("users")
-            user.get()
-                user.whereEqualTo("username", username.editText?.text.toString()).whereEqualTo("password",passwordd.editText?.text.toString())
-                .get()
-                    .addOnSuccessListener { documents ->
-                        for (document in documents) {
-                            showToast(this,"Login Berhasil")
-                            val sharedPreferences =
-                                getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
-                            val editor = sharedPreferences.edit()
-                            editor.putString(USER_ID_SESSION, document.id)
-                            editor.putString(USERNAME, document.data["username"].toString())
-                            editor.apply()
-                            val two = Intent(this@LoginActivity, NavigationHomeActivity::class.java)
-                            startActivity(two)
-                            finish()
-                        }
-                    }
-                    .addOnFailureListener {
-                        showToast(this, "Username atau password salah")
-                    }
-        }
-
         val googlesignin = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(WebClient)
             .requestEmail()
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(this, googlesignin)
-
         auth = FirebaseAuth.getInstance()
+        val sharedPreferences =
+            getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+
+        binding.btnLogin.setOnClickListener {
+            hideKeyboard()
+
+            username.editText?.let {
+                if (it.text.isNullOrEmpty()) {
+                    username.editText!!.error = "Masukan username anda"
+                    return@setOnClickListener
+                }
+            }
+            // Check if password less 6 characters
+            passwordd.editText?.let {
+                if (it.text.isNullOrEmpty()) {
+                    passwordd.editText!!.error = "Masukan password anda"
+                    return@setOnClickListener
+                }
+                if (it.text.toString().length < 6) {
+                    passwordd.editText!!.error = "Password harus lebih dari 6 karakter"
+                    return@setOnClickListener
+                }
+            }
+
+            val dbUser = db.collection("users")
+
+            auth.signInWithEmailAndPassword(username.editText?.text.toString(), passwordd.editText?.text.toString())
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        val uid = user?.uid
+                        editor.putString(USER_ID_SESSION, uid)
+                        if (uid != null) {
+                            dbUser.document(uid).get().addOnSuccessListener {
+                                val name = it.data?.get("username")
+                                editor.putString(USERNAME, name.toString())
+                            }
+                        }
+                        editor.apply()
+                        val two = Intent(this@LoginActivity, NavigationHomeActivity::class.java)
+                        startActivity(two)
+                        finish()
+                    } else {
+                        task.exception?.message?.let {
+                            showToast(this, it)
+                        }
+                    }
+                }
+        }
 
         binding.google.setOnClickListener {
             GoogleSign()
@@ -149,30 +157,11 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, NavigationHomeActivity::class.java)
                     startActivity(intent)
                     finish()
-//                    val user = auth.currentUser
-//                    updateUI(user)
                 }
                 else {
                     Log.w(TAG, "signinwithcredit:gagal", task.exception)
-//                    updateUI(null)
                 }
             }
     }
-
-//    private fun updateUI(user: FirebaseUser?) {
-//        if (user != null){
-//            val intent = Intent(applicationContext, HomeActivity::class.java)
-//            intent.putExtra(EXTRA_NAME, user.displayName)
-//            startActivity(intent)
-//            finish()
-//        }
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        val currentUser = auth.currentUser
-//        updateUI(currentUser)
-//    }
 }
 
