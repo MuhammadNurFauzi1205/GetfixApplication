@@ -39,6 +39,7 @@ class PayOrderActivity : AppCompatActivity() {
                 intent.putExtra(ORDER_ID, orderId)
                 intent.putExtra(ORDER_STATUS, ket)
                 startActivity(intent)
+                finish()
             }
         }
 

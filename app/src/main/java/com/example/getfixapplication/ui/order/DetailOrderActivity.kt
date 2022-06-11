@@ -8,15 +8,12 @@ import androidx.core.view.isVisible
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.remote.order.StatusOrderBody
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
-import com.example.getfixapplication.utils.ConstVal
+import com.example.getfixapplication.utils.*
 
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
-import com.example.getfixapplication.utils.Status
-import com.example.getfixapplication.utils.showPositiveAlert
-import com.example.getfixapplication.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,6 +31,8 @@ class DetailOrderActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)
         val token = sharedPreferences.getString(USER_ID_SESSION, null)
+
+        val loading = showLoading(this)
 
         val orderId = intent.getStringExtra(ORDER_ID)
         binding.btnNext.isVisible = intent.getStringExtra(ORDER_STATUS) != "Pesanan Selesai"
@@ -74,17 +73,14 @@ class DetailOrderActivity : AppCompatActivity() {
                 detailorderVM.updateStatusOrderService(req, orderId).observe(this) {
                     when (it.status) {
                         Status.LOADING -> {
-                            showToast(this,  "Loading...")
+                            loading.show()
                         }
                         Status.SUCCESS -> {
-                            showPositiveAlert(
-                                this,
-                                "Pesanan Selesai",
-                                "Pesanan anda telah selesai, silahkan menunggu konfirmasi dari teknisi"
-                            )
+                            loading.dismiss()
                             finish()
                         }
                         Status.ERROR -> {
+                            loading.dismiss()
                             showToast(this, it.message.toString())
                         }
                     }
@@ -96,16 +92,15 @@ class DetailOrderActivity : AppCompatActivity() {
     }
 
     private fun getData(token: String, orderId: String) {
+        val loading = showLoading(this)
         detailorderVM.getOrdersService(token, orderId).observe(this) { data ->
             when (data.status) {
                 Status.LOADING -> {
-                    showToast(this, "LOADING")
+                    loading.show()
                 }
                 Status.SUCCESS -> {
-                    showToast(this, "SUCCESS")
-
+                    loading.dismiss()
                     val stat = intent.getStringExtra(ORDER_STATUS)
-
                     binding.apply {
                         data.data?.apply {
                             tvDetailOrderId.text = orderId
@@ -113,7 +108,6 @@ class DetailOrderActivity : AppCompatActivity() {
                                 detailorderVM.getTeknisiService(userTeknisi).observe(this@DetailOrderActivity) { teknisi ->
                                     when (teknisi.status) {
                                         Status.LOADING -> {
-                                            showToast(this@DetailOrderActivity, "Mengambil Data Teknisi")
                                         }
                                         Status.SUCCESS -> {
                                             tvDescNama.text = teknisi.data?.nama
@@ -121,6 +115,7 @@ class DetailOrderActivity : AppCompatActivity() {
                                             tvDetailorderCountRating.text = teknisi.data?.rating.toString()
                                         }
                                         Status.ERROR -> {
+                                            loading.dismiss()
                                             showToast(this@DetailOrderActivity, "Error Mengambil Data Teknisi")
                                         }
                                     }
@@ -135,6 +130,7 @@ class DetailOrderActivity : AppCompatActivity() {
                     }
                 }
                 Status.ERROR -> {
+                    loading.dismiss()
                     showPositiveAlert(
                         this,
                         getString(R.string.error_data),

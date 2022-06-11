@@ -25,6 +25,7 @@ import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
 import com.example.getfixapplication.utils.ConstVal.USER_JENIS_TUGAS
 import com.example.getfixapplication.utils.ConstVal.USER_WILAYAH
 import com.example.getfixapplication.utils.Status
+import com.example.getfixapplication.utils.showLoading
 import com.example.getfixapplication.utils.showPositiveAlert
 import com.example.getfixapplication.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,6 +59,8 @@ class PilihTeknisiActivity : AppCompatActivity() {
         val layanan = intent.getStringExtra(USER_LAYANAN)
         val alamat = intent.getStringExtra(USER_ALAMAT)
 
+        val loading = showLoading(this)
+
         binding.rvTeknisi.layoutManager = LinearLayoutManager(this)
         binding.rvTeknisi.adapter = teknisiAdapter
 
@@ -65,10 +68,10 @@ class PilihTeknisiActivity : AppCompatActivity() {
             bookVM.getTeknisiService(layanan, wilayah).observe(this) { data ->
                 when (data.status) {
                     Status.LOADING -> {
-                        Log.d("Teknisi", "Loading")
+                        loading.show()
                     }
                     Status.SUCCESS -> {
-                        Log.d("Teknisi", "Success")
+                        loading.dismiss()
                         teknisiAdapter.items = data.data!!
                         teknisiAdapter.setOnItemClickCallback(object : TeknisiAdapter.OnItemClickCallback {
                             override fun onItemClicked(data: Teknisi) {
@@ -79,7 +82,8 @@ class PilihTeknisiActivity : AppCompatActivity() {
                         })
                     }
                     Status.ERROR -> {
-                        Log.d("Teknisi", "Error")
+                        loading.dismiss()
+                        showPositiveAlert(this, "Ups!! Error", data.message!!)
                     }
                 }
             }
@@ -108,13 +112,14 @@ class PilihTeknisiActivity : AppCompatActivity() {
         }
 
         private fun bookTeknisi(addBook: OrdersBody, jadwal: String?, layanan: String?) {
+            val loading = showLoading(this)
             bookVM.addOrdersService(addBook).observe(this) { data ->
                 when (data.status) {
                     Status.LOADING -> {
-                        showToast(this, "LOADING")
+                        loading.show()
                     }
                     Status.SUCCESS -> {
-                        showToast(this, data.data?.message.toString())
+                        loading.dismiss()
                         val id = data.data?.data?.pesanan?.id.toString()
                         val ket = data.data?.data?.pesanan?.keterangan.toString()
                         // move to pay activity
@@ -124,14 +129,15 @@ class PilihTeknisiActivity : AppCompatActivity() {
                         pay.putExtra(USER_TANGGAL, jadwal)
                         pay.putExtra(USER_LAYANAN, layanan)
                         startActivity(pay)
+                        finish()
                     }
                     Status.ERROR -> {
+                        loading.dismiss()
                         showPositiveAlert(
                             this,
                             getString(R.string.error_data),
                             data.message.toString()
                         )
-                        Log.e("Error", data.data?.message.toString())
                     }
                 }
             }

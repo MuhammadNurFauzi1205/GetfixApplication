@@ -107,6 +107,7 @@ class BookingActivity : AppCompatActivity() {
                 intent.putExtra(USER_WILAYAH, wilayah)
                 intent.putExtra(USER_ALAMAT, alamat)
                 startActivity(intent)
+                finish()
             }
         }
 
