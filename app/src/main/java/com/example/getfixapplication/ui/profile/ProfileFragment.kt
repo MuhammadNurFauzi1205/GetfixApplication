@@ -13,6 +13,8 @@ import com.example.getfixapplication.databinding.FragmentProfileBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +23,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
-
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +35,9 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        auth = Firebase.auth
+        auth = FirebaseAuth.getInstance()
         sharedPreferences = activity?.getSharedPreferences(USER_ID_SESSION, MODE_PRIVATE)!!
         val userId = sharedPreferences.getString(USER_ID_SESSION, null)
         if (userId != null) {
@@ -43,6 +48,7 @@ class ProfileFragment : Fragment() {
         }
         binding.cvProfileLogout.setOnClickListener {
             sharedPreferences.edit().clear().apply()
+            auth.signOut()
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
             activity?.finish()
