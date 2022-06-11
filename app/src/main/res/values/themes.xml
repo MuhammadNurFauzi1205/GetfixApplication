@@ -21,6 +21,17 @@
 
     </style>
 
+    <style name="DialogTheme">
+
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
     <style name="TextDesc">
         <item name="font">@font/roboto</item>
         <item name="fontFamily">@font/roboto</item>

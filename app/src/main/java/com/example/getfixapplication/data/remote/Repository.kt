@@ -3,9 +3,7 @@ package com.example.getfixapplication.data.remote
 import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.data.model.Teknisi
 import com.example.getfixapplication.data.model.User
-import com.example.getfixapplication.data.remote.order.OrdersBody
-import com.example.getfixapplication.data.remote.order.AddOrdersResponse
-import com.example.getfixapplication.data.remote.order.OrdersSource
+import com.example.getfixapplication.data.remote.order.*
 import com.example.getfixapplication.data.remote.profile.ProfileSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -42,5 +40,9 @@ class Repository @Inject constructor
 
     suspend fun getOrderService(token: String, orderId: String): Flow<ApiResult<OrdersBody>> {
         return ordersSource.getOrdersId(token, orderId).flowOn(Dispatchers.Default)
+    }
+
+    suspend fun updateStatusOrderService(status: StatusOrderBody, orderId: String): Flow<ApiResult<StatusOrderResponse>> {
+        return ordersSource.updateStatusOrders(status, orderId).flowOn(Dispatchers.Default)
     }
 }

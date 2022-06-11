@@ -1,9 +1,12 @@
 package com.example.getfixapplication.ui.order
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.githubsocial.util.AutoUpdatableAdapter
+import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.databinding.ItemMyOrderBinding
 import kotlin.properties.Delegates
@@ -32,11 +35,14 @@ class FinishOrderAdapter :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (orderId, jenisOrder, _, statusOrder, _) = items[holder.adapterPosition]
+        val (orderId, jenisOrder, tanggal, statusOrder, _) = items[holder.adapterPosition]
         holder.binding.apply {
-            tvLabelInvoice.text = orderId
+            tvLabelInvoice.text = tanggal
             tvLaptop.text = jenisOrder
-
+            button2.text = "Detail Pesanan"
+            imageView2.setImageDrawable(getDrawable(holder.itemView.context,R.drawable.bullet_green))
+            cardView1.setCardBackgroundColor(Color.parseColor("#EEFFF0"))
+            button2.setBackgroundColor(Color.parseColor("#FF00C853"))
             holder.binding.button2.setOnClickListener {
                 onItemClickCallback.onItemClicked(items[holder.adapterPosition])
             }

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/drawable/bullet_green.xml" value="0.1075" />
+        <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/drawable/bullet_purple.xml" value="0.1075" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/activity_booking.xml" value="0.22" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/activity_detail_order.xml" value="0.25" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/activity_home.xml" value="0.25" />
@@ -15,9 +17,11 @@
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/bottom_sheet_dialog_layout.xml" value="0.25" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/fragment_chat.xml" value="0.20164609053497942" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/fragment_dashboard.xml" value="0.16417272338606242" />
-        <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/fragment_finishorder.xml" value="0.16417272338606242" />
+        <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/fragment_finishorder.xml" value="0.3282051282051282" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/fragment_myorder.xml" value="0.16417272338606242" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/item_chat.xml" value="0.25" />
+        <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/item_my_order.xml" value="0.15391192817443353" />
+        <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/loading_layout.xml" value="0.1633176571184267" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16417272338606242" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/menu/menu_top_notif.xml" value="0.1633176571184267" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/default_dot.xml" value="0.143" />

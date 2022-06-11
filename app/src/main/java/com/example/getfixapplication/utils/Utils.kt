@@ -138,3 +138,11 @@ fun hideSystemKeyboard(context: Context, view: View) {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
+
+// show loading layout when api call is in progress
+fun showLoading(context: Context): AlertDialog {
+    return AlertDialog.Builder(context, R.style.DialogTheme)
+        .setView(R.layout.loading_layout)
+        .setCancelable(false)
+        .create()
+}

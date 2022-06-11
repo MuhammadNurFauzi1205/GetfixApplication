@@ -21,4 +21,10 @@ interface OrdersService {
         @Path ("id") username :String
     ): List<OrderListItem>
 
+    @PUT("orders/update/{id}")
+    suspend fun updateStatusOrder(
+        @Body statusOrderBody: StatusOrderBody,
+        @Path ("id") id :String
+    ) : StatusOrderResponse
+
 }

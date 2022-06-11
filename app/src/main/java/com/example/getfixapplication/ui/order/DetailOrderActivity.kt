@@ -4,7 +4,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.getfixapplication.R
+import com.example.getfixapplication.data.remote.order.StatusOrderBody
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
 import com.example.getfixapplication.utils.ConstVal
 
@@ -34,6 +36,7 @@ class DetailOrderActivity : AppCompatActivity() {
         val token = sharedPreferences.getString(USER_ID_SESSION, null)
 
         val orderId = intent.getStringExtra(ORDER_ID)
+        binding.btnNext.isVisible = intent.getStringExtra(ORDER_STATUS) != "Pesanan Selesai"
 
         binding.topDetailOrder.setNavigationOnClickListener {
             finish()
@@ -60,6 +63,33 @@ class DetailOrderActivity : AppCompatActivity() {
 
         if (orderId != null && token != null) {
             getData(token, orderId)
+        }
+
+        val req = StatusOrderBody(
+            keterangan = "Pesanan Selesai"
+        )
+
+        binding.btnNext.setOnClickListener {
+            if (orderId != null) {
+                detailorderVM.updateStatusOrderService(req, orderId).observe(this) {
+                    when (it.status) {
+                        Status.LOADING -> {
+                            showToast(this,  "Loading...")
+                        }
+                        Status.SUCCESS -> {
+                            showPositiveAlert(
+                                this,
+                                "Pesanan Selesai",
+                                "Pesanan anda telah selesai, silahkan menunggu konfirmasi dari teknisi"
+                            )
+                            finish()
+                        }
+                        Status.ERROR -> {
+                            showToast(this, it.message.toString())
+                        }
+                    }
+                }
+            }
         }
 
 

@@ -10,6 +10,8 @@ import com.example.getfixapplication.data.remote.ApiResult
 import com.example.getfixapplication.data.remote.Repository
 import com.example.getfixapplication.data.remote.order.AddOrdersResponse
 import com.example.getfixapplication.data.remote.order.OrdersBody
+import com.example.getfixapplication.data.remote.order.StatusOrderBody
+import com.example.getfixapplication.data.remote.order.StatusOrderResponse
 import com.example.getfixapplication.data.remote.profile.TeknisiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -34,6 +36,16 @@ class DetailOrderViewModel @Inject constructor(private val repository: Repositor
         val result = MutableLiveData<ApiResult<Teknisi>>()
         viewModelScope.launch {
             repository.getProfileTeknisiService(orderId).collect {
+                result.postValue(it)
+            }
+        }
+        return result
+    }
+
+    fun updateStatusOrderService(status: StatusOrderBody, orderId: String): LiveData<ApiResult<StatusOrderResponse>> {
+        val result = MutableLiveData<ApiResult<StatusOrderResponse>>()
+        viewModelScope.launch {
+            repository.updateStatusOrderService(status, orderId).collect {
                 result.postValue(it)
             }
         }

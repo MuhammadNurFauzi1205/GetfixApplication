@@ -42,14 +42,13 @@ class OrdersSource @Inject constructor(
                 emit(ApiResult.loading())
                 val user = firestore.collection("users").document(userId).get().await()
                 user.get("username").toString()
-                val getUser = user.data?.get("username") as String
                 val filtering: List<OrderListItem>
-                val response = ordersService.getAllOrders(getUser)
+                val response = ordersService.getAllOrders(user.data?.get("username") as String)
 
                 filtering = if (type == 0) {
                     response.filter { it.statusOrder == "Pesanan Success" }
                 } else if (type == 1) {
-                    response.filter { it.statusOrder == "Pesanan Success" }
+                    response.filter { it.statusOrder == "Pesanan Selesai" }
                 } else {
                     response
                 }
@@ -87,4 +86,28 @@ class OrdersSource @Inject constructor(
             }
         }
     }
+
+    //update status orders
+    suspend fun updateStatusOrders(
+        status: StatusOrderBody,
+        orderId: String
+    ): Flow<ApiResult<StatusOrderResponse>> {
+        return flow {
+            try {
+                emit(ApiResult.loading())
+                val response = ordersService.updateStatusOrder(
+                    status,
+                    orderId
+                )
+                if (!response.message.isNullOrEmpty()) {
+                    emit(ApiResult.success(response))
+                } else {
+                    emit(ApiResult.error(response.message))
+                }
+            } catch (ex: Exception) {
+                emit(ApiResult.error(ex.message.toString()))
+            }
+        }
+    }
+
 }

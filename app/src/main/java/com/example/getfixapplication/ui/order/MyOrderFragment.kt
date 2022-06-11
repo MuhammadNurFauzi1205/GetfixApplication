@@ -13,14 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.databinding.FragmentMyorderBinding
-import com.example.getfixapplication.utils.ConstVal
+import com.example.getfixapplication.utils.*
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
-import com.example.getfixapplication.utils.Status
-import com.example.getfixapplication.utils.showPositiveAlert
-import com.example.getfixapplication.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,6 +43,7 @@ class MyOrderFragment : Fragment() {
     }
 
     private fun getData() {
+        val loading = showLoading(context!!)
         binding.rvMyOrder.adapter = myOrderAdapter
         binding.rvMyOrder.layoutManager = LinearLayoutManager(context)
         sharedPreferences = activity?.getSharedPreferences(
@@ -58,13 +56,14 @@ class MyOrderFragment : Fragment() {
             orderListItemVM.getOrdersService(userId, 0).observe(viewLifecycleOwner) { data ->
                 when (data.status) {
                     Status.LOADING -> {
-                        showToast(requireContext(), "LOADING")
+                        loading.show()
                     }
                     Status.SUCCESS -> {
-                        showToast(requireContext(), data.message.toString())
+                        loading.dismiss()
                         setData(data.data!!)
                     }
                     Status.ERROR -> {
+                        loading.dismiss()
                         showPositiveAlert(
                             requireContext(),
                             getString(R.string.error_data),

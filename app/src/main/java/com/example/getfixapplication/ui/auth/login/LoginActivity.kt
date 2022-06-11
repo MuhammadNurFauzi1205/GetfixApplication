@@ -10,7 +10,6 @@ import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.NavigationHomeActivity
 import com.example.getfixapplication.utils.ConstVal.RC_SIGN_IN
-import com.example.getfixapplication.utils.ConstVal.UID_TOKEN
 import com.example.getfixapplication.utils.ConstVal.USERNAME
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.hideKeyboard
@@ -66,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
 
             username.editText?.let {
                 if (it.text.isNullOrEmpty()) {
-                    username.editText!!.error = "Masukan username anda"
+                    username.editText!!.error = "Masukan email anda"
                     return@setOnClickListener
                 }
             }
@@ -84,16 +83,20 @@ class LoginActivity : AppCompatActivity() {
 
             val dbUser = db.collection("users")
 
+
             auth.signInWithEmailAndPassword(username.editText?.text.toString(), passwordd.editText?.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
                         val uid = user?.uid
                         editor.putString(USER_ID_SESSION, uid)
-                        if (uid != null) {
-                            dbUser.document(uid).get().addOnSuccessListener {
-                                val name = it.data?.get("username")
-                                editor.putString(USERNAME, name.toString())
+                        dbUser.get().addOnSuccessListener {
+                            for (document in it.documents) {
+                                if (document.get("email") ==  username.editText?.text.toString()) {
+                                    val name = document.data?.get("username").toString()
+                                    editor.putString(USERNAME, name)
+                                    editor.apply()
+                                }
                             }
                         }
                         editor.apply()

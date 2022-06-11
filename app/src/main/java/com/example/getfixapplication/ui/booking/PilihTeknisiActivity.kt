@@ -14,6 +14,7 @@ import com.example.getfixapplication.data.remote.order.OrdersBody
 import com.example.getfixapplication.databinding.ActivityPilihTeknisiBinding
 import com.example.getfixapplication.ui.order.PayOrderActivity
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
+import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USERNAME
 import com.example.getfixapplication.utils.ConstVal.USER_ALAMAT
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
@@ -115,9 +116,11 @@ class PilihTeknisiActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         showToast(this, data.data?.message.toString())
                         val id = data.data?.data?.pesanan?.id.toString()
+                        val ket = data.data?.data?.pesanan?.keterangan.toString()
                         // move to pay activity
                         val pay = Intent(this, PayOrderActivity::class.java)
                         pay.putExtra(ORDER_ID, id)
+                        pay.putExtra(ORDER_STATUS, ket)
                         pay.putExtra(USER_TANGGAL, jadwal)
                         pay.putExtra(USER_LAYANAN, layanan)
                         startActivity(pay)

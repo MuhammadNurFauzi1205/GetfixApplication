@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.databinding.FragmentFinishorderBinding
-import com.example.getfixapplication.utils.ConstVal
-import com.example.getfixapplication.utils.Status
-import com.example.getfixapplication.utils.showPositiveAlert
-import com.example.getfixapplication.utils.showToast
+import com.example.getfixapplication.utils.*
+import com.example.getfixapplication.utils.ConstVal.ORDER_ID
+import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
+import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 
 class FinishorderFragment : Fragment() {
 
@@ -42,6 +42,7 @@ class FinishorderFragment : Fragment() {
     }
 
     private fun getData() {
+        val loading = showLoading(context!!)
         binding.rvFinishOrder.adapter = finishOrderAdapter
         binding.rvFinishOrder.layoutManager = LinearLayoutManager(context)
         sharedPreferences = activity?.getSharedPreferences(
@@ -49,18 +50,21 @@ class FinishorderFragment : Fragment() {
             Context.MODE_PRIVATE
         )!!
         val userId = sharedPreferences.getString(ConstVal.USER_ID_SESSION, null)
+//        loading.window?.attributes?.height = ViewGroup.LayoutParams.MATCH_PARENT
+//        loading.window?.attributes?.width = ViewGroup.LayoutParams.MATCH_PARENT
 
         if (userId != null) {
             orderListItemVM.getOrdersService(userId, 1).observe(viewLifecycleOwner) { data ->
                 when (data.status) {
                     Status.LOADING -> {
-                        showToast(requireContext(), "LOADING")
+                        loading.show()
                     }
                     Status.SUCCESS -> {
-                        showToast(requireContext(), data.message.toString())
+                        loading.dismiss()
                         setData(data.data!!)
                     }
                     Status.ERROR -> {
+                        loading.dismiss()
                         showPositiveAlert(
                             requireContext(),
                             getString(R.string.error_data),
@@ -77,8 +81,9 @@ class FinishorderFragment : Fragment() {
         finishOrderAdapter.setOnItemClickCallback(object : FinishOrderAdapter.OnItemClickCallback {
             override fun onItemClicked(data: OrderListItem) {
                 val intent = Intent(activity, DetailOrderActivity::class.java)
-                intent.putExtra(ConstVal.ORDER_ID, data.orderId)
-                intent.putExtra(ConstVal.USER_LAYANAN, data.jenisOrder)
+                intent.putExtra(ORDER_ID, data.orderId)
+                intent.putExtra(USER_LAYANAN, data.jenisOrder)
+                intent.putExtra(ORDER_STATUS, data.statusOrder)
                 startActivity(intent)
             }
         })
