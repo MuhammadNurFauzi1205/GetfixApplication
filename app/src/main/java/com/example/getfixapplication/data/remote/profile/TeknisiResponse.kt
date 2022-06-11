@@ -23,5 +23,8 @@ data class TeknisiResponse(
     val email: String? = null,
 
     @field:SerializedName("username")
-    val username: String? = null
+    val username: String? = null,
+
+    @field:SerializedName("image")
+    val foto: String? = null
 )
