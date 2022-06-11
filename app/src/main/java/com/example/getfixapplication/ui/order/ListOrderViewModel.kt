@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ListOrderViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    fun getOrdersService(userId : String, type: Int): LiveData<ApiResult<List<OrderListItem>>> {
+    fun getOrdersService(userId: String, type: Int): LiveData<ApiResult<List<OrderListItem>>> {
         val result = MutableLiveData<ApiResult<List<OrderListItem>>>()
         viewModelScope.launch {
             repository.getListOrderItemService(userId, type).collect { data ->

@@ -15,7 +15,7 @@ import kotlin.properties.Delegates
 class TeknisiAdapter :
     RecyclerView.Adapter<TeknisiAdapter.ListViewHolder>(), AutoUpdatableAdapter {
 
-    private var selectedItemPosition: Int ?= null
+    private var selectedItemPosition: Int? = null
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -37,7 +37,7 @@ class TeknisiAdapter :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (nama, daerah, username, _, _, avatar, rating ) = items[holder.adapterPosition]
+        val (nama, daerah, username, _, _, avatar, rating) = items[holder.adapterPosition]
         Glide.with(holder.itemView.context)
             .load(avatar)
             .circleCrop()
@@ -54,9 +54,12 @@ class TeknisiAdapter :
             tvItemId.text = StringBuilder("@").append(username.toString())
             tvItemArea.text = daerah
             ratingTeknisi.rating = rating.toFloat()
-            if(selectedItemPosition == holder.adapterPosition) {
+            if (selectedItemPosition == holder.adapterPosition) {
                 cvTeknisi.setCardBackgroundColor(Color.parseColor("#AB6DFD"))
-                imgItemPhoto.background = AppCompatResources.getDrawable(holder.itemView.context, R.drawable.roundedborder)
+                imgItemPhoto.background = AppCompatResources.getDrawable(
+                    holder.itemView.context,
+                    R.drawable.roundedborder
+                )
             } else {
                 cvTeknisi.setCardBackgroundColor(Color.parseColor("#FFFFFF"))
                 imgItemPhoto.background = null

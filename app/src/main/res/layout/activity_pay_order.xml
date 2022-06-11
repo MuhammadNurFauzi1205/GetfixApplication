@@ -32,9 +32,9 @@
         <!-- Scrollable content -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/bg_gray"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -47,6 +47,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="180dp">
+
                     <TextView
                         android:id="@+id/layanan"
                         style="@style/TextSubHead"
@@ -59,6 +60,7 @@
                         android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tv_label_detail_informasi"
                         style="@style/TextSubHead"
@@ -184,10 +186,10 @@
                         android:layout_height="65dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:contentDescription="@string/cash"
                         android:src="@drawable/cash"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tugas"
-                        android:contentDescription="@string/cash" />
+                        app:layout_constraintTop_toBottomOf="@+id/tugas" />
 
                     <ImageView
                         android:id="@+id/iv_wallet"
@@ -195,10 +197,10 @@
                         android:layout_height="65dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="10dp"
+                        android:contentDescription="@string/wallet"
                         android:src="@drawable/wallet"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_cash"
-                        android:contentDescription="@string/wallet" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_cash" />
 
                     <TextView
                         android:id="@+id/tv_cash"
@@ -208,9 +210,9 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/cash"
                         android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_cash"
                         app:layout_constraintStart_toEndOf="@id/iv_cash"
-                        app:layout_constraintTop_toTopOf="@id/iv_cash"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_cash"/>
+                        app:layout_constraintTop_toTopOf="@id/iv_cash" />
 
                     <TextView
                         android:id="@+id/tv_wallet"
@@ -220,9 +222,9 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/wallet"
                         android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_wallet"
                         app:layout_constraintStart_toEndOf="@id/iv_wallet"
-                        app:layout_constraintTop_toTopOf="@id/iv_wallet"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_wallet"/>
+                        app:layout_constraintTop_toTopOf="@id/iv_wallet" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -247,10 +249,10 @@
                         android:layout_height="80dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="28dp"
+                        android:contentDescription="@string/cash"
                         android:src="@drawable/cash"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:contentDescription="@string/cash" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_label_total"

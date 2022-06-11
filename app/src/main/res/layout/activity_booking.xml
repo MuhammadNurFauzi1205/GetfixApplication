@@ -8,7 +8,6 @@
     tools:context=".ui.booking.BookingActivity">
 
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,9 +33,9 @@
         <!-- Scrollable content -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/bg_gray"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -239,11 +238,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:contentDescription="@string/text_img_desc_pilih_tanggal"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_tanggal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tv_tanggal"
-                        app:srcCompat="@android:drawable/ic_menu_my_calendar"
-                        android:contentDescription="@string/text_img_desc_pilih_tanggal" />
+                        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
                     <TextView
                         android:id="@+id/tv_waktu"
@@ -264,11 +263,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:contentDescription="@string/text_img_desc_pilih_waktu"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_waktu"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/tv_waktu"
-                        app:srcCompat="@android:drawable/ic_menu_recent_history"
-                        android:contentDescription="@string/text_img_desc_pilih_waktu" />
+                        app:srcCompat="@android:drawable/ic_menu_recent_history" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -304,15 +303,15 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tugas">
 
-                       <AutoCompleteTextView
-                           android:id="@+id/jenis_tugas"
-                           android:layout_width="match_parent"
-                           android:layout_height="50dp"
-                           android:padding="16dp"
-                           android:layout_weight="1"
-                           android:inputType="none"
-                           android:textSize="12sp"
-                           android:text="@string/text_pilih_layanan"/>
+                        <AutoCompleteTextView
+                            android:id="@+id/jenis_tugas"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:inputType="none"
+                            android:padding="16dp"
+                            android:text="@string/text_pilih_layanan"
+                            android:textSize="12sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout

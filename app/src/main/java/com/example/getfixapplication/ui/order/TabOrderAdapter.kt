@@ -5,7 +5,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.getfixapplication.ui.dashboard.DashboardFragment
 
 
-class TabOrderAdapter (activity: DashboardFragment) : FragmentStateAdapter(activity) {
+class TabOrderAdapter(activity: DashboardFragment) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
         return 2
     }

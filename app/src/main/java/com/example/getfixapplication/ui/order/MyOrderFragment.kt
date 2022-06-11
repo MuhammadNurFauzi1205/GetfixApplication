@@ -4,20 +4,22 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.databinding.FragmentMyorderBinding
-import com.example.getfixapplication.utils.*
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
+import com.example.getfixapplication.utils.Status
+import com.example.getfixapplication.utils.showLoading
+import com.example.getfixapplication.utils.showPositiveAlert
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,7 +28,7 @@ class MyOrderFragment : Fragment() {
     private lateinit var binding: FragmentMyorderBinding
     private val orderListItemVM: ListOrderViewModel by viewModels()
     private val myOrderAdapter = MyOrderAdapter()
-    private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

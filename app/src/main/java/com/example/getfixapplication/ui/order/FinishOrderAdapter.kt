@@ -40,7 +40,12 @@ class FinishOrderAdapter :
             tvLabelInvoice.text = tanggal
             tvLaptop.text = jenisOrder
             button2.text = "Detail Pesanan"
-            imageView2.setImageDrawable(getDrawable(holder.itemView.context,R.drawable.bullet_green))
+            imageView2.setImageDrawable(
+                getDrawable(
+                    holder.itemView.context,
+                    R.drawable.bullet_green
+                )
+            )
             cardView1.setCardBackgroundColor(Color.parseColor("#EEFFF0"))
             button2.setBackgroundColor(Color.parseColor("#FF00C853"))
             holder.binding.button2.setOnClickListener {

@@ -1,8 +1,7 @@
 package com.example.getfixapplication.ui.notifications
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.getfixapplication.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivityNotificationBinding
 
 class NotificationActivity : AppCompatActivity() {

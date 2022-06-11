@@ -2,9 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_oerder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/detail_oerder"
     tools:context=".ui.order.DetailOrderActivity">
 
 
@@ -36,9 +36,9 @@
         <!-- Scrollable content -->
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/jenisLayanan"
@@ -189,10 +189,10 @@
                         android:layout_height="32dp"
                         android:layout_marginStart="48dp"
                         android:layout_marginTop="16dp"
+                        android:contentDescription="@string/fitur_chat"
                         android:src="@drawable/chat_dot"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_line_horizontal"
-                        android:contentDescription="@string/fitur_chat" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_line_horizontal" />
 
                     <TextView
                         android:id="@+id/tv_kirim_pesan"
@@ -211,12 +211,12 @@
                         android:layout_height="32dp"
                         android:layout_marginEnd="12dp"
                         android:layout_marginBottom="28dp"
+                        android:contentDescription="@string/telepon"
                         android:src="@drawable/telepon1"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView"
                         app:layout_constraintEnd_toStartOf="@id/tv_telepon"
                         app:layout_constraintTop_toTopOf="@+id/imageView"
-                        app:layout_constraintVertical_bias="0.0"
-                        android:contentDescription="@string/telepon" />
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/tv_telepon"
@@ -266,12 +266,12 @@
                         android:layout_width="14dp"
                         android:layout_height="14dp"
                         android:layout_marginTop="4dp"
+                        android:contentDescription="@string/detailorder_rating"
                         app:layout_constraintBottom_toBottomOf="@+id/iv_foto"
                         app:layout_constraintStart_toStartOf="@+id/tv_desc_nama"
                         app:layout_constraintTop_toBottomOf="@+id/tv_desc_nama"
                         app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ic_baseline_star_rate_24"
-                        android:contentDescription="@string/detailorder_rating" />
+                        app:srcCompat="@drawable/ic_baseline_star_rate_24" />
 
                     <TextView
                         android:id="@+id/tv_detailorder_count_rating"
@@ -296,8 +296,8 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="42dp"
                 android:text="@string/lokasi_waktu_pengerjaan"
-                android:textStyle="bold"
                 android:textSize="12sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardView1" />
 
@@ -321,8 +321,8 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/rumahku"
                 android:textColor="@color/purple"
-                android:textStyle="bold"
                 android:textSize="12sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_lokasi" />
 
@@ -343,21 +343,22 @@
                 android:id="@+id/tv_tanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tanggal"
-                android:textSize="11sp"
                 android:layout_marginTop="68dp"
                 android:layout_marginEnd="38dp"
+                android:text="@string/tanggal"
+                android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView1" />
+
             <TextView
                 android:id="@+id/tv_jam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="38dp"
                 android:text="@string/jam"
                 android:textColor="@color/gray_text"
                 android:textSize="11sp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="38dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_tanggal" />
 

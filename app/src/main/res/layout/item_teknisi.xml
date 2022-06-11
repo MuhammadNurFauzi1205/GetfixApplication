@@ -32,12 +32,12 @@
                 style="@style/Widget.MaterialRatingBar.RatingBar"
                 android:layout_width="140dp"
                 android:layout_height="20dp"
+                android:isIndicator="true"
                 android:rating="4"
                 card_view:layout_constraintBottom_toBottomOf="@+id/tv_item_teknisi"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintTop_toTopOf="@+id/tv_item_teknisi"
                 card_view:mrb_fillBackgroundStars="false"
-                android:isIndicator="true"
                 card_view:mrb_progressBackgroundTint="@color/yellow"
                 card_view:mrb_progressTint="@color/yellow"
                 card_view:mrb_secondaryProgressTint="@color/yellow" />

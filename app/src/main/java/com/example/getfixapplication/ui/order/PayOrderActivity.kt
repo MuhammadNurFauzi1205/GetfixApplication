@@ -1,24 +1,18 @@
 package com.example.getfixapplication.ui.order
 
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivityPayOrderBinding
-import com.example.getfixapplication.ui.booking.PilihTeknisiActivity
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
-import com.example.getfixapplication.utils.Status
-import com.example.getfixapplication.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PayOrderActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityPayOrderBinding
+    private lateinit var binding: ActivityPayOrderBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +28,7 @@ class PayOrderActivity : AppCompatActivity() {
             detailInfo.text = layanan
             tanggalInfo.text = jadwal
             tvFinishOrder.text = ket
-            btnNext.setOnClickListener{
+            btnNext.setOnClickListener {
                 val intent = Intent(this@PayOrderActivity, DetailOrderActivity::class.java)
                 intent.putExtra(ORDER_ID, orderId)
                 intent.putExtra(ORDER_STATUS, ket)

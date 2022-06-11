@@ -13,8 +13,7 @@ import javax.inject.Singleton
 
 @Singleton
 class Repository @Inject constructor
-    (private val ordersSource: OrdersSource, private val profileSource: ProfileSource)
-{
+    (private val ordersSource: OrdersSource, private val profileSource: ProfileSource) {
 
     suspend fun addOrdersService(
         addOrdersBody: OrdersBody
@@ -30,11 +29,17 @@ class Repository @Inject constructor
         return profileSource.getProfileDataTeknisi(userId).flowOn(Dispatchers.Default)
     }
 
-    suspend fun getListTeknisiService(layanan: String, area: String): Flow<ApiResult<List<Teknisi>>> {
+    suspend fun getListTeknisiService(
+        layanan: String,
+        area: String
+    ): Flow<ApiResult<List<Teknisi>>> {
         return profileSource.getListTeknisi(layanan, area).flowOn(Dispatchers.Default)
     }
 
-    suspend fun getListOrderItemService(userId: String, type: Int): Flow<ApiResult<List<OrderListItem>>> {
+    suspend fun getListOrderItemService(
+        userId: String,
+        type: Int
+    ): Flow<ApiResult<List<OrderListItem>>> {
         return ordersSource.getListOrders(userId, type).flowOn(Dispatchers.Default)
     }
 
@@ -42,7 +47,10 @@ class Repository @Inject constructor
         return ordersSource.getOrdersId(token, orderId).flowOn(Dispatchers.Default)
     }
 
-    suspend fun updateStatusOrderService(status: StatusOrderBody, orderId: String): Flow<ApiResult<StatusOrderResponse>> {
+    suspend fun updateStatusOrderService(
+        status: StatusOrderBody,
+        orderId: String
+    ): Flow<ApiResult<StatusOrderResponse>> {
         return ordersSource.updateStatusOrders(status, orderId).flowOn(Dispatchers.Default)
     }
 }

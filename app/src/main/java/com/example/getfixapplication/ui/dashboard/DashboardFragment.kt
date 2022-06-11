@@ -19,9 +19,9 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tabOrderAdapter = TabOrderAdapter(this)
-        val viewPager= _binding?.viewPager
+        val viewPager = _binding?.viewPager
         viewPager?.adapter = tabOrderAdapter
-        val tabs= _binding?.tabs
+        val tabs = _binding?.tabs
         if (tabs != null) {
             if (viewPager != null) {
                 TabLayoutMediator(tabs, viewPager) { tab, position ->
@@ -39,7 +39,7 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
 
-    ): View {
+        ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
 

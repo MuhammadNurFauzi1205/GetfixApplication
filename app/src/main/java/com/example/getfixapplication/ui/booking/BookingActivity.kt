@@ -1,17 +1,17 @@
 package com.example.getfixapplication.ui.booking
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityBookingBinding
 import com.example.getfixapplication.utils.ConstVal.USER_ALAMAT
 import com.example.getfixapplication.utils.ConstVal.USER_DESC
 import com.example.getfixapplication.utils.ConstVal.USER_JADWAL
+import com.example.getfixapplication.utils.ConstVal.USER_JENIS_TUGAS
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
 import com.example.getfixapplication.utils.ConstVal.USER_TANGGAL
-import com.example.getfixapplication.utils.ConstVal.USER_JENIS_TUGAS
 import com.example.getfixapplication.utils.ConstVal.USER_WILAYAH
 import com.example.getfixapplication.utils.showToast
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -84,7 +84,8 @@ class BookingActivity : AppCompatActivity() {
         }
 
         pickerTime.addOnPositiveButtonClickListener {
-            binding.tvWaktu.text = StringBuilder(pickerTime.hour.toString()).append(":" + pickerTime.minute.toString())
+            binding.tvWaktu.text =
+                StringBuilder(pickerTime.hour.toString()).append(":" + pickerTime.minute.toString())
         }
 
         //move from booking to pilih teknisi

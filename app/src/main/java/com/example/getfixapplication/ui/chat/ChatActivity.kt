@@ -33,8 +33,8 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
 
         val user = fire.collection("users")
-            user.get()
-                user.whereEqualTo("username", bindingg.ed1.editText?.text.toString())
+        user.get()
+        user.whereEqualTo("username", bindingg.ed1.editText?.text.toString())
 //        val firebaseUser = fire.collection("users")
         auth = Firebase.auth
         val firebaseUser = auth.currentUser
@@ -57,9 +57,14 @@ class ChatActivity : AppCompatActivity() {
             )
             messagesRef.push().setValue(friendlyMessage) { error, _ ->
                 if (error != null) {
-                    Toast.makeText(this, getString(R.string.send_error) + error.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        getString(R.string.send_error) + error.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    Toast.makeText(this, getString(R.string.send_success), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.send_success), Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
             binding.messageEditText.setText("")
@@ -82,6 +87,7 @@ class ChatActivity : AppCompatActivity() {
         super.onResume()
         adapter.startListening()
     }
+
     public override fun onPause() {
         adapter.stopListening()
         super.onPause()

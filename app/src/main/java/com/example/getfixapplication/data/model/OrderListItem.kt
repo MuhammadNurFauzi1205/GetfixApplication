@@ -2,7 +2,7 @@ package com.example.getfixapplication.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class OrderListItem (
+data class OrderListItem(
     @field:SerializedName("id")
     val orderId: String,
 
@@ -16,4 +16,4 @@ data class OrderListItem (
     val statusOrder: String,
 
     val fotoUser: String
-    )
+)

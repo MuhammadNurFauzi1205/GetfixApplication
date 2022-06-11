@@ -1,7 +1,5 @@
 package com.example.getfixapplication.data.remote.profile
 
-import android.util.Log
-import com.example.getfixapplication.data.model.OrderListItem
 import com.example.getfixapplication.data.model.Teknisi
 import com.example.getfixapplication.data.model.User
 import com.example.getfixapplication.data.remote.ApiResult
@@ -13,7 +11,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ProfileSource @Inject constructor (private val firestore: FirebaseFirestore, private val profileService: ProfileService) {
+class ProfileSource @Inject constructor(
+    private val firestore: FirebaseFirestore,
+    private val profileService: ProfileService
+) {
 
     suspend fun getProfileDataUser(userId: String): User {
         val user = firestore.collection("users").document(userId).get().await()
@@ -22,14 +23,15 @@ class ProfileSource @Inject constructor (private val firestore: FirebaseFirestor
                 user.get("username").toString(),
                 user.get("nama").toString(),
                 user.get("email").toString(),
-                user.get("password").toString())
+                user.get("password").toString()
+            )
         }
         // return datasnapshot to user
         return user.toObject(User::class.java)!!
     }
 
     // Create get Teknisi Data Flow
-    suspend fun getProfileDataTeknisi(userId : String): Flow<ApiResult<Teknisi>> {
+    suspend fun getProfileDataTeknisi(userId: String): Flow<ApiResult<Teknisi>> {
         return flow {
             try {
                 emit(ApiResult.loading())
@@ -46,7 +48,7 @@ class ProfileSource @Inject constructor (private val firestore: FirebaseFirestor
     }
 
     // Create get Teknisi
-    suspend fun getListTeknisi(layanan : String, area : String): Flow<ApiResult<List<Teknisi>>> {
+    suspend fun getListTeknisi(layanan: String, area: String): Flow<ApiResult<List<Teknisi>>> {
         return flow {
             try {
                 emit(ApiResult.loading())

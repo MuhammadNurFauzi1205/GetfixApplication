@@ -1,18 +1,12 @@
 package com.example.getfixapplication.ui.home
 
-import android.content.ClipData.newIntent
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.getfixapplication.R
 import com.example.getfixapplication.databinding.ActivityNavigationHomeBinding
-import com.example.getfixapplication.ui.camera.CameraActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

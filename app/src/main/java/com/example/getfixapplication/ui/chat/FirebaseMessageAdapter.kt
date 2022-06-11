@@ -1,6 +1,5 @@
 package com.example.getfixapplication.ui.chat
 
-import android.os.Message
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,10 +23,13 @@ class FirebaseMessageAdapter(
         return MessageViewHolder(binding)
 
     }
+
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int, model: Chat) {
         holder.bind(model)
     }
-    inner class MessageViewHolder(private val binding: ItemMassageBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    inner class MessageViewHolder(private val binding: ItemMassageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Chat) {
             binding.tvMessage.text = item.text

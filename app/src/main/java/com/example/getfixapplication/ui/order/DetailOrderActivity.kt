@@ -8,12 +8,14 @@ import androidx.core.view.isVisible
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.remote.order.StatusOrderBody
 import com.example.getfixapplication.databinding.ActivityDetailOrderBinding
-import com.example.getfixapplication.utils.*
-
 import com.example.getfixapplication.utils.ConstVal.ORDER_ID
 import com.example.getfixapplication.utils.ConstVal.ORDER_STATUS
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
 import com.example.getfixapplication.utils.ConstVal.USER_LAYANAN
+import com.example.getfixapplication.utils.Status
+import com.example.getfixapplication.utils.showLoading
+import com.example.getfixapplication.utils.showPositiveAlert
+import com.example.getfixapplication.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +23,7 @@ class DetailOrderActivity : AppCompatActivity() {
 
     private val detailorderVM: DetailOrderViewModel by viewModels()
     private lateinit var binding: ActivityDetailOrderBinding
-    private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,21 +107,26 @@ class DetailOrderActivity : AppCompatActivity() {
                         data.data?.apply {
                             tvDetailOrderId.text = orderId
                             if (userTeknisi != null) {
-                                detailorderVM.getTeknisiService(userTeknisi).observe(this@DetailOrderActivity) { teknisi ->
-                                    when (teknisi.status) {
-                                        Status.LOADING -> {
-                                        }
-                                        Status.SUCCESS -> {
-                                            tvDescNama.text = teknisi.data?.nama
-                                            tvDetailOrderIdteknisi.text = teknisi.data?.username
-                                            tvDetailorderCountRating.text = teknisi.data?.rating.toString()
-                                        }
-                                        Status.ERROR -> {
-                                            loading.dismiss()
-                                            showToast(this@DetailOrderActivity, "Error Mengambil Data Teknisi")
+                                detailorderVM.getTeknisiService(userTeknisi)
+                                    .observe(this@DetailOrderActivity) { teknisi ->
+                                        when (teknisi.status) {
+                                            Status.LOADING -> {
+                                            }
+                                            Status.SUCCESS -> {
+                                                tvDescNama.text = teknisi.data?.nama
+                                                tvDetailOrderIdteknisi.text = teknisi.data?.username
+                                                tvDetailorderCountRating.text =
+                                                    teknisi.data?.rating.toString()
+                                            }
+                                            Status.ERROR -> {
+                                                loading.dismiss()
+                                                showToast(
+                                                    this@DetailOrderActivity,
+                                                    "Error Mengambil Data Teknisi"
+                                                )
+                                            }
                                         }
                                     }
-                                }
                             }
                             tvDescProcess.text = stat
                             tvAlamatLokasi.text = alamat

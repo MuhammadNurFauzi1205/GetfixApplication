@@ -7,9 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.getfixapplication.data.model.Teknisi
 import com.example.getfixapplication.data.remote.ApiResult
 import com.example.getfixapplication.data.remote.Repository
-import com.example.getfixapplication.data.remote.order.OrdersBody
 import com.example.getfixapplication.data.remote.order.AddOrdersResponse
-import com.example.getfixapplication.data.remote.profile.TeknisiResponse
+import com.example.getfixapplication.data.remote.order.OrdersBody
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -28,7 +27,7 @@ class BookingViewModel @Inject constructor(private val repository: Repository) :
         return result
     }
 
-    fun getTeknisiService(layanan : String, area : String): LiveData<ApiResult<List<Teknisi>>> {
+    fun getTeknisiService(layanan: String, area: String): LiveData<ApiResult<List<Teknisi>>> {
         val result = MutableLiveData<ApiResult<List<Teknisi>>>()
         viewModelScope.launch {
             repository.getListTeknisiService(layanan, area).collect {

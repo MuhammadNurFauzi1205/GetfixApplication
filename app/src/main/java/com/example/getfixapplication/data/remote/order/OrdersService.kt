@@ -13,18 +13,18 @@ interface OrdersService {
     @GET("orders/{id}")
     suspend fun getOrders(
         @Header("Authorization") BearerToken: String,
-        @Path ("id") id :String
+        @Path("id") id: String
     ): OrdersBody
 
     @GET("allorder/{id}")
     suspend fun getAllOrders(
-        @Path ("id") username :String
+        @Path("id") username: String
     ): List<OrderListItem>
 
     @PUT("orders/update/{id}")
     suspend fun updateStatusOrder(
         @Body statusOrderBody: StatusOrderBody,
-        @Path ("id") id :String
-    ) : StatusOrderResponse
+        @Path("id") id: String
+    ): StatusOrderResponse
 
 }

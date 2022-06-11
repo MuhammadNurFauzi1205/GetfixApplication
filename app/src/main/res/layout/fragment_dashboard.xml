@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="0dp"
-            app:titleCentered="true"
-            app:title="Riwayat Pesanan" />
+            app:title="Riwayat Pesanan"
+            app:titleCentered="true" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -28,8 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabTextColor="@color/purple"
-        />
+        app:tabTextColor="@color/purple" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
