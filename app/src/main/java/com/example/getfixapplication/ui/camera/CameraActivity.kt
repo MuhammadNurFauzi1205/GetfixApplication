@@ -1,5 +1,6 @@
 package com.example.getfixapplication.ui.camera
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -23,6 +24,7 @@ import com.example.getfixapplication.ml.Model
 import com.example.getfixapplication.utils.ConstVal.PERMISSIONS
 import com.example.getfixapplication.utils.createFile
 import com.example.getfixapplication.utils.reduceFileImage
+import com.example.getfixapplication.utils.showLoading
 import com.example.getfixapplication.utils.showToast
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.tensorflow.lite.DataType
@@ -97,7 +99,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
 
-    private fun imageClassification(photoFile: File) {
+    private fun imageClassification(photoFile: File, loading: AlertDialog) {
         val labels =
             application.assets.open("label.txt").bufferedReader().use { it.readText() }.split("\n")
 
@@ -136,7 +138,7 @@ class CameraActivity : AppCompatActivity() {
             .transform(CenterCrop(), RoundedCorners(20))
             .into(view.ivClassification)
         view.ivClassification.setImageBitmap(bitmap)
-
+        loading.dismiss()
         dialog.show()
 
         model.close()
@@ -144,7 +146,8 @@ class CameraActivity : AppCompatActivity() {
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
-
+        val loading = showLoading(this)
+        loading.show()
         val photoFile = createFile(application)
 
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
@@ -153,6 +156,7 @@ class CameraActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
+                    loading.dismiss()
                     showToast(
                         this@CameraActivity,
                         "Gagal mengambil gambar.",
@@ -160,7 +164,7 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    imageClassification(photoFile)
+                    imageClassification(photoFile, loading)
                 }
             }
         )
