@@ -3,12 +3,15 @@ package com.example.getfixapplication.ui.auth.login
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.security.KeyChain.EXTRA_NAME
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.register.SignupActivity
 import com.example.getfixapplication.ui.home.NavigationHomeActivity
+import com.example.getfixapplication.utils.ConstVal
+import com.example.getfixapplication.utils.ConstVal.EXTRA_NAME
 import com.example.getfixapplication.utils.ConstVal.RC_SIGN_IN
 import com.example.getfixapplication.utils.ConstVal.USERNAME
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
@@ -19,11 +22,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.tasks.await
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -83,10 +88,7 @@ class LoginActivity : AppCompatActivity() {
             val dbUser = db.collection("users")
 
 
-            auth.signInWithEmailAndPassword(
-                username.editText?.text.toString(),
-                passwordd.editText?.text.toString()
-            )
+            auth.signInWithEmailAndPassword(username.editText?.text.toString(), passwordd.editText?.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
@@ -94,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
                         editor.putString(USER_ID_SESSION, uid)
                         dbUser.get().addOnSuccessListener {
                             for (document in it.documents) {
-                                if (document.get("email") == username.editText?.text.toString()) {
+                                if (document.get("email") ==  username.editText?.text.toString()) {
                                     val name = document.data?.get("username").toString()
                                     editor.putString(USERNAME, name)
                                     editor.apply()
@@ -126,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun GoogleSign() {
+    private fun GoogleSign(){
         val signinIntent = googleSignInClient.signInIntent
         startActivityForResult(signinIntent, RC_SIGN_IN)
     }
@@ -134,18 +136,18 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode ==  RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            val exception = task.exception
-            if (task.isSuccessful) {
+            val exception= task.exception
+            if (task.isSuccessful){
                 try {
                     val account = task.getResult(ApiException::class.java)
-                    Log.d("LoginActivity", "firebaseauthwithgoogle:" + account.id)
+                    Log.d("LoginActivity", "firebaseauthwithgoogle:"+account.id)
                     firebaseAuthWithGugel(account.idToken!!)
-                } catch (e: ApiException) {
+                } catch (e : ApiException) {
                     Log.w("LoginActivity", "google sign in failed", e)
                 }
-            } else {
+            }else{
                 Log.w("LoginActivity", exception.toString())
             }
 
@@ -156,16 +158,35 @@ class LoginActivity : AppCompatActivity() {
     private fun firebaseAuthWithGugel(idToken: String) {
         val credit = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credit)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
+            .addOnCompleteListener(this) {task ->
+                if (task.isSuccessful){
                     Log.d(TAG, "signinwithcredit:sukses")
                     val intent = Intent(this, NavigationHomeActivity::class.java)
                     startActivity(intent)
                     finish()
-                } else {
+                    val user = auth.currentUser
+                    updateUI(user)
+                }
+                else {
                     Log.w(TAG, "signinwithcredit:gagal", task.exception)
                 }
             }
+    }
+
+        private fun updateUI(user: FirebaseUser?) {
+        if (user != null){
+            val intent = Intent(applicationContext, NavigationHomeActivity::class.java)
+            intent.putExtra(ConstVal.EXTRA_NAME, user.displayName)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
     }
 }
 

@@ -32,9 +32,9 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        val user = fire.collection("users")
-        user.get()
-        user.whereEqualTo("username", bindingg.ed1.editText?.text.toString())
+//        val user = fire.collection("users")
+//        user.get()
+//        user.whereEqualTo("username", bindingg.ed1.editText?.text.toString())
 //        val firebaseUser = fire.collection("users")
         auth = Firebase.auth
         val firebaseUser = auth.currentUser

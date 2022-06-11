@@ -4,8 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
+import com.example.getfixapplication.data.model.Chat
+import com.example.getfixapplication.databinding.ActivityChatBinding
+import com.example.getfixapplication.databinding.ActivityLoginBinding
+import com.example.getfixapplication.databinding.FragmentChatBinding
+import com.example.getfixapplication.ui.chat.ChatActivity
+import com.example.getfixapplication.ui.chat.FirebaseMessageAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,11 +37,15 @@ class ChatFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -37,6 +56,8 @@ class ChatFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat, container, false)
     }
+
+
 
     companion object {
         /**
@@ -57,4 +78,7 @@ class ChatFragment : Fragment() {
                 }
             }
     }
+
+
+
 }

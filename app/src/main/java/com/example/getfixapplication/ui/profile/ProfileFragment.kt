@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import com.example.getfixapplication.databinding.FragmentProfileBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.utils.ConstVal.USER_ID_SESSION
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +21,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private val profileViewModel: ProfileViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
