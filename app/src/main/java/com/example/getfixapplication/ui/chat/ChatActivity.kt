@@ -10,6 +10,7 @@ import com.example.getfixapplication.data.model.Chat
 import com.example.getfixapplication.databinding.ActivityChatBinding
 import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.ui.auth.login.LoginActivity
+import com.example.getfixapplication.utils.ConstVal.MESSAGES_CHILD
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -23,10 +24,10 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
-    private lateinit var bindingg: ActivityLoginBinding
     private lateinit var binding: ActivityChatBinding
     private lateinit var adapter: FirebaseMessageAdapter
     var fire = Firebase.firestore
+    private lateinit var bindingg: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +94,4 @@ class ChatActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    companion object {
-        const val MESSAGES_CHILD = "messages"
-    }
 }

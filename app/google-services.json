@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1063081921561",
+    "firebase_url": "https://getfix-351406-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "getfix-351406",
     "storage_bucket": "getfix-351406.appspot.com"
   },
@@ -35,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1063081921561-nrcop7njimnvlf14njcjre8mhuueoqsq.apps.googleusercontent.com",
+              "client_id": "1063081921561-cnql90a1mp6toqi0a48vu8k8tqg7bnfs.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

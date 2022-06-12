@@ -1,5 +1,6 @@
 package com.example.getfixapplication.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getfixapplication.R
 import com.example.getfixapplication.data.model.Chat
-import com.example.getfixapplication.databinding.ActivityChatBinding
-import com.example.getfixapplication.databinding.ActivityLoginBinding
 import com.example.getfixapplication.databinding.FragmentChatBinding
-import com.example.getfixapplication.ui.chat.ChatActivity
+import com.example.getfixapplication.ui.auth.login.LoginActivity
 import com.example.getfixapplication.ui.chat.FirebaseMessageAdapter
+import com.example.getfixapplication.utils.ConstVal.MESSAGES_CHILD
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -32,52 +33,85 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ChatFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+@AndroidEntryPoint
 class ChatFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
 
+    private lateinit var db: FirebaseDatabase
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding: FragmentChatBinding
+    private lateinit var adapter: FirebaseMessageAdapter
+//    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false)
+        binding = FragmentChatBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
+        if (firebaseUser == null) {
+            // Not signed in, launch the Login activity
+            startActivity(Intent(context, LoginActivity::class.java))
+            activity?.finish()
+            return
+        }
 
+        db = Firebase.database
+        val messagesRef = db.reference.child(MESSAGES_CHILD)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChatFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChatFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        binding.sendButton.setOnClickListener {
+            val friendlyMessage = Chat(
+                binding.messageEditText.text.toString(),
+                firebaseUser.displayName.toString(),
+                firebaseUser.photoUrl.toString(),
+                Date().time
+            )
+            messagesRef.push().setValue(friendlyMessage) { error, _ ->
+                if (error != null) {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.send_error) + error.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(context, getString(R.string.send_success), Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
+            binding.messageEditText.setText("")
+        }
+
+        val manager = LinearLayoutManager(context)
+        manager.stackFromEnd = true
+        binding.messageRecyclerView.layoutManager = manager
+
+        val options = FirebaseRecyclerOptions.Builder<Chat>()
+            .setQuery(messagesRef, Chat::class.java)
+            .build()
+        adapter = FirebaseMessageAdapter(options, firebaseUser.displayName)
+        binding.messageRecyclerView.adapter = adapter
     }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.startListening()
+    }
+
+    override fun onPause() {
+        adapter.stopListening()
+        super.onPause()
+    }
+
+
 
 
 

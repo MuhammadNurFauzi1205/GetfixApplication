@@ -47,7 +47,7 @@ class FirebaseMessageAdapter(
 
         private fun setTextColor(userName: String?, textView: TextView) {
             if (currentUserName == userName && userName != null) {
-                textView.setBackgroundResource(R.drawable.roundedborder)
+                textView.setBackgroundResource(R.drawable.gradient_background)
             } else {
                 textView.setBackgroundResource(R.drawable.gradient_background)
             }
