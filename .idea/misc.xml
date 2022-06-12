@@ -24,11 +24,13 @@
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/layout/loading_layout.xml" value="0.1633176571184267" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16417272338606242" />
         <entry key="..\:/Github/Android/GetfixApplication/app/src/main/res/menu/menu_top_notif.xml" value="0.1633176571184267" />
+        <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/default_dot.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_add.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1425" />
+        <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.143" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_menu.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_notif.xml" value="0.1425" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/drawable/ic_search.xml" value="0.1425" />
@@ -61,6 +63,8 @@
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/layout/item_teknisi.xml" value="0.25" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/menu/bottom_nav_menu.xml" value="0.209375" />
         <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/menu/item_chat.xml" value="0.209375" />
+        <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.143" />
+        <entry key="..\:/latihan dicoding/Bangkit-android learning path/submission/GetfixApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.143" />
       </map>
     </option>
   </component>
