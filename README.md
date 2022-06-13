@@ -11,7 +11,7 @@ According to data from Ministry of Communication and Information Indonesia say t
 
 ## Team Members
 
-| Member | Student ID | Path | University|
+| Name | Student ID | Path | University|
 | --------|   ---------|   -----|   ------|
 |Dinda Lusita Fristiani Anisa |C2191F1816|Cloud Computing|Universitas Bina Darma|
 |Siti Fatimatuzzahro|M7329G2853|Machine Learning|Universitas Tidar|
@@ -29,9 +29,16 @@ Tasks for the Machine Learning team:
 - Train and Test Model
 - Model Deployment
 
-for the Image Classification for now it have 2 classes first is screen crash and second in blue screen,for the dataset for image Classification it have 600 images which is split to 300 for screen crash and 300 for blue screen.We build a model using conv2d,max_pooling 2d,dense and flatten layer,after we build a model we train it and we reach 0.97 accuracy.
+### Image Classification 
+the model have 2 classes first is screen crash and second in blue screen,for the dataset for image Classification it have 600 images which is split to 300 for screen crash and 300 for blue screen.We build a model using conv2d,max_pooling 2d,dense and flatten layer,after we build a model we train it and we reach 0.97 accuracy.
 
-for the recomender we using Classification multiclass using structured data that have 16 class depend on what user choose in the input.for the build a model we using StringLookup,CategoryEncoding,Concatenate,and Dense layer.aftre the model done we train it and give a 0.93 accuracy
+### Recomender 
+we using Multiclass Classification using structured data model that have 16 class depend on what user choose in the input.for the build a model we using StringLookup,CategoryEncoding,Concatenate,and Dense layer.after the model done we train it and give a 0.93 accuracy.
+
+For more information about the model.Please consider visit this link below:
+- [Image Classification](https://github.com/MuhammadNurFauzi1205/GetfixApplication/blob/ml/Image%20Classification/model_training.ipynb)
+- [Recomender](https://github.com/MuhammadNurFauzi1205/GetfixApplication/blob/ml/recomender/recomendderGetfixFix.ipynb)
+
 
 
 
