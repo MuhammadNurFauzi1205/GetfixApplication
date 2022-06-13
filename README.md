@@ -53,7 +53,7 @@ Here the screenshot of the app :
 
 ![Screenshot1](https://github.com/GrmRy/GrmRy/blob/main/Desain%20tanpa%20judul.png)
 
-Link for download the APK can be found ![here](https://drive.google.com/file/d/1JH17msooc2fpqXmB_ywfc66J8Q1N6Fwv/view?usp=sharing)
+Link for download the APK can be found [here](https://drive.google.com/file/d/1JH17msooc2fpqXmB_ywfc66J8Q1N6Fwv/view?usp=sharing)
 
 
 ## 3. Cloud Computing
