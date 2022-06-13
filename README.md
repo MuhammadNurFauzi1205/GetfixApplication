@@ -43,7 +43,7 @@ For more information about the model.Please consider visit this link below:
 
 
 ## 2. Mobile Development
-In this repository,files contain in app are the final 
+In this repository,files contain in app directory are the code for build the android application
 
 The tech we use for create this app :
 - Kotlin
