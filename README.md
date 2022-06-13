@@ -65,6 +65,7 @@ Link for download the APK can be found [here](https://drive.google.com/file/d/1J
 
 ## 3. Cloud Computing
 in this repository,file contain in cloud directory are the final code for this project
+
 Tasks for Cloud Computing team:
 - Creating the logo of the Application
 - Creating UI design of each menu and feature of the Application
